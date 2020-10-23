@@ -1,5 +1,6 @@
-package io.github.seggan.slimefunwarfare;
+package io.github.seggan.slimefunwarfare.lists;
 
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
@@ -60,10 +61,10 @@ public final class Items {
         "&7x2 damage"
     );
 
-
-    public static final SlimefunItemStack TEST_GUN = new SlimefunItemStack(
-        "TEST_GUN",
+    public static final SlimefunItemStack GUN_CASE = new SlimefunItemStack(
+        "GUN_CASE",
         Material.CROSSBOW,
-        "Gun"
+        "&7Gun Case",
+        "&7The base of all guns"
     );
 }

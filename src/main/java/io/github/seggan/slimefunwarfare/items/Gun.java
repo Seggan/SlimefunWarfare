@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.items;
 
-import io.github.seggan.slimefunwarfare.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;

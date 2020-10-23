@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.items;
 
-import io.github.seggan.slimefunwarfare.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.machines.BulletFactory;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;

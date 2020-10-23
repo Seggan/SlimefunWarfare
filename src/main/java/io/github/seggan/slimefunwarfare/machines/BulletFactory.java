@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.machines;
 
-import io.github.seggan.slimefunwarfare.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
