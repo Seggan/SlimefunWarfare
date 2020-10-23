@@ -4,14 +4,13 @@ import io.github.seggan.slimefunwarfare.Items;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.LlamaSpit;
@@ -26,9 +25,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
-public class Gun extends SimpleSlimefunItem<ItemUseHandler> implements DamageableItem {
+public class Gun extends SlimefunItem implements DamageableItem {
 
-    public static final HashMap<UUID, Long> LAST_USES = new HashMap<>();
+    @Getter
+    private static final HashMap<UUID, Long> LAST_USES = new HashMap<>();
 
     private final int range;
     private final int damageDealt;
@@ -40,9 +40,10 @@ public class Gun extends SimpleSlimefunItem<ItemUseHandler> implements Damageabl
         this.range = range;
         damageDealt = damage;
         this.cooldown = (int) (cooldown * 1000);
+
+        addItemHandler(getItemHandler());
     }
 
-    @Override
     public ItemUseHandler getItemHandler() {
         return e -> {
             e.cancel();
@@ -55,7 +56,7 @@ public class Gun extends SimpleSlimefunItem<ItemUseHandler> implements Damageabl
         PlayerInventory inv = p.getInventory();
 
         ItemStack gun = inv.getItemInMainHand();
-        if (gun.getType() == Material.AIR) {
+        if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
             return;
         }
 
