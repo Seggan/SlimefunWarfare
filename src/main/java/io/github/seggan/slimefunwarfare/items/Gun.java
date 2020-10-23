@@ -1,7 +1,8 @@
 package io.github.seggan.slimefunwarfare.items;
 
-import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.seggan.slimefunwarfare.Util;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import lombok.Getter;
@@ -11,7 +12,6 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
@@ -31,6 +31,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
     private static final HashMap<UUID, Long> LAST_USES = new HashMap<>();
 
     private final int range;
+    private final int minRange;
     private final int damageDealt;
     private final int cooldown;
 
@@ -38,6 +39,18 @@ public class Gun extends SlimefunItem implements DamageableItem {
         super(Items.sfwarfareGunsCategory, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 
         this.range = range;
+        minRange = 0;
+        damageDealt = damage;
+        this.cooldown = (int) (cooldown * 1000);
+
+        addItemHandler(getItemHandler());
+    }
+
+    public Gun(SlimefunItemStack item, ItemStack[] recipe, int range, int minRange, int damage, double cooldown) {
+        super(Items.sfwarfareGunsCategory, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+
+        this.range = range;
+        this.minRange = minRange;
         damageDealt = damage;
         this.cooldown = (int) (cooldown * 1000);
 
@@ -57,17 +70,6 @@ public class Gun extends SlimefunItem implements DamageableItem {
 
         ItemStack gun = inv.getItemInMainHand();
         if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
-            return;
-        }
-
-        entityLoop: {
-            for (Entity e : p.getNearbyEntities(range, range, range)) {
-                if (e instanceof LivingEntity) {
-                    if (getLookingAt(p, (LivingEntity) e)) {
-                        break entityLoop;
-                    }
-                }
-            }
             return;
         }
 
@@ -114,13 +116,23 @@ public class Gun extends SlimefunItem implements DamageableItem {
 
         Vector v = p.getEyeLocation().getDirection().multiply(20);
         LlamaSpit bullet = p.launchProjectile(LlamaSpit.class);
+        bullet.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.getInstance(), true));
         bullet.setMetadata("damage",
             new FixedMetadataValue(SlimefunWarfare.getInstance(), damageDealt * multiplier)
         );
         bullet.setMetadata("isFire", new FixedMetadataValue(SlimefunWarfare.getInstance(), isFire));
+        bullet.setMetadata("locInfo", new FixedMetadataValue(
+            SlimefunWarfare.getInstance(),
+            Util.serializeLocation(p.getEyeLocation())
+        ));
+        bullet.setMetadata("rangeInfo", new FixedMetadataValue(
+            SlimefunWarfare.getInstance(),
+            range + ":" + minRange
+            ));
         bullet.setVelocity(v);
     }
 
+    @Deprecated
     private boolean getLookingAt(Player player, LivingEntity livingEntity){
         Location eye = player.getEyeLocation();
         Vector toEntity = livingEntity.getEyeLocation().toVector().subtract(eye.toVector());
