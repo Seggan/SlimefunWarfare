@@ -41,7 +41,11 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             SlimefunItems.PLASTIC_SHEET, new ItemStack(Material.CROSSBOW), SlimefunItems.PLASTIC_SHEET
         }).register(this);
 
-        new Gun(Guns.PISTOL, new ItemStack[] {}, 7, 3, 0.75).register(this);
+        new Gun(Guns.PISTOL, new ItemStack[] {
+            null, null, null,
+            Items.SLIMESTEEL, Items.GUN_CASE, Items.SLIMESTEEL,
+            null, new ItemStack(Material.STICK), null
+        }, 7, 4, 0.75).register(this);
     }
 
     @Override
