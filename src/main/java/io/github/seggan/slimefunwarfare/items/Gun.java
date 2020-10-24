@@ -28,7 +28,7 @@ import java.util.UUID;
 public class Gun extends SlimefunItem implements DamageableItem {
 
     @Getter
-    private static final HashMap<UUID, Long> LAST_USES = new HashMap<>();
+    private final HashMap<UUID, Long> LAST_USES = new HashMap<>();
 
     private final int range;
     private final int minRange;

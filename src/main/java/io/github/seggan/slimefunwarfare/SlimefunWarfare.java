@@ -28,12 +28,13 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
         instance = this;
 
+
+        new SlimesteelIngot().register(this);
+
         new BulletFactory().register(this);
         new Bullet(Items.LEAD_BULLET, SlimefunItems.LEAD_INGOT, 1).register(this);
         new Bullet(Items.DU_BULLET, SlimefunItems.SMALL_URANIUM, 1.5).register(this);
         new Bullet(Items.GOLD_BULLET, SlimefunItems.GOLD_20K, 2).register(this);
-
-        new SlimesteelIngot().register(this);
 
         new SlimefunItem(Items.sfwarfareCategory, Items.GUN_CASE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.SLIMESTEEL, new ItemStack(Material.GUNPOWDER), Items.SLIMESTEEL,
@@ -46,6 +47,18 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             Items.SLIMESTEEL, Items.GUN_CASE, Items.SLIMESTEEL,
             null, new ItemStack(Material.STICK), null
         }, 7, 4, 0.75).register(this);
+
+        new Gun(Guns.REVOLVER, new ItemStack[] {
+            null, null, null,
+            Items.SLIMESTEEL, Guns.PISTOL, Items.SLIMESTEEL,
+            null, Items.SLIMESTEEL, null
+        }, 10, 6, 0.5).register(this);
+
+        new Gun(Guns.MACHINE_GUN, new ItemStack[] {
+            Items.SLIMESTEEL, null, Items.SLIMESTEEL,
+            Items.SLIMESTEEL, Guns.REVOLVER, Items.SLIMESTEEL,
+            null, SlimefunItems.PLASTIC_SHEET, null
+        }, 30, 5, 6, 0.15).register(this);
     }
 
     @Override
