@@ -93,6 +93,30 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             Items.REINFORCED_SLIMESTEEL, SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET
         }, 40, 5, 8, 0).register(this);
 
+        new Gun(Guns.RIFLE, new ItemStack[]{
+            null, Items.SCOPE, null,
+            Items.BARREL, Items.GUN_CASE, Items.SLIMESTEEL,
+            null, Items.SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
+        }, 40, 5, 8, 0.75).register(this);
+
+        new Gun(Guns.SHOTGUN, new ItemStack[]{
+            Items.SLIMESTEEL, Items.SLIMESTEEL, null,
+            Items.BARREL, Items.BARREL, Items.GUN_CASE,
+            Items.SLIMESTEEL, Items.SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
+        }, 25, 5, 13, 1.25).register(this);
+
+        new Gun(Guns.ASSAULT_RIFLE, new ItemStack[]{
+            Items.SLIMESTEEL, Items.SCOPE, new ItemStack(Material.OAK_PLANKS),
+            Items.BARREL, Guns.RIFLE, Items.REINFORCED_SLIMESTEEL,
+            Items.SLIMESTEEL, Items.SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
+        }, 50, 5, 13, 0.3).register(this);
+
+        new Gun(Guns.SNIPER, new ItemStack[]{
+            null, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL,
+            Items.ADVANCED_BARREL, Items.ADVANCED_BARREL, Guns.ASSAULT_RIFLE,
+            new ItemStack(Material.STICK), Items.REINFORCED_SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
+        }, 25, 5, 13, 1.25).register(this);
+
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (Player p : getServer().getOnlinePlayers()) {
                 if (p.isSneaking() && !p.isFlying()) {
