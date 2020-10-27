@@ -3,6 +3,7 @@ package io.github.seggan.slimefunwarfare;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.items.SlimesteelIngot;
+import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.machines.BulletFactory;
@@ -11,9 +12,13 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.UUID;
 
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
@@ -59,6 +64,27 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             Items.SLIMESTEEL, Guns.REVOLVER, Items.SLIMESTEEL,
             null, SlimefunItems.PLASTIC_SHEET, null
         }, 30, 5, 6, 0.15).register(this);
+
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            for (Player p : getServer().getOnlinePlayers()) {
+                if (p.isSneaking() && !p.isFlying()) {
+                    UUID uuid = p.getUniqueId();
+                    SlimefunItem item = SlimefunItem.getByItem(p.getInventory().getItemInMainHand());
+                    if (!(item instanceof Gun)) {
+                        continue;
+                    }
+                    Gun gun = (Gun) item;
+                    Long lastUse = gun.getLAST_USES().get(uuid);
+                    long time = System.currentTimeMillis();
+                    if (lastUse != null) {
+                        if ((time - lastUse) < gun.getCooldown()) {
+                            continue;
+                        }
+                    }
+                    gun.shoot(p);
+                }
+            }
+        }, 0, 1);
     }
 
     @Override

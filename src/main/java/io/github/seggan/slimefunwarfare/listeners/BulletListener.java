@@ -1,5 +1,6 @@
-package io.github.seggan.slimefunwarfare;
+package io.github.seggan.slimefunwarfare.listeners;
 
+import io.github.seggan.slimefunwarfare.Util;
 import org.bukkit.Location;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.event.EventHandler;

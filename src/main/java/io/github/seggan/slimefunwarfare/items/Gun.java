@@ -11,8 +11,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -33,6 +31,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
     private final int range;
     private final int minRange;
     private final int damageDealt;
+    @Getter
     private final int cooldown;
 
     public Gun(SlimefunItemStack item, ItemStack[] recipe, int range, int damage, double cooldown) {
@@ -130,15 +129,6 @@ public class Gun extends SlimefunItem implements DamageableItem {
             range + ":" + minRange
             ));
         bullet.setVelocity(v);
-    }
-
-    @Deprecated
-    private boolean getLookingAt(Player player, LivingEntity livingEntity){
-        Location eye = player.getEyeLocation();
-        Vector toEntity = livingEntity.getEyeLocation().toVector().subtract(eye.toVector());
-        double dot = toEntity.normalize().dot(eye.getDirection());
-
-        return dot > 0.99D;
     }
 
     @Override
