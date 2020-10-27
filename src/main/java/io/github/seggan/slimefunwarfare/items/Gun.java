@@ -113,7 +113,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
             return;
         }
 
-        Vector v = p.getEyeLocation().getDirection().multiply(20);
+        Vector v = p.getEyeLocation().subtract(0, 1, 0).getDirection().multiply(20);
         LlamaSpit bullet = p.launchProjectile(LlamaSpit.class);
         bullet.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.getInstance(), true));
         bullet.setMetadata("damage",
