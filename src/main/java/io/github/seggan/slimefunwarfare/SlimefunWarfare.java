@@ -12,6 +12,8 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -33,6 +35,11 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
         instance = this;
 
+        new Metrics(this, 9227);
+
+        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
+            new GitHubBuildsUpdater(this, getFile(), "Seggan/SlimefunWarfare/master").start();
+        }
 
         new SlimesteelIngot().register(this);
         new SlimefunItem(
