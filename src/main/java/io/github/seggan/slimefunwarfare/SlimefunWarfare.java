@@ -122,7 +122,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             null, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL,
             Items.ADVANCED_BARREL, Items.ADVANCED_BARREL, Guns.ASSAULT_RIFLE,
             new ItemStack(Material.STICK), Items.REINFORCED_SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
-        }, 25, 5, 13, 1.25).register(this);
+        }, 130, 50, 22, 8).register(this);
 
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (Player p : getServer().getOnlinePlayers()) {
