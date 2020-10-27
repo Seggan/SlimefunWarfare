@@ -30,6 +30,34 @@ public final class Items {
             "of applications"
     );
 
+    public static final SlimefunItemStack REINFORCED_SLIMESTEEL = new SlimefunItemStack(
+        "REINFORCED_SLIMESTEEL_INGOT",
+        Material.IRON_INGOT,
+        "&aReinforced Slimesteel Ingot",
+        "",
+        "Hard but elastic, this alloy",
+        "is perfect for all sorts",
+        "of applications"
+    );
+
+    public static final SlimefunItemStack SCOPE = new SlimefunItemStack(
+        "SCOPE",
+        Material.STICK,
+        "&aScope"
+    );
+
+    public static final SlimefunItemStack BARREL = new SlimefunItemStack(
+        "BARREL",
+        Material.STICK,
+        "&7Barrel"
+    );
+
+    public static final SlimefunItemStack ADVANCED_BARREL = new SlimefunItemStack(
+        "ADVANCED_BARREL",
+        Material.STICK,
+        "&7Advanced Barrel"
+    );
+
     public static final SlimefunItemStack BULLET_FACTORY  = new SlimefunItemStack(
         "BULLET_FACTORY",
         Material.SMOKER,

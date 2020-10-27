@@ -39,4 +39,16 @@ public final class Guns {
         "&cDamage: 3 hearts",
         "&cCooldown: 0.15 seconds"
     );
+
+    public static final SlimefunItemStack MINIGUN = new SlimefunItemStack(
+        "GUN_MINIGUN",
+        Material.CROSSBOW,
+        "&7Minigun",
+        "&7The ultimate device",
+        "&7to pepper your friends with.",
+        "&cRange: 40",
+        "&cMinimum Range: 5",
+        "&cDamage: 4 hearts",
+        "&cCooldown: none"
+    );
 }
