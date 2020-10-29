@@ -12,22 +12,22 @@ import org.bukkit.NamespacedKey;
 
 public final class Items {
     public static final Category sfwarfareCategory = new Category(
-            new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare"),
-            new CustomItem(Material.DIAMOND_SWORD, "Slimefun Warfare")
+        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare"),
+        new CustomItem(Material.DIAMOND_SWORD, "Slimefun Warfare")
     );
     public static final Category sfwarfareGunsCategory = new Category(
-            new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_guns"),
-            new CustomItem(Material.CROSSBOW, "Slimefun Warfare - Guns")
+        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_guns"),
+        new CustomItem(Material.CROSSBOW, "Slimefun Warfare - Guns")
     );
 
     public static final SlimefunItemStack SLIMESTEEL = new SlimefunItemStack(
-            "SLIMESTEEL_INGOT",
-            Material.IRON_INGOT,
-            "&aSlimesteel Ingot",
-            "",
-            "Hard but elastic, this alloy",
-            "is perfect for all sorts",
-            "of applications"
+        "SLIMESTEEL_INGOT",
+        Material.IRON_INGOT,
+        "&aSlimesteel Ingot",
+        "",
+        "Hard but elastic, this alloy",
+        "is perfect for all sorts",
+        "of applications"
     );
 
     public static final SlimefunItemStack REINFORCED_SLIMESTEEL = new SlimefunItemStack(
@@ -58,7 +58,7 @@ public final class Items {
         "&7Advanced Barrel"
     );
 
-    public static final SlimefunItemStack BULLET_FACTORY  = new SlimefunItemStack(
+    public static final SlimefunItemStack BULLET_FACTORY = new SlimefunItemStack(
         "BULLET_FACTORY",
         Material.SMOKER,
         "&7Bullet Factory",

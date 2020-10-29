@@ -2,7 +2,6 @@ package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Gun;
-import io.github.seggan.slimefunwarfare.items.SlimesteelIngot;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
@@ -41,7 +40,11 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             new GitHubBuildsUpdater(this, getFile(), "Seggan/SlimefunWarfare/master").start();
         }
 
-        new SlimesteelIngot().register(this);
+        new SlimefunItem(Items.sfwarfareCategory, Items.SLIMESTEEL, RecipeType.SMELTERY, new ItemStack[]{
+            SlimefunItems.STEEL_INGOT, new ItemStack(Material.SLIME_BALL), null,
+            null, null, null,
+            null, null, null
+        }).register(this);
         new SlimefunItem(
             Items.sfwarfareCategory, Items.REINFORCED_SLIMESTEEL, RecipeType.SMELTERY, new ItemStack[]{
             Items.SLIMESTEEL, new ItemStack(Material.SLIME_BLOCK), SlimefunItems.DAMASCUS_STEEL_INGOT,
@@ -116,7 +119,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             Items.SLIMESTEEL, Items.SCOPE, new ItemStack(Material.OAK_PLANKS),
             Items.BARREL, Guns.RIFLE, Items.REINFORCED_SLIMESTEEL,
             Items.SLIMESTEEL, Items.SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
-        }, 50, 5, 13, 0.3).register(this);
+        }, 50, 3, 13, 0.3).register(this);
 
         new Gun(Guns.SNIPER, new ItemStack[]{
             null, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL,

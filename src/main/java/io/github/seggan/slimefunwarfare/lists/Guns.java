@@ -84,7 +84,7 @@ public final class Guns {
         "&7rifle is the standard",
         "&7military weapon.",
         "&cRange: 50",
-        "&cMinimum Range: 5",
+        "&cMinimum Range: 3",
         "&cDamage: 6.5 hearts",
         "&cCooldown: 0.3 seconds"
     );
