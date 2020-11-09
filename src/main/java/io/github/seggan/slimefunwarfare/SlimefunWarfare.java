@@ -3,14 +3,17 @@ package io.github.seggan.slimefunwarfare;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
+import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.machines.BulletFactory;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -31,6 +34,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         getLogger().info("Slimefun Warfare enabled.");
 
         getServer().getPluginManager().registerEvents(new BulletListener(), this);
+        getServer().getPluginManager().registerEvents(new PyroListener(), this);
 
         instance = this;
 
@@ -51,6 +55,19 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.CORINTHIAN_BRONZE_INGOT, SlimefunItems.ALUMINUM_BRONZE_INGOT,
             null, null, null
         }).register(this);
+        new VanillaItem(
+            Items.sfwarfareCategory, new ItemStack(Material.GUNPOWDER),
+            "GUNPOWDER", RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+                SlimefunItems.SULFATE, new ItemStack(Material.BONE_MEAL), new ItemStack(Material.CHARCOAL),
+                null, null, null,
+                null, null, null
+        }).register(this);
+        new SlimefunItem(
+            Items.sfwarfareCategory, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
+            new ItemStack(Material.TNT), null, null,
+            null, null, null,
+            null, null, null
+        }, new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(this);
         new SlimefunItem(Items.sfwarfareCategory, Items.SCOPE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.PLASTIC_SHEET, SlimefunItems.MULTIMETER, SlimefunItems.PLASTIC_SHEET,
             SlimefunItems.HARDENED_GLASS, null, SlimefunItems.HARDENED_GLASS,

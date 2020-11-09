@@ -95,4 +95,11 @@ public final class Items {
         "&7Gun Case",
         "&7The base of all guns"
     );
+
+    public static final SlimefunItemStack PYRO_POWDER = new SlimefunItemStack(
+        "PYRO_POWDER",
+        Material.REDSTONE,
+        "&4Pyro Powder",
+        "&7A very explosive substance indeed"
+    );
 }
