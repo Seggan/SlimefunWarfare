@@ -101,7 +101,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
                     item = SlimefunItem.getByItem(stack);
                     if (item instanceof Bullet) {
                         multiplier = ((Bullet) item).getMultiplier();
-                        isFire = item.getID().equals("DU_BULLET");
+                        isFire = item.getId().equals("DU_BULLET");
                         stack.setAmount(stack.getAmount() - 1);
                         contents[ArrayUtils.indexOf(contents, stack)] = stack;
                         inv.setContents(contents);
