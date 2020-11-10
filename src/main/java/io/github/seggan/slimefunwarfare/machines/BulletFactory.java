@@ -29,7 +29,7 @@ public class BulletFactory extends AContainer implements RecipeDisplayItem {
     protected void registerDefaultRecipes() {
         registerRecipe(10, SlimefunItems.LEAD_INGOT, new SlimefunItemStack(Items.LEAD_BULLET, 9));
         registerRecipe(10, SlimefunItems.SMALL_URANIUM, new SlimefunItemStack(Items.DU_BULLET, 9));
-        registerRecipe(10, SlimefunItems.GOLD_20K, new SlimefunItemStack(Items.GOLD_BULLET, 9));
+        registerRecipe(10, SlimefunItems.GOLD_12K, new SlimefunItemStack(Items.GOLD_BULLET, 9));
         registerRecipe(10, Items.PYRO_POWDER, Items.TRINITROBULLETENE);
     }
 
