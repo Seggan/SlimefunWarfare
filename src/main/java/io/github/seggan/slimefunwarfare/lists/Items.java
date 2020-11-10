@@ -89,6 +89,14 @@ public final class Items {
         "&7x2 damage"
     );
 
+    public static final SlimefunItemStack TRINITROBULLETENE = new SlimefunItemStack(
+        "TRINITROBULLETENE_BULLET",
+        Material.GOLD_NUGGET,
+        "&6Trinitrobulletene",
+        "&7Sets hit entities on fire",
+        "&7x2.75 damage"
+    );
+
     public static final SlimefunItemStack GUN_CASE = new SlimefunItemStack(
         "GUN_CASE",
         Material.CROSSBOW,

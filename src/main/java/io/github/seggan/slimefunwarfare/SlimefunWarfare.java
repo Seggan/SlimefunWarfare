@@ -89,6 +89,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         new Bullet(Items.LEAD_BULLET, SlimefunItems.LEAD_INGOT, 1).register(this);
         new Bullet(Items.DU_BULLET, SlimefunItems.SMALL_URANIUM, 1.5).register(this);
         new Bullet(Items.GOLD_BULLET, SlimefunItems.GOLD_20K, 2).register(this);
+        new Bullet(Items.TRINITROBULLETENE, Items.PYRO_POWDER, 2.75).register(this);
 
         new SlimefunItem(Items.sfwarfareCategory, Items.GUN_CASE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.SLIMESTEEL, new ItemStack(Material.GUNPOWDER), Items.SLIMESTEEL,

@@ -17,7 +17,7 @@ public class Bullet extends SlimefunItem {
             ammoType, null, null,
             null, null, null,
             null, null, null
-        }, new SlimefunItemStack(item, 9));
+        });
 
         this.multiplier = multiplier;
     }
