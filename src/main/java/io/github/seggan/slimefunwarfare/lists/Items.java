@@ -19,6 +19,10 @@ public final class Items {
         new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_guns"),
         new CustomItem(Material.CROSSBOW, "Slimefun Warfare - Guns")
     );
+    public static final Category sfwarfareExplosivesCategory = new Category(
+        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_explosives"),
+        new CustomItem(Material.TNT, "Slimefun Warfare - Explosives")
+    );
 
     public static final SlimefunItemStack SLIMESTEEL = new SlimefunItemStack(
         "SLIMESTEEL_INGOT",
