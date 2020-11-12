@@ -3,6 +3,7 @@ package io.github.seggan.slimefunwarfare.lists;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
+import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
@@ -71,6 +72,15 @@ public final class Items {
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
     );
 
+    public static final SlimefunItemStack AIR_LIQUEFIER = new SlimefunItemStack(
+        "AIR_LIQUEFIER",
+        Material.BEACON,
+        "&bAir Liquefier",
+        LoreBuilder.powerPerSecond(64),
+        LoreBuilder.powerBuffer(128),
+        LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
+    );
+
     public static final SlimefunItemStack IRON_BULLET = new SlimefunItemStack(
         "IRON_BULLET",
         Material.IRON_NUGGET,
@@ -120,5 +130,12 @@ public final class Items {
         Material.REDSTONE,
         "&4Pyro Powder",
         "&7A very explosive substance indeed"
+    );
+
+    public static final SlimefunItemStack LIQUID_AIR = new SlimefunItemStack(
+        "LIQUID_AIR",
+        HeadTexture.TIN_CAN,
+        "&fLiquid Air",
+        "&7Don't touch!"
     );
 }

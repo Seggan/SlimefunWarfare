@@ -6,6 +6,7 @@ import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.lists.Explosives;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
@@ -128,6 +129,7 @@ public final class Setup {
     }
 
     static void setupExplosives(SlimefunWarfare addon) {
+        new AirLiquefier().register(addon);
         new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.NITROGEN_TRIIODIDE, RecipeType.NULL, new ItemStack[0]
         ).register(addon);
