@@ -6,7 +6,7 @@ import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.lists.Explosives;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
-import io.github.seggan.slimefunwarfare.machines.BulletFactory;
+import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -63,7 +63,8 @@ public final class Setup {
     }
     
     static void setupBullets(SlimefunWarfare addon) {
-        new BulletFactory().register(addon);
+        new BulletPress().register(addon);
+        new Bullet(Items.IRON_BULLET, new ItemStack(Material.IRON_INGOT), 0.75).register(addon);
         new Bullet(Items.LEAD_BULLET, SlimefunItems.LEAD_INGOT, 1).register(addon);
         new Bullet(Items.DU_BULLET, SlimefunItems.SMALL_URANIUM, 1.5).register(addon);
         new Bullet(Items.GOLD_BULLET, SlimefunItems.GOLD_12K, 2).register(addon);

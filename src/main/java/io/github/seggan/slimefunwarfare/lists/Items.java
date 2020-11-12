@@ -62,13 +62,20 @@ public final class Items {
         "&7Advanced Barrel"
     );
 
-    public static final SlimefunItemStack BULLET_FACTORY = new SlimefunItemStack(
-        "BULLET_FACTORY",
+    public static final SlimefunItemStack BULLET_PRESS = new SlimefunItemStack(
+        "BULLET_PRESS",
         Material.SMOKER,
-        "&7Bullet Factory",
+        "&7Bullet Press",
         LoreBuilder.powerPerSecond(16),
         LoreBuilder.powerBuffer(32),
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
+    );
+
+    public static final SlimefunItemStack IRON_BULLET = new SlimefunItemStack(
+        "IRON_BULLET",
+        Material.IRON_NUGGET,
+        "&7Iron Bullet",
+        "&7x0.75 damage"
     );
 
     public static final SlimefunItemStack LEAD_BULLET = new SlimefunItemStack(
