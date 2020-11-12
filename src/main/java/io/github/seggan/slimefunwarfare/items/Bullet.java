@@ -1,7 +1,7 @@
 package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.lists.Items;
-import io.github.seggan.slimefunwarfare.machines.BulletFactory;
+import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
@@ -13,7 +13,7 @@ public class Bullet extends SlimefunItem {
     private final double multiplier;
 
     public Bullet(SlimefunItemStack item, ItemStack ammoType, double multiplier) {
-        super(Items.sfwarfareCategory, item, BulletFactory.RECIPE_TYPE, new ItemStack[]{
+        super(Items.sfwarfareCategory, item, BulletPress.RECIPE_TYPE, new ItemStack[]{
             ammoType, null, null,
             null, null, null,
             null, null, null

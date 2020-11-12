@@ -11,14 +11,14 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public class BulletFactory extends AContainer implements RecipeDisplayItem {
+public class BulletPress extends AContainer implements RecipeDisplayItem {
     public static final RecipeType RECIPE_TYPE = new RecipeType(
         new NamespacedKey(SlimefunWarfare.getInstance(), "bullet_factory"),
-        Items.BULLET_FACTORY
+        Items.BULLET_PRESS
     );
 
-    public BulletFactory() {
-        super(Items.sfwarfareCategory, Items.BULLET_FACTORY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+    public BulletPress() {
+        super(Items.sfwarfareCategory, Items.BULLET_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.REINFORCED_ALLOY_INGOT, new ItemStack(Material.PISTON), SlimefunItems.REINFORCED_ALLOY_INGOT,
             SlimefunItems.ELECTRIC_MOTOR, null, SlimefunItems.ELECTRIC_MOTOR,
             SlimefunItems.REINFORCED_ALLOY_INGOT, new ItemStack(Material.PISTON), SlimefunItems.REINFORCED_ALLOY_INGOT
