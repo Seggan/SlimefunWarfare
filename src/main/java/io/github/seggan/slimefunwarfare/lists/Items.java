@@ -71,6 +71,13 @@ public final class Items {
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
     );
 
+    public static final SlimefunItemStack IRON_BULLET = new SlimefunItemStack(
+        "IRON_BULLET",
+        Material.IRON_NUGGET,
+        "&7Iron Bullet",
+        "&7x0.75 damage"
+    );
+
     public static final SlimefunItemStack LEAD_BULLET = new SlimefunItemStack(
         "LEAD_BULLET",
         Material.IRON_NUGGET,

@@ -62,6 +62,7 @@ public final class Setup {
     
     static void setupBullets(SlimefunWarfare addon) {
         new BulletPress().register(addon);
+        new Bullet(Items.IRON_BULLET, new ItemStack(Material.IRON_INGOT), 0.75).register(addon);
         new Bullet(Items.LEAD_BULLET, SlimefunItems.LEAD_INGOT, 1).register(addon);
         new Bullet(Items.DU_BULLET, SlimefunItems.SMALL_URANIUM, 1.5).register(addon);
         new Bullet(Items.GOLD_BULLET, SlimefunItems.GOLD_12K, 2).register(addon);
