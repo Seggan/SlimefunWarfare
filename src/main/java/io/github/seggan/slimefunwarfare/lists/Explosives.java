@@ -11,7 +11,14 @@ public final class Explosives {
         "NITROGEN_TRIIODIDE",
         Material.PURPLE_DYE,
         "&5Nitrogen Triiodide",
-        "&A material for grenades"
+        "&7A material for grenades"
+    );
+
+    public static final SlimefunItemStack AZIDOAZIDE_AZIDE = new SlimefunItemStack(
+        "AZIDOAZIDE_AZIDE",
+        Material.SUGAR,
+        "&eAzidoazide Azide",
+        "&7A material for grenades"
     );
 
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(
@@ -26,5 +33,12 @@ public final class Explosives {
         Material.SNOWBALL,
         "&7Grenade",
         "&7Contents: Nitrogen Triiodide"
+    );
+
+    public static final SlimefunItemStack C2N14_GRENADE = new SlimefunItemStack(
+        "AZIDOAZIDE_AZIDE_GRENADE",
+        Material.SNOWBALL,
+        "&7Grenade",
+        "&7Contents: Azidoazide azide"
     );
 }

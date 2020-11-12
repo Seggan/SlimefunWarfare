@@ -22,9 +22,9 @@ public class GrenadeListener implements Listener {
 
         if (projectile.hasMetadata("effect")) {
             String id = projectile.getMetadata("effect").get(0).asString();
+            Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
             switch (id) {
                 case "NITROGEN_TRIIODIDE":
-                    Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
                     projectile.getWorld().createExplosion(loc, 2F, false, false);
                     AreaEffectCloud cloud = (AreaEffectCloud) projectile.getWorld()
                         .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
@@ -40,6 +40,8 @@ public class GrenadeListener implements Listener {
                     cloud.setRadiusOnUse(0);
                     cloud.setColor(Color.PURPLE);
                     cloud.setRadius(3);
+                case "AZIDOAZIDE_AZIDE":
+                    projectile.getWorld().createExplosion(loc, 7F);
             }
         }
     }

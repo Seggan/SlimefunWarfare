@@ -132,6 +132,10 @@ public final class Setup {
         ).register(addon);
 
         new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Explosives.AZIDOAZIDE_AZIDE, RecipeType.NULL, new ItemStack[0]
+        ).register(addon);
+
+        new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, SlimefunItems.STEEL_INGOT, null,
@@ -141,5 +145,6 @@ public final class Setup {
         new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
 
         new Grenade(Explosives.NI3_GRENADE, Explosives.NITROGEN_TRIIODIDE).register(addon);
+        new Grenade(Explosives.C2N14_GRENADE, Explosives.AZIDOAZIDE_AZIDE).register(addon);
     }
 }
