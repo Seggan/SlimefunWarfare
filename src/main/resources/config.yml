@@ -1,2 +1,5 @@
 options:
   auto-update: true
+
+# A list of worlds to disable large SlimefunWarfare explosions (any explosions bigger than tnt)
+world-blacklist:

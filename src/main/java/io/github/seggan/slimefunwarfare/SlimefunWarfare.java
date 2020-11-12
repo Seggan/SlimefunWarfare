@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
+import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
         getServer().getPluginManager().registerEvents(new BulletListener(), this);
         getServer().getPluginManager().registerEvents(new PyroListener(), this);
+        getServer().getPluginManager().registerEvents(new GrenadeListener(), this);
 
         instance = this;
 
@@ -37,6 +39,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         Setup.setupItems(this);
         Setup.setupBullets(this);
         Setup.setupGuns(this);
+        Setup.setupExplosives(this);
 
         // Gun autoshoot task
         Bukkit.getScheduler().runTaskTimer(this, () -> {

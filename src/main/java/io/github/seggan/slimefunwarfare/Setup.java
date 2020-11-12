@@ -1,7 +1,9 @@
 package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.items.Bullet;
+import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.Gun;
+import io.github.seggan.slimefunwarfare.lists.Explosives;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.machines.BulletFactory;
@@ -122,5 +124,22 @@ public final class Setup {
             Items.ADVANCED_BARREL, Items.ADVANCED_BARREL, Guns.ASSAULT_RIFLE,
             new ItemStack(Material.STICK), Items.REINFORCED_SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
         }, 130, 50, 22, 8).register(addon);
+    }
+
+    static void setupExplosives(SlimefunWarfare addon) {
+        new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Explosives.NITROGEN_TRIIODIDE, RecipeType.NULL, new ItemStack[0]
+        ).register(addon);
+
+        new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                null, SlimefunItems.STEEL_INGOT, null,
+                SlimefunItems.STEEL_INGOT, SlimefunItems.TIN_CAN, SlimefunItems.STEEL_INGOT,
+                null, SlimefunItems.STEEL_INGOT, null,
+            },
+        new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
+
+        new Grenade(Explosives.NI3_GRENADE, Explosives.NITROGEN_TRIIODIDE).register(addon);
     }
 }
