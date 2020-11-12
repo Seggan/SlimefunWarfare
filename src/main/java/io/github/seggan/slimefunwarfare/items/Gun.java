@@ -89,7 +89,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
             SlimefunItem item = SlimefunItem.getByItem(stack);
             if (item instanceof Bullet) {
                 multiplier = ((Bullet) item).getMultiplier();
-                isFire = item.getID().equals("DU_BULLET");
+                isFire = item.getId().equals("DU_BULLET");
                 stack.setAmount(stack.getAmount() - 1);
                 inv.setItemInOffHand(stack);
                 break bulletLoop;
