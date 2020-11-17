@@ -130,6 +130,26 @@ public final class Setup {
 
     static void setupExplosives(SlimefunWarfare addon) {
         new AirLiquefier().register(addon);
+
+        new SlimefunItem(Items.sfwarfareExplosivesCategory, Items.LIQUID_AIR, RecipeType.NULL, new ItemStack[0])
+            .register(addon);
+
+        new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Items.LIQUID_NITROGEN, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR,
+                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR,
+                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR
+            }, new SlimefunItemStack(Items.LIQUID_NITROGEN, 4)).register(addon);
+
+        new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Items.PURIFIED_LIQUID_NITROGEN, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN,
+                Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN,
+                Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN
+            }, new SlimefunItemStack(Items.PURIFIED_LIQUID_NITROGEN, 4)).register(addon);
+
         new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.NITROGEN_TRIIODIDE, RecipeType.NULL, new ItemStack[0]
         ).register(addon);
@@ -141,9 +161,9 @@ public final class Setup {
         new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, SlimefunItems.STEEL_INGOT, null,
+                Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
                 SlimefunItems.STEEL_INGOT, SlimefunItems.TIN_CAN, SlimefunItems.STEEL_INGOT,
-                null, SlimefunItems.STEEL_INGOT, null,
+                Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
             },
         new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
 

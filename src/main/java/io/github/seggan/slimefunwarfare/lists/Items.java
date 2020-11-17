@@ -138,4 +138,18 @@ public final class Items {
         "&fLiquid Air",
         "&7Don't touch!"
     );
+
+    public static final SlimefunItemStack LIQUID_NITROGEN = new SlimefunItemStack(
+        "LIQUID_NITROGEN",
+        HeadTexture.TIN_CAN,
+        "&fLiquid Nitrogen",
+        "&7Ice cream anyone?"
+    );
+
+    public static final SlimefunItemStack PURIFIED_LIQUID_NITROGEN = new SlimefunItemStack(
+        "PURIFIED_LIQUID_NITROGEN",
+        HeadTexture.TIN_CAN,
+        "&fPurified Liquid Nitrogen",
+        "&7As pure as can be"
+    );
 }
