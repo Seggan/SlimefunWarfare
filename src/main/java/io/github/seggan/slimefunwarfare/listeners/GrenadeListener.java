@@ -23,26 +23,32 @@ public class GrenadeListener implements Listener {
         if (projectile.hasMetadata("effect")) {
             String id = projectile.getMetadata("effect").get(0).asString();
             Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
-            switch (id) {
-                case "NITROGEN_TRIIODIDE":
-                    projectile.getWorld().createExplosion(loc, 2F, false, false);
-                    AreaEffectCloud cloud = (AreaEffectCloud) projectile.getWorld()
-                        .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-                    cloud.addCustomEffect(new PotionEffect(
-                        PotionEffectType.BLINDNESS,
-                        100,
-                        2,
-                        false,
-                        false
-                    ), true);
-                    cloud.setDuration(100);
-                    cloud.setDurationOnUse(0);
-                    cloud.setRadiusOnUse(0);
-                    cloud.setColor(Color.PURPLE);
-                    cloud.setRadius(3);
-                case "AZIDOAZIDE_AZIDE":
-                    projectile.getWorld().createExplosion(loc, 7F);
-            }
+            applyEffect(id, projectile, loc);
+        }
+    }
+
+    private void applyEffect(String id, Projectile p, Location loc) {
+        switch (id) {
+            case "NITROGEN_TRIIODIDE":
+                p.getWorld().createExplosion(loc, 2F, false, false);
+                AreaEffectCloud cloud = (AreaEffectCloud) p.getWorld()
+                    .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
+                cloud.addCustomEffect(new PotionEffect(
+                    PotionEffectType.BLINDNESS,
+                    100,
+                    2,
+                    false,
+                    false
+                ), true);
+                cloud.setDuration(100);
+                cloud.setDurationOnUse(0);
+                cloud.setRadiusOnUse(0);
+                cloud.setColor(Color.PURPLE);
+                cloud.setRadius(3);
+                break;
+            case "AZIDOAZIDE_AZIDE":
+                p.getWorld().createExplosion(loc, 7F);
+                break;
         }
     }
 }

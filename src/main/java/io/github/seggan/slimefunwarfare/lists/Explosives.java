@@ -27,18 +27,4 @@ public final class Explosives {
         "&7Grenade",
         "&7Contents: none"
     );
-
-    public static final SlimefunItemStack NI3_GRENADE = new SlimefunItemStack(
-        "NITROGEN_TRIIODIDE_GRENADE",
-        Material.SNOWBALL,
-        "&7Grenade",
-        "&7Contents: Nitrogen Triiodide"
-    );
-
-    public static final SlimefunItemStack C2N14_GRENADE = new SlimefunItemStack(
-        "AZIDOAZIDE_AZIDE_GRENADE",
-        Material.SNOWBALL,
-        "&7Grenade",
-        "&7Contents: Azidoazide azide"
-    );
 }

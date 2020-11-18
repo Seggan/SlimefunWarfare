@@ -167,7 +167,7 @@ public final class Setup {
             },
         new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
 
-        new Grenade(Explosives.NI3_GRENADE, Explosives.NITROGEN_TRIIODIDE).register(addon);
-        new Grenade(Explosives.C2N14_GRENADE, Explosives.AZIDOAZIDE_AZIDE).register(addon);
+        new Grenade(Explosives.NITROGEN_TRIIODIDE).register(addon);
+        new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);
     }
 }
