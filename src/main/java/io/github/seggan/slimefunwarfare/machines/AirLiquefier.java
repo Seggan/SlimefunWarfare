@@ -20,7 +20,7 @@ public class AirLiquefier extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(30, SlimefunItems.TIN_CAN, Items.LIQUID_AIR);
+        registerRecipe(5, SlimefunItems.TIN_CAN, Items.LIQUID_AIR);
     }
 
     @Override
