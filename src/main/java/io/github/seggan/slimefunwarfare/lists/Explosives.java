@@ -31,7 +31,7 @@ public final class Explosives {
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(
         "GRENADE",
         Material.SNOWBALL,
-        "&7Grenade",
+        "&7Chemical Grenade",
         "&7Contents: none"
     );
 
