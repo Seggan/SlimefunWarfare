@@ -53,7 +53,7 @@ public class GrenadeListener implements Listener {
                 cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.BLINDNESS,
                     100,
-                    2,
+                    3,
                     false,
                     false
                 ), true);
@@ -74,6 +74,13 @@ public class GrenadeListener implements Listener {
                     PotionEffectType.WITHER,
                     100,
                     1,
+                    false,
+                    false
+                ), true);
+                cloud1.addCustomEffect(new PotionEffect(
+                    PotionEffectType.CONFUSION,
+                    100,
+                    2,
                     false,
                     false
                 ), true);
