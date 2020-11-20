@@ -47,7 +47,7 @@ public class GrenadeListener implements Listener {
         String id = snowball.getMetadata("effect").get(0).asString();
         switch (id) {
             case "NITROGEN_TRIIODIDE":
-                snowball.getWorld().createExplosion(loc, 2F, false, false);
+                snowball.getWorld().createExplosion(loc, 3F, false, false);
                 AreaEffectCloud cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
                 cloud.addCustomEffect(new PotionEffect(
@@ -61,7 +61,7 @@ public class GrenadeListener implements Listener {
                 cloud.setDurationOnUse(0);
                 cloud.setRadiusOnUse(0);
                 cloud.setColor(Color.PURPLE);
-                cloud.setRadius(3);
+                cloud.setRadius(4);
                 break;
             case "AZIDOAZIDE_AZIDE":
                 snowball.getWorld().createExplosion(loc, 7F);
@@ -80,7 +80,7 @@ public class GrenadeListener implements Listener {
                 cloud1.addCustomEffect(new PotionEffect(
                     PotionEffectType.CONFUSION,
                     100,
-                    2,
+                    1,
                     false,
                     false
                 ), true);
