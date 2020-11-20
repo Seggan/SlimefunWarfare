@@ -1,14 +1,21 @@
 package io.github.seggan.slimefunwarfare.machines;
 
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public class AirLiquefier extends AContainer implements RecipeDisplayItem {
+
+    public static RecipeType RECIPE_TYPE = new RecipeType(
+        new NamespacedKey(SlimefunWarfare.getInstance(), "air_liquefier"),
+        Items.AIR_LIQUEFIER
+    );
 
     public AirLiquefier() {
         super(Items.sfwarfareCategory, Items.AIR_LIQUEFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{

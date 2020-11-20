@@ -81,6 +81,15 @@ public final class Items {
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
     );
 
+    public static final SlimefunItemStack EXPLOSIVE_SYNTHESIZER = new SlimefunItemStack(
+        "EXPLOSIVE_SYNTHESIZER",
+        Material.TNT,
+        "&4Explosive Synthesizer",
+        LoreBuilder.powerPerSecond(64),
+        LoreBuilder.powerBuffer(128),
+        LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
+    );
+
     public static final SlimefunItemStack IRON_BULLET = new SlimefunItemStack(
         "IRON_BULLET",
         Material.IRON_NUGGET,

@@ -9,6 +9,7 @@ import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
+import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -131,9 +132,14 @@ public final class Setup {
 
     static void setupExplosives(SlimefunWarfare addon) {
         new AirLiquefier().register(addon);
+        new ExplosiveSynthesizer().register(addon);
 
-        new SlimefunItem(Items.sfwarfareExplosivesCategory, Items.LIQUID_AIR, RecipeType.NULL, new ItemStack[0])
-            .register(addon);
+        new SlimefunItem(Items.sfwarfareExplosivesCategory, Items.LIQUID_AIR, AirLiquefier.RECIPE_TYPE,
+            new ItemStack[]{
+                SlimefunItems.TIN_CAN, null, null,
+                null, null, null,
+                null, null, null
+            }).register(addon);
 
         new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Items.LIQUID_NITROGEN, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -152,12 +158,20 @@ public final class Setup {
             }, new SlimefunItemStack(Items.PURIFIED_LIQUID_NITROGEN, 4)).register(addon);
 
         new SlimefunItem(
-            Items.sfwarfareExplosivesCategory, Explosives.NITROGEN_TRIIODIDE, RecipeType.NULL, new ItemStack[0]
-        ).register(addon);
+            Items.sfwarfareExplosivesCategory, Explosives.NITROGEN_TRIIODIDE, ExplosiveSynthesizer.RECIPE_TYPE,
+            new ItemStack[]{
+                Items.LIQUID_NITROGEN, new ItemStack(Material.DRIED_KELP), null,
+                null, null, null,
+                null, null, null
+        }).register(addon);
 
         new SlimefunItem(
-            Items.sfwarfareExplosivesCategory, Explosives.AZIDOAZIDE_AZIDE, RecipeType.NULL, new ItemStack[0]
-        ).register(addon);
+            Items.sfwarfareExplosivesCategory, Explosives.AZIDOAZIDE_AZIDE, ExplosiveSynthesizer.RECIPE_TYPE,
+            new ItemStack[]{
+                Items.PURIFIED_LIQUID_NITROGEN, new ItemStack(Material.COAL), null,
+                null, null, null,
+                null, null, null
+        }).register(addon);
 
         new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.ARSENIC, RecipeType.GEO_MINER, new ItemStack[9]
