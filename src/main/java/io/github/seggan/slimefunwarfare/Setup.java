@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare;
 
+import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.Gun;
@@ -159,6 +160,12 @@ public final class Setup {
         ).register(addon);
 
         new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Explosives.ARSENIC, RecipeType.GEO_MINER, new ItemStack[9]
+        ).register(addon);
+
+        new Arsenic(Explosives.ARSENIC).register();
+
+        new SlimefunItem(
             Items.sfwarfareExplosivesCategory, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
@@ -169,5 +176,6 @@ public final class Setup {
 
         new Grenade(Explosives.NITROGEN_TRIIODIDE).register(addon);
         new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);
+        new Grenade(Explosives.ARSENIC).register(addon);
     }
 }

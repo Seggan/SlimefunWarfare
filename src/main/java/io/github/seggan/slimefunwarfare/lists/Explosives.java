@@ -21,6 +21,13 @@ public final class Explosives {
         "&7A material for grenades"
     );
 
+    public static final SlimefunItemStack ARSENIC = new SlimefunItemStack(
+        "ARSENIC",
+        Material.GUNPOWDER,
+        "&7Arsenic",
+        "&7A material for grenades"
+    );
+
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(
         "GRENADE",
         Material.SNOWBALL,
