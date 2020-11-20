@@ -23,10 +23,9 @@ public class GrenadeListener implements Listener {
         }
 
         if (projectile.hasMetadata("effect")) {
-            String id = projectile.getMetadata("effect").get(0).asString();
             try {
                 Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
-                applyEffect(id, projectile, loc);
+                applyEffect(projectile, loc);
             } catch (NullPointerException ignored) {}
         }
     }
@@ -36,20 +35,20 @@ public class GrenadeListener implements Listener {
         Entity entity = e.getDamager();
         if (entity.getType() == EntityType.SNOWBALL) {
             if (entity.hasMetadata("effect")) {
-                String id = entity.getMetadata("effect").get(0).asString();
                 try {
                     Location loc = e.getEntity().getLocation();
-                    applyEffect(id, entity, loc);
+                    applyEffect(entity, loc);
                 } catch (NullPointerException ignored) {}
             }
         }
     }
 
-    private void applyEffect(String id, Entity p, Location loc) {
+    private void applyEffect(Entity snowball, Location loc) {
+        String id = snowball.getMetadata("effect").get(0).asString();
         switch (id) {
             case "NITROGEN_TRIIODIDE":
-                p.getWorld().createExplosion(loc, 2F, false, false);
-                AreaEffectCloud cloud = (AreaEffectCloud) p.getWorld()
+                snowball.getWorld().createExplosion(loc, 2F, false, false);
+                AreaEffectCloud cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
                 cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.BLINDNESS,
@@ -65,7 +64,7 @@ public class GrenadeListener implements Listener {
                 cloud.setRadius(3);
                 break;
             case "AZIDOAZIDE_AZIDE":
-                p.getWorld().createExplosion(loc, 7F);
+                snowball.getWorld().createExplosion(loc, 7F);
                 break;
         }
     }
