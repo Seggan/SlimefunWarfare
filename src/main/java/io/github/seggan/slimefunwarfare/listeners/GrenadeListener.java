@@ -3,10 +3,12 @@ package io.github.seggan.slimefunwarfare.listeners;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.entity.AreaEffectCloud;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -22,12 +24,28 @@ public class GrenadeListener implements Listener {
 
         if (projectile.hasMetadata("effect")) {
             String id = projectile.getMetadata("effect").get(0).asString();
-            Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
-            applyEffect(id, projectile, loc);
+            try {
+                Location loc = e.getHitBlock().getRelative(e.getHitBlockFace()).getLocation();
+                applyEffect(id, projectile, loc);
+            } catch (NullPointerException ignored) {}
         }
     }
 
-    private void applyEffect(String id, Projectile p, Location loc) {
+    @EventHandler
+    public void onGrenadeHitEntity(EntityDamageByEntityEvent e) {
+        Entity entity = e.getDamager();
+        if (entity.getType() == EntityType.SNOWBALL) {
+            if (entity.hasMetadata("effect")) {
+                String id = entity.getMetadata("effect").get(0).asString();
+                try {
+                    Location loc = e.getEntity().getLocation();
+                    applyEffect(id, entity, loc);
+                } catch (NullPointerException ignored) {}
+            }
+        }
+    }
+
+    private void applyEffect(String id, Entity p, Location loc) {
         switch (id) {
             case "NITROGEN_TRIIODIDE":
                 p.getWorld().createExplosion(loc, 2F, false, false);

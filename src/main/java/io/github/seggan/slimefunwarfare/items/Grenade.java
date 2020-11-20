@@ -39,16 +39,17 @@ public class Grenade extends SlimefunItem {
         return e -> {
             PlayerInventory inv = e.getPlayer().getInventory();
             ItemStack item = inv.getItemInMainHand();
-            if (SlimefunItem.getByItem(item) instanceof Grenade &&
-                e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            if (SlimefunItem.getByItem(item) instanceof Grenade ) {
                 e.cancel();
                 Snowball snowball = e.getPlayer().launchProjectile(Snowball.class);
                 snowball.setMetadata("effect", new FixedMetadataValue(
                     SlimefunWarfare.getInstance(),
                     chemical.getItemId()
                 ));
-                item.setAmount(item.getAmount() - 1);
-                inv.setItemInMainHand(item);
+                if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                    item.setAmount(item.getAmount() - 1);
+                    inv.setItemInMainHand(item);
+                }
             }
         };
     }
