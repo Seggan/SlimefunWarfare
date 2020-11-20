@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.items.Gun;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
+import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
@@ -20,13 +21,19 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
     @Getter
     private static SlimefunWarfare instance = null;
 
+    @Getter
+    private static ConfigSettings configSettings = null;
+
     @Override
     public void onEnable() {
         getLogger().info("Slimefun Warfare enabled.");
 
+        saveDefaultConfig();
+
         getServer().getPluginManager().registerEvents(new BulletListener(), this);
         getServer().getPluginManager().registerEvents(new PyroListener(), this);
         getServer().getPluginManager().registerEvents(new GrenadeListener(), this);
+        getServer().getPluginManager().registerEvents(new ConcreteListener(), this);
 
         instance = this;
 
@@ -35,6 +42,8 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "Seggan/SlimefunWarfare/master").start();
         }
+
+        configSettings = new ConfigSettings(this);
 
         Setup.setupItems(this);
         Setup.setupBullets(this);

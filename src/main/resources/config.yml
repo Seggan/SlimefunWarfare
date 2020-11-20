@@ -1,5 +1,7 @@
 options:
   auto-update: true
 
-# A list of worlds to disable large SlimefunWarfare explosions (any explosions bigger than tnt)
-world-blacklist:
+explosions:
+  # Makes obsidian as weak as stone to encourage the use of reinforced concrete
+  weak-obsidian: true
+  concrete-explode-chance: 20

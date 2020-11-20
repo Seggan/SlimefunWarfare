@@ -34,4 +34,11 @@ public final class Explosives {
         "&7Grenade",
         "&7Contents: none"
     );
+
+    public static final SlimefunItemStack REINFORCED_CONCRETE = new SlimefunItemStack(
+        "REINFORCED_CONCRETE",
+        Material.GRAY_CONCRETE,
+        "&7Reinforced Concrete",
+        "&7A blast-resistant (not blastproof) concrete"
+    );
 }

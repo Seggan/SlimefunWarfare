@@ -134,6 +134,13 @@ public final class Setup {
         new AirLiquefier().register(addon);
         new ExplosiveSynthesizer().register(addon);
 
+        new SlimefunItem(Items.sfwarfareCategory, Explosives.REINFORCED_CONCRETE, RecipeType.SMELTERY,
+            new ItemStack[]{
+                SlimefunItems.IRON_DUST, new ItemStack(Material.GRAY_CONCRETE_POWDER), null,
+                null, null, null,
+                null, null, null
+        }).register(addon);
+
         new SlimefunItem(Items.sfwarfareExplosivesCategory, Items.LIQUID_AIR, AirLiquefier.RECIPE_TYPE,
             new ItemStack[]{
                 SlimefunItems.TIN_CAN, null, null,
