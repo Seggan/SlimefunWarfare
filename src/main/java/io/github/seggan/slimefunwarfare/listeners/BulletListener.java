@@ -26,8 +26,11 @@ public class BulletListener implements Listener {
             if (shot instanceof Player) {
                 if (!SlimefunPlugin.getProtectionManager()
                     .hasPermission((Player) shot, shot.getLocation(), ProtectableAction.PVP)) {
-                    return;
+                    e.setCancelled(true);
                 }
+            } else if (!SlimefunPlugin.getProtectionManager().hasPermission(
+                    ((Player) bullet.getShooter()), shot.getLocation(), ProtectableAction.PVE)) {
+                    e.setCancelled(true);
             }
 
             Location shooterLoc = Util.deserializeLocation(bullet.getMetadata("locInfo").get(0).asString());
