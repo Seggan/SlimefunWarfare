@@ -19,7 +19,11 @@ public class PyroListener implements Listener {
         }
         Entity entity = e.getEntity();
         ItemStack item = ((Item) entity).getItemStack();
-        if (SlimefunItem.getByItem(item).getItem().equals(Items.PYRO_POWDER)) {
+        SlimefunItem sfItem = SlimefunItem.getByItem(item);
+        if (sfItem == null) {
+            return;
+        }
+        if (sfItem.getItem().equals(Items.PYRO_POWDER)) {
             entity.getWorld().createExplosion(entity.getLocation(), 3F);
         }
     }
