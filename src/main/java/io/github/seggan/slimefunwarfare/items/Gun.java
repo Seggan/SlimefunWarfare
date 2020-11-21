@@ -5,10 +5,12 @@ import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.LlamaSpit;
@@ -64,6 +66,11 @@ public class Gun extends SlimefunItem implements DamageableItem {
     }
 
     public void shoot(Player p) {
+
+        if (!SlimefunPlugin.getProtectionManager().hasPermission(p, p.getLocation(), ProtectableAction.PVP) ||
+            !SlimefunPlugin.getProtectionManager().hasPermission(p, p.getLocation(), ProtectableAction.PVE)) {
+            return;
+        }
 
         PlayerInventory inv = p.getInventory();
 

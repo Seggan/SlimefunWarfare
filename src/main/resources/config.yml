@@ -2,6 +2,4 @@ options:
   auto-update: true
 
 explosions:
-  # Makes obsidian as weak as stone to encourage the use of reinforced concrete
-  weak-obsidian: true
-  concrete-explode-chance: 20
+  concrete-explode-chance: 10
