@@ -1,5 +1,6 @@
 options:
   auto-update: true
+  autoshoot: true
 
 explosions:
   concrete-explode-chance: 10

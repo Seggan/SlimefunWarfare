@@ -51,27 +51,29 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         Setup.setupGuns(this);
         Setup.setupExplosives(this);
 
-        // Gun autoshoot task
-        Bukkit.getScheduler().runTaskTimer(this, () -> {
-            for (Player p : getServer().getOnlinePlayers()) {
-                if (p.isSneaking() && !p.isFlying()) {
-                    SlimefunItem item = SlimefunItem.getByItem(p.getInventory().getItemInMainHand());
-                    if (!(item instanceof Gun)) {
-                        continue;
-                    }
-                    UUID uuid = p.getUniqueId();
-                    Gun gun = (Gun) item;
-                    Long lastUse = gun.getLAST_USES().get(uuid);
-                    long time = System.currentTimeMillis();
-                    if (lastUse != null) {
-                        if ((time - lastUse) < gun.getCooldown()) {
+        if (configSettings.isAutoshoot()) {
+            // Gun autoshoot task
+            Bukkit.getScheduler().runTaskTimer(this, () -> {
+                for (Player p : getServer().getOnlinePlayers()) {
+                    if (p.isSneaking() && !p.isFlying()) {
+                        SlimefunItem item = SlimefunItem.getByItem(p.getInventory().getItemInMainHand());
+                        if (!(item instanceof Gun)) {
                             continue;
                         }
+                        UUID uuid = p.getUniqueId();
+                        Gun gun = (Gun) item;
+                        Long lastUse = gun.getLAST_USES().get(uuid);
+                        long time = System.currentTimeMillis();
+                        if (lastUse != null) {
+                            if ((time - lastUse) < gun.getCooldown()) {
+                                continue;
+                            }
+                        }
+                        gun.shoot(p);
                     }
-                    gun.shoot(p);
                 }
-            }
-        }, 0, 1);
+            }, 0, 1);
+        }
     }
 
     @Override

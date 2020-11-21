@@ -14,6 +14,8 @@ public class ConfigSettings {
     private final List<String> blacklistedWorlds = new ArrayList<>();
     @Getter
     private int concreteExplodePercent = 10;
+    @Getter
+    private boolean autoshoot = true;
 
     ConfigSettings(SlimefunWarfare plugin) {
         this.plugin = plugin;
@@ -23,5 +25,6 @@ public class ConfigSettings {
         FileConfiguration config = plugin.getConfig();
 
         concreteExplodePercent = config.getInt("explosions.concrete-explode-chance");
+        autoshoot = config.getBoolean("options.autoshoot");
     }
 }
