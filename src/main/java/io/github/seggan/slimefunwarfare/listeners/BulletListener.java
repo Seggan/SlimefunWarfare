@@ -1,12 +1,9 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
 import io.github.seggan.slimefunwarfare.Util;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LlamaSpit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -21,18 +18,6 @@ public class BulletListener implements Listener {
         LlamaSpit bullet = (LlamaSpit) e.getDamager();
         Entity shot = e.getEntity();
         if (bullet.hasMetadata("isGunBullet")) {
-
-            // Protection checks
-            if (shot instanceof Player) {
-                if (!SlimefunPlugin.getProtectionManager()
-                    .hasPermission((Player) shot, shot.getLocation(), ProtectableAction.PVP)) {
-                    e.setCancelled(true);
-                }
-            } else if (!SlimefunPlugin.getProtectionManager().hasPermission(
-                    ((Player) bullet.getShooter()), shot.getLocation(), ProtectableAction.PVE)) {
-                    e.setCancelled(true);
-            }
-
             Location shooterLoc = Util.deserializeLocation(bullet.getMetadata("locInfo").get(0).asString());
             String[] split = bullet.getMetadata("rangeInfo").get(0).asString().split(":");
             double distance = shooterLoc.distance(e.getEntity().getLocation());
