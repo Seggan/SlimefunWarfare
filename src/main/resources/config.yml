@@ -1,6 +1,11 @@
-options:
-  auto-update: true
-  autoshoot: true
-
 explosions:
   concrete-explode-chance: 10
+
+guns:
+  autoshoot: true
+  # This will allow bullets to be used from the inventory; if off, bullets are only used from the offhand. Turn off
+  # if this gets really laggy when shooting
+  use-bullets-from-inv: true
+  # Min range is intended to balance things a little more; this removes it and allows you to shoot at any distance
+  # within max range
+  min-range-on: true
