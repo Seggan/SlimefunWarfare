@@ -72,15 +72,15 @@ public class GrenadeListener implements Listener {
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
                 cloud1.addCustomEffect(new PotionEffect(
                     PotionEffectType.WITHER,
-                    100,
+                    500,
                     1,
                     false,
                     false
                 ), true);
                 cloud1.addCustomEffect(new PotionEffect(
                     PotionEffectType.CONFUSION,
-                    100,
-                    1,
+                    500,
+                    2,
                     false,
                     false
                 ), true);
@@ -89,6 +89,9 @@ public class GrenadeListener implements Listener {
                 cloud1.setRadiusOnUse(0);
                 cloud1.setColor(Color.GRAY);
                 cloud1.setRadius(4);
+                break;
+            case "PYRO_POWDER":
+                snowball.getWorld().createExplosion(loc, 4F);
                 break;
         }
     }

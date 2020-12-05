@@ -198,5 +198,6 @@ public final class Setup {
         new Grenade(Explosives.NITROGEN_TRIIODIDE).register(addon);
         new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);
         new Grenade(Explosives.ARSENIC).register(addon);
+        new Grenade(Items.PYRO_POWDER).register(addon);
     }
 }
