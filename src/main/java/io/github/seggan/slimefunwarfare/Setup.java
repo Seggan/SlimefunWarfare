@@ -202,6 +202,10 @@ public final class Setup {
         new Grenade(Items.PYRO_POWDER).register(addon);
 
         new NuclearBomb(Items.sfwarfareExplosivesCategory, Explosives.NUCLEAR_BOMB, RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[9]).register(addon);
+            new ItemStack[]{
+                SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.URANIUM, SlimefunItems.BLISTERING_INGOT_3,
+                SlimefunItems.URANIUM, new ItemStack(Material.NETHER_STAR), SlimefunItems.URANIUM,
+                SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.URANIUM, SlimefunItems.BLISTERING_INGOT_3
+            }).register(addon);
     }
 }
