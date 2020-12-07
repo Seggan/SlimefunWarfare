@@ -4,6 +4,7 @@ import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.Gun;
+import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.lists.Explosives;
 import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
@@ -199,5 +200,8 @@ public final class Setup {
         new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);
         new Grenade(Explosives.ARSENIC).register(addon);
         new Grenade(Items.PYRO_POWDER).register(addon);
+
+        new NuclearBomb(Items.sfwarfareExplosivesCategory, Explosives.NUCLEAR_BOMB, RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[9]).register(addon);
     }
 }

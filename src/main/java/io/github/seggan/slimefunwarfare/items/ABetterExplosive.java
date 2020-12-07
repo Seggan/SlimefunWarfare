@@ -1,7 +1,6 @@
 package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
-import io.github.seggan.slimefunwarfare.Util;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -17,7 +16,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 public abstract class ABetterExplosive extends SlimefunItem {
 
@@ -49,9 +47,9 @@ public abstract class ABetterExplosive extends SlimefunItem {
                     SlimefunWarfare.getInstance(),
                     getExplosionPower()
                 ));
-                tnt.setMetadata("explodableBlocks", new FixedMetadataValue(
+                tnt.setMetadata("setFire", new FixedMetadataValue(
                     SlimefunWarfare.getInstance(),
-                    Util.serializeMaterialSet(getExplodableStrongBlocks())
+                    setFire()
                 ));
 
                 // To prevent ghost blocks
@@ -64,5 +62,5 @@ public abstract class ABetterExplosive extends SlimefunItem {
 
     public abstract int getFuseTicks();
 
-    public abstract Set<Material> getExplodableStrongBlocks();
+    public abstract boolean setFire();
 }

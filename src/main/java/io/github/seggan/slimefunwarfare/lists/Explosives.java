@@ -41,4 +41,11 @@ public final class Explosives {
         "&7Reinforced Concrete",
         "&7A blast-resistant (not blastproof) concrete"
     );
+
+    public static final SlimefunItemStack NUCLEAR_BOMB = new SlimefunItemStack(
+        "NUCLEAR_BOMB",
+        Material.TNT,
+        "&7Nuclear Bomb",
+        "&7KABOOM!"
+    );
 }
