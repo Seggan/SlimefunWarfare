@@ -9,7 +9,7 @@ import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import org.apache.commons.lang.ArrayUtils;
+import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
@@ -18,9 +18,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.UUID;
 
 public class Gun extends SlimefunItem implements DamageableItem {
@@ -88,24 +86,22 @@ public class Gun extends SlimefunItem implements DamageableItem {
             ItemStack stack = inv.getItemInOffHand();
             SlimefunItem item = SlimefunItem.getByItem(stack);
             if (item instanceof Bullet) {
-                multiplier = ((Bullet) item).getMultiplier();
-                isFire = item.getId().equals("DU_BULLET") || item.getId().equals("TRINITROBULLETENE_BULLET");
+                Bullet bullet = (Bullet) item;
+                multiplier = bullet.getMultiplier();
+                isFire = bullet.isFire();
                 stack.setAmount(stack.getAmount() - 1);
                 inv.setItemInOffHand(stack);
                 break bulletLoop;
             } else {
                 if (SlimefunWarfare.getConfigSettings().isUseBulletsFromInv()) {
-                    ItemStack[] contents = inv.getContents();
-                    Iterator<ItemStack> iter = Arrays.stream(contents).iterator();
-                    while (iter.hasNext()) {
-                        stack = iter.next();
+                    for (int i = 0; i < inv.getSize(); i++) {
+                        stack = inv.getItem(i);
                         item = SlimefunItem.getByItem(stack);
                         if (item instanceof Bullet) {
-                            multiplier = ((Bullet) item).getMultiplier();
-                            isFire = item.getId().equals("DU_BULLET") || item.getId().equals("TRINITROBULLETENE_BULLET");
-                            stack.setAmount(stack.getAmount() - 1);
-                            contents[ArrayUtils.indexOf(contents, stack)] = stack;
-                            inv.setContents(contents);
+                            Bullet bullet = (Bullet) item;
+                            multiplier = bullet.getMultiplier();
+                            isFire = bullet.isFire();
+                            ItemUtils.consumeItem(stack, false); // idk the replaceConsumables thing
                             break bulletLoop;
                         }
                     }
