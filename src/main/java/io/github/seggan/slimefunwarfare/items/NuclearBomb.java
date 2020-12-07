@@ -13,7 +13,7 @@ public class NuclearBomb extends ABetterExplosive {
 
     @Override
     public float getExplosionPower() {
-        return 50;
+        return 100;
     }
 
     @Override
