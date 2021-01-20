@@ -200,6 +200,7 @@ public final class Setup {
         new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);
         new Grenade(Explosives.ARSENIC).register(addon);
         new Grenade(Items.PYRO_POWDER).register(addon);
+        new Grenade(Explosives.THIOACETONE).register(addon);
 
         new NuclearBomb(Items.sfwarfareExplosivesCategory, Explosives.NUCLEAR_BOMB, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{

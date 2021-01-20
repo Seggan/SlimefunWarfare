@@ -84,7 +84,7 @@ public class GrenadeListener implements Listener {
                     false,
                     false
                 ), true);
-                cloud1.setDuration(100);
+                cloud1.setDuration(200);
                 cloud1.setDurationOnUse(0);
                 cloud1.setRadiusOnUse(0);
                 cloud1.setColor(Color.GRAY);
@@ -92,6 +92,23 @@ public class GrenadeListener implements Listener {
                 break;
             case "PYRO_POWDER":
                 snowball.getWorld().createExplosion(loc, 4F);
+                break;
+            case "THIOACETONE":
+                snowball.getWorld().createExplosion(loc, 1F, false, false);
+                AreaEffectCloud cloud2 = (AreaEffectCloud) snowball.getWorld()
+                    .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
+                cloud2.addCustomEffect(new PotionEffect(
+                    PotionEffectType.CONFUSION,
+                    1200,
+                    9,
+                    false,
+                    false
+                ), true);
+                cloud2.setDuration(600);
+                cloud2.setDurationOnUse(0);
+                cloud2.setRadiusOnUse(0);
+                cloud2.setColor(Color.ORANGE);
+                cloud2.setRadius(10);
                 break;
         }
     }
