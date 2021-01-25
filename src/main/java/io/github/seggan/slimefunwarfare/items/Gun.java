@@ -2,7 +2,7 @@ package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
-import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import lombok.Getter;
@@ -33,7 +33,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
     private final int cooldown;
 
     public Gun(SlimefunItemStack item, ItemStack[] recipe, int range, int damage, double cooldown) {
-        super(Items.sfwarfareGunsCategory, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        super(Categories.GUNS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 
         this.range = range;
         minRange = 0;
@@ -44,7 +44,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
     }
 
     public Gun(SlimefunItemStack item, ItemStack[] recipe, int range, int minRange, int damage, double cooldown) {
-        super(Items.sfwarfareGunsCategory, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        super(Categories.GUNS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 
         this.range = range;
         this.minRange = SlimefunWarfare.getConfigSettings().isMinRangeOn() ? minRange : 0;
@@ -57,8 +57,29 @@ public class Gun extends SlimefunItem implements DamageableItem {
     public ItemUseHandler getItemHandler() {
         return e -> {
             e.cancel();
-            shoot(e.getPlayer());
+            Player p = e.getPlayer();
+            if (canShoot(p)) {
+                shoot(e.getPlayer());
+            } else {
+                p.sendMessage(ChatColor.RED + "The gun is still reloading!");
+            }
         };
+    }
+
+    public boolean canShoot(Player p) {
+        UUID uuid = p.getUniqueId();
+        Long lastUse = LAST_USES.get(uuid);
+        long time = System.currentTimeMillis();
+        if (lastUse != null) {
+            if ((time - lastUse) >= cooldown) {
+                LAST_USES.put(uuid, time);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void shoot(Player p) {
@@ -69,16 +90,6 @@ public class Gun extends SlimefunItem implements DamageableItem {
         if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
             return;
         }
-
-        Long lastUse = LAST_USES.get(p.getUniqueId());
-        long currentTime = System.currentTimeMillis();
-        if (lastUse != null) {
-            if ((currentTime - lastUse) < cooldown) {
-                p.sendMessage(ChatColor.RED + "The gun is still reloading!");
-                return;
-            }
-        }
-        LAST_USES.put(p.getUniqueId(), currentTime);
 
         double multiplier;
         boolean isFire;

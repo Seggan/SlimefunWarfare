@@ -12,18 +12,6 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
 public final class Items {
-    public static final Category sfwarfareCategory = new Category(
-        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare"),
-        new CustomItem(Material.DIAMOND_SWORD, "Slimefun Warfare")
-    );
-    public static final Category sfwarfareGunsCategory = new Category(
-        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_guns"),
-        new CustomItem(Material.CROSSBOW, "Slimefun Warfare - Guns")
-    );
-    public static final Category sfwarfareExplosivesCategory = new Category(
-        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_explosives"),
-        new CustomItem(Material.TNT, "Slimefun Warfare - Explosives")
-    );
 
     public static final SlimefunItemStack SLIMESTEEL = new SlimefunItemStack(
         "SLIMESTEEL_INGOT",
@@ -160,5 +148,44 @@ public final class Items {
         HeadTexture.TIN_CAN,
         "&fPurified Liquid Nitrogen",
         "&7As pure as can be"
+    );
+
+    public static final SlimefunItemStack TITANIUM_METEOR = new SlimefunItemStack(
+        "TITANIUM_METEOR",
+        Material.IRON_ORE,
+        "&7Titanium Meteor",
+        "",
+        "&7The source of the rare metal titanium"
+    );
+
+    public static final SlimefunItemStack TITANIUM_DUST = new SlimefunItemStack(
+        "TITANIUM_DUST",
+        Material.SUGAR,
+        "&fTitanium Dust"
+    );
+
+    public static final SlimefunItemStack TITANIUM_INGOT = new SlimefunItemStack(
+        "TITANIUM_INGOT",
+        Material.IRON_INGOT,
+        "&fTitanium Ingot",
+        "",
+        "&7A very strong metal"
+    );
+
+    public static final SlimefunItemStack SEGGANESSON_METEOR = new SlimefunItemStack(
+        "SEGGANESSON_METEOR",
+        Material.DIAMOND_ORE,
+        "&7Segganesson Meteor",
+        "",
+        "&7The source of the rare element segganesson"
+    );
+
+    public static final SlimefunItemStack SEGGANESSON = new SlimefunItemStack(
+        "SEGGANESSON",
+        Material.LIGHT_BLUE_DYE,
+        "&bSegganesson",
+        "",
+        "&7A rare element that has the potential of powering",
+        "&7entire cities"
     );
 }

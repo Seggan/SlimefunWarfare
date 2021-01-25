@@ -9,3 +9,11 @@ guns:
   # Min range is intended to balance things a little more; this removes it and allows you to shoot at any distance
   # within max range
   min-range-on: true
+
+space:
+  # This will define the spawn rate for titanium/segganesson meteors. It is defined as a max of meteors-per-chunk
+  # meteors that each have a chance of meteor-spawn-rate percent of being generated. There is a segganesson-chance
+  # that a meteor will be a segganesson meteor instead of a titanium meteor
+  meteor-spawn-rate: 20
+  meteors-per-chunk: 1
+  segganesson-chance: 15
