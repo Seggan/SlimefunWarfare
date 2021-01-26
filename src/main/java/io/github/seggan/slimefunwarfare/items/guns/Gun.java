@@ -1,7 +1,8 @@
-package io.github.seggan.slimefunwarfare.items;
+package io.github.seggan.slimefunwarfare.items.guns;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
+import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -21,15 +22,14 @@ import org.bukkit.util.Vector;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Getter
 public class Gun extends SlimefunItem implements DamageableItem {
 
-    @Getter
     private final HashMap<UUID, Long> LAST_USES = new HashMap<>();
 
     private final int range;
     private final int minRange;
     private final int damageDealt;
-    @Getter
     private final int cooldown;
 
     public Gun(SlimefunItemStack item, ItemStack[] recipe, int range, int damage, double cooldown) {
@@ -58,28 +58,8 @@ public class Gun extends SlimefunItem implements DamageableItem {
         return e -> {
             e.cancel();
             Player p = e.getPlayer();
-            if (canShoot(p)) {
-                shoot(e.getPlayer());
-            } else {
-                p.sendMessage(ChatColor.RED + "The gun is still reloading!");
-            }
+            shoot(p);
         };
-    }
-
-    public boolean canShoot(Player p) {
-        UUID uuid = p.getUniqueId();
-        Long lastUse = LAST_USES.get(uuid);
-        long time = System.currentTimeMillis();
-        if (lastUse != null) {
-            if ((time - lastUse) >= cooldown) {
-                LAST_USES.put(uuid, time);
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     public void shoot(Player p) {
@@ -90,6 +70,16 @@ public class Gun extends SlimefunItem implements DamageableItem {
         if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
             return;
         }
+
+        Long lastUse = LAST_USES.get(p.getUniqueId());
+        long currentTime = System.currentTimeMillis();
+        if (lastUse != null) {
+            if ((currentTime - lastUse) < cooldown) {
+                p.sendMessage(ChatColor.RED + "The gun is still reloading!");
+                return;
+            }
+        }
+        LAST_USES.put(p.getUniqueId(), currentTime);
 
         double multiplier;
         boolean isFire;

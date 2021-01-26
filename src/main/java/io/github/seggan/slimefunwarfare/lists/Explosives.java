@@ -5,14 +5,14 @@ import org.bukkit.Material;
 
 public final class Explosives {
 
+    private Explosives() {}
+
     public static final SlimefunItemStack THIOACETONE = new SlimefunItemStack(
         "THIOACETONE",
         Material.BROWN_DYE,
         "&6Thioacetone",
         "&7Very smelly indeed"
     );
-
-    private Explosives() {}
 
     public static final SlimefunItemStack NITROGEN_TRIIODIDE = new SlimefunItemStack(
         "NITROGEN_TRIIODIDE",

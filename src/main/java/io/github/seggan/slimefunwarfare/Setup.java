@@ -3,7 +3,8 @@ package io.github.seggan.slimefunwarfare;
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Grenade;
-import io.github.seggan.slimefunwarfare.items.Gun;
+import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
+import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.lists.Categories;
@@ -132,6 +133,8 @@ public final class Setup {
             Items.ADVANCED_BARREL, Items.ADVANCED_BARREL, Guns.ASSAULT_RIFLE,
             new ItemStack(Material.STICK), Items.REINFORCED_SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
         }, 130, 50, 22, 8).register(addon);
+
+        new EnergyRifle().register(addon);
     }
 
     static void setupExplosives(SlimefunWarfare addon) {

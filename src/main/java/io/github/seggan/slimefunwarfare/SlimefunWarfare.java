@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare;
 
-import io.github.seggan.slimefunwarfare.items.Gun;
+import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.listeners.BetterExplosiveListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
@@ -19,6 +19,8 @@ import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.UUID;
 
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
@@ -84,10 +86,16 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
                         if (!(item instanceof Gun)) {
                             continue;
                         }
+                        UUID uuid = p.getUniqueId();
                         Gun gun = (Gun) item;
-                        if (gun.canShoot(p)) {
-                            gun.shoot(p);
+                        Long lastUse = gun.getLAST_USES().get(uuid);
+                        long time = System.currentTimeMillis();
+                        if (lastUse != null) {
+                            if ((time - lastUse) < gun.getCooldown()) {
+                                continue;
+                            }
                         }
+                        gun.shoot(p);
                     }
                 }
             }, 0, 1);

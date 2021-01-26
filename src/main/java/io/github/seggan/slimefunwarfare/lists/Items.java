@@ -1,17 +1,15 @@
 package io.github.seggan.slimefunwarfare.lists;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 
 public final class Items {
+
+    private Items() {}
 
     public static final SlimefunItemStack SLIMESTEEL = new SlimefunItemStack(
         "SLIMESTEEL_INGOT",
@@ -169,7 +167,16 @@ public final class Items {
         Material.IRON_INGOT,
         "&fTitanium Ingot",
         "",
-        "&7A very strong metal"
+        "&7A very strong metal found only in outer space"
+    );
+
+    public static final SlimefunItemStack TITANIUM_SUPERALLOY = new SlimefunItemStack(
+        "TITANIUM_SUPERALLOY",
+        Material.IRON_INGOT,
+        "&fTitanium Superalloy",
+        "",
+        "&7The hardest, toughest, strongest material known",
+        "&7to Mineraftkind"
     );
 
     public static final SlimefunItemStack SEGGANESSON_METEOR = new SlimefunItemStack(

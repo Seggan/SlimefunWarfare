@@ -1,9 +1,12 @@
 package io.github.seggan.slimefunwarfare.lists;
 
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 
 public final class Guns {
+
+    private Guns() {}
 
     public static final SlimefunItemStack PISTOL = new SlimefunItemStack(
         "GUN_PISTOL",
@@ -99,5 +102,17 @@ public final class Guns {
         "&cMinimum Range: 50",
         "&cDamage: 11 hearts",
         "&cCooldown: 8 seconds"
+    );
+
+    public static final SlimefunItemStack ENERGY_RIFLE = new SlimefunItemStack(
+        "GUN_ENERGY_RIFLE",
+        Material.CROSSBOW,
+        "&eEnergy Rifle",
+        "&7Finally, no need to carry around bullets!",
+        "&cUses 5J per shot",
+        "&cRange: 100",
+        "&cDamage: 10 hearts",
+        "&cCooldown: 0.2 seconds",
+        LoreBuilder.powerCharged(0, 2500)
     );
 }
