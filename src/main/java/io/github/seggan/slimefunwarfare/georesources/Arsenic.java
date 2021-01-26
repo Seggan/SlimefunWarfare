@@ -19,9 +19,9 @@ public class Arsenic implements GEOResource {
     @Override
     public int getDefaultSupply(Environment environment, Biome biome) {
         if (environment == Environment.THE_END) {
-            return 1;
+            return 5;
         } else {
-            return 0;
+            return 1;
         }
     }
 
