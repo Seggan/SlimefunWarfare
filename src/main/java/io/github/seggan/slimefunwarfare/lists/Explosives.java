@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.lists;
 
+import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 
@@ -37,6 +38,12 @@ public final class Explosives {
         "&7Arsenic",
         "",
         "&7A material for grenades"
+    );
+
+    public static final SlimefunItemStack ENRICHED_URANIUM = new SlimefunItemStack(
+        "ENRICHED_URANIUM",
+        HeadTexture.BOOSTED_URANIUM,
+        "&aEnriched Uranium"
     );
 
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(

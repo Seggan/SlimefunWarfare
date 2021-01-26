@@ -13,6 +13,7 @@ import io.github.seggan.slimefunwarfare.lists.Guns;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
 import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
+import io.github.seggan.slimefunwarfare.machines.Boominator9000;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -140,6 +141,7 @@ public final class Setup {
     static void setupExplosives(SlimefunWarfare addon) {
         new AirLiquefier().register(addon);
         new ExplosiveSynthesizer().register(addon);
+        new Boominator9000().register(addon);
 
         new SlimefunItem(Categories.GENERAL, Explosives.REINFORCED_CONCRETE, RecipeType.SMELTERY,
             new ItemStack[]{
@@ -210,9 +212,9 @@ public final class Setup {
 
         new NuclearBomb(Categories.EXPLOSIVES, Explosives.NUCLEAR_BOMB, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.URANIUM, SlimefunItems.BLISTERING_INGOT_3,
-                SlimefunItems.URANIUM, new ItemStack(Material.NETHER_STAR), SlimefunItems.URANIUM,
-                SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.URANIUM, SlimefunItems.BLISTERING_INGOT_3
+                SlimefunItems.STEEL_PLATE, Explosives.ENRICHED_URANIUM, SlimefunItems.STEEL_PLATE,
+                new ItemStack(Material.PISTON), Explosives.ENRICHED_URANIUM, new ItemStack(Material.PISTON),
+                SlimefunItems.STEEL_PLATE, Explosives.ENRICHED_URANIUM, SlimefunItems.STEEL_PLATE
             }).register(addon);
     }
 

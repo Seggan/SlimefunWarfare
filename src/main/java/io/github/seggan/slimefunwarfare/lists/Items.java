@@ -79,6 +79,17 @@ public final class Items {
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
     );
 
+    public static final SlimefunItemStack BOOMINATOR_9000 = new SlimefunItemStack(
+        "BOOMINATOR_9000",
+        Material.SMITHING_TABLE,
+        "&4Boominator 9000",
+        "",
+        "&7Processes uranium for nuclear bombs",
+        LoreBuilder.powerPerSecond(1024),
+        LoreBuilder.powerBuffer(2048),
+        LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE)
+    );
+
     public static final SlimefunItemStack IRON_BULLET = new SlimefunItemStack(
         "IRON_BULLET",
         Material.IRON_NUGGET,
