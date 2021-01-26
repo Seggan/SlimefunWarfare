@@ -53,6 +53,7 @@ public final class Items {
         "BULLET_PRESS",
         Material.SMOKER,
         "&7Bullet Press",
+        "",
         LoreBuilder.powerPerSecond(16),
         LoreBuilder.powerBuffer(32),
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
@@ -62,6 +63,7 @@ public final class Items {
         "AIR_LIQUEFIER",
         Material.BEACON,
         "&bAir Liquefier",
+        "",
         LoreBuilder.powerPerSecond(64),
         LoreBuilder.powerBuffer(128),
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
@@ -71,6 +73,7 @@ public final class Items {
         "EXPLOSIVE_SYNTHESIZER",
         Material.TNT,
         "&4Explosive Synthesizer",
+        "",
         LoreBuilder.powerPerSecond(64),
         LoreBuilder.powerBuffer(128),
         LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE)
@@ -80,6 +83,7 @@ public final class Items {
         "IRON_BULLET",
         Material.IRON_NUGGET,
         "&7Iron Bullet",
+        "",
         "&7x0.75 damage"
     );
 
@@ -87,6 +91,7 @@ public final class Items {
         "LEAD_BULLET",
         Material.IRON_NUGGET,
         "&7Lead Bullet",
+        "",
         "&7x1 damage"
     );
 
@@ -94,6 +99,7 @@ public final class Items {
         "DU_BULLET",
         Material.IRON_NUGGET,
         "&aDU Bullet",
+        "",
         "&7Sets hit entities on fire",
         "&7x1.5 damage"
     );
@@ -102,6 +108,7 @@ public final class Items {
         "GOLD_BULLET",
         Material.GOLD_NUGGET,
         "&6Gold Bullet",
+        "",
         "&7x2 damage"
     );
 
@@ -109,6 +116,7 @@ public final class Items {
         "TRINITROBULLETENE_BULLET",
         Material.GOLD_NUGGET,
         "&6Trinitrobulletene",
+        "",
         "&7Sets hit entities on fire",
         "&7x2.75 damage"
     );
@@ -117,6 +125,7 @@ public final class Items {
         "GUN_CASE",
         Material.CROSSBOW,
         "&7Gun Case",
+        "",
         "&7The base of all guns"
     );
 
@@ -124,6 +133,7 @@ public final class Items {
         "PYRO_POWDER",
         Material.REDSTONE,
         "&4Pyro Powder",
+        "",
         "&7A very explosive substance indeed"
     );
 
@@ -131,6 +141,7 @@ public final class Items {
         "LIQUID_AIR",
         HeadTexture.TIN_CAN,
         "&fLiquid Air",
+        "",
         "&7Don't touch!"
     );
 
@@ -138,6 +149,7 @@ public final class Items {
         "LIQUID_NITROGEN",
         HeadTexture.TIN_CAN,
         "&fLiquid Nitrogen",
+        "",
         "&7Ice cream anyone?"
     );
 
@@ -145,6 +157,7 @@ public final class Items {
         "PURIFIED_LIQUID_NITROGEN",
         HeadTexture.TIN_CAN,
         "&fPurified Liquid Nitrogen",
+        "",
         "&7As pure as can be"
     );
 

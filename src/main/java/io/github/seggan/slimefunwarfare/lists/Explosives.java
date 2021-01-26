@@ -11,6 +11,7 @@ public final class Explosives {
         "THIOACETONE",
         Material.BROWN_DYE,
         "&6Thioacetone",
+        "",
         "&7Very smelly indeed"
     );
 
@@ -18,6 +19,7 @@ public final class Explosives {
         "NITROGEN_TRIIODIDE",
         Material.PURPLE_DYE,
         "&5Nitrogen Triiodide",
+        "",
         "&7A material for grenades"
     );
 
@@ -25,6 +27,7 @@ public final class Explosives {
         "AZIDOAZIDE_AZIDE",
         Material.SUGAR,
         "&eAzidoazide Azide",
+        "",
         "&7A material for grenades"
     );
 
@@ -32,13 +35,15 @@ public final class Explosives {
         "ARSENIC",
         Material.GUNPOWDER,
         "&7Arsenic",
+        "",
         "&7A material for grenades"
     );
 
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(
         "GRENADE",
         Material.SNOWBALL,
-        "&7Chemical Grenade",
+        "&fChemical Grenade",
+        "",
         "&7Contents: none"
     );
 
@@ -46,6 +51,7 @@ public final class Explosives {
         "REINFORCED_CONCRETE",
         Material.GRAY_CONCRETE,
         "&7Reinforced Concrete",
+        "",
         "&7A blast-resistant (not blastproof) concrete"
     );
 
@@ -53,6 +59,7 @@ public final class Explosives {
         "NUCLEAR_BOMB",
         Material.TNT,
         "&7Nuclear Bomb",
+        "",
         "&7KABOOM!"
     );
 }
