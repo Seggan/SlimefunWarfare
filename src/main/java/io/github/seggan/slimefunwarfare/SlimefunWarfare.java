@@ -6,6 +6,7 @@ import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
+import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
@@ -32,8 +33,6 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        getLogger().info("Slimefun Warfare enabled.");
-
         saveDefaultConfig();
 
         getServer().getPluginManager().registerEvents(new BulletListener(), this);
@@ -41,12 +40,13 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         getServer().getPluginManager().registerEvents(new GrenadeListener(), this);
         getServer().getPluginManager().registerEvents(new ConcreteListener(), this);
         getServer().getPluginManager().registerEvents(new BetterExplosiveListener(), this);
+        getServer().getPluginManager().registerEvents(new SpaceListener(), this);
 
         instance = this;
 
         new Metrics(this, 9227);
 
-        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
+        if (getConfig().getBoolean("auto-updates") && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "Seggan/SlimefunWarfare/master").start();
         }
 
@@ -68,8 +68,9 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
             if (!SlimefunPlugin.getWorldSettingsService().isWorldEnabled(world)) continue;
 
-            WorldCreator creator = new WorldCreator(name + "_space");
-            creator.generator(new SpaceGenerator());
+            WorldCreator creator = new WorldCreator(name + "_space")
+                .seed(world.getSeed())
+                .generator(new SpaceGenerator());
             space = creator.createWorld();
 
             space.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
