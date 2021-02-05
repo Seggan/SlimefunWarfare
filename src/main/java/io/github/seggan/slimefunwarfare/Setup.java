@@ -185,6 +185,14 @@ public final class Setup {
             Items.sfwarfareExplosivesCategory, Explosives.ARSENIC, RecipeType.GEO_MINER, new ItemStack[9]
         ).register(addon);
 
+        new SlimefunItem(
+            Items.sfwarfareExplosivesCategory, Explosives.THIOACETONE, ExplosiveSynthesizer.RECIPE_TYPE,
+            new ItemStack[]{
+                SlimefunItems.OIL_BUCKET, SlimefunItems.SULFATE, null,
+                null, null, null,
+                null, null, null
+            }).register(addon);
+
         new Arsenic(Explosives.ARSENIC).register();
 
         new SlimefunItem(
