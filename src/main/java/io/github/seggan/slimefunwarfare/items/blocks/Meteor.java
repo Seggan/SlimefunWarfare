@@ -22,7 +22,7 @@ public class Meteor extends SlimefunItem {
             if (handItem.containsEnchantment(Enchantment.SILK_TOUCH)) {
                 drops.add(getItem().clone());
             } else {
-                SlimefunItemStack itemStack = getItem().equals(Items.TITANIUM_METEOR) ? Items.TITANIUM_DUST : Items.SEGGANESSON;
+                SlimefunItemStack itemStack = getItem().equals(Items.OSMIUM_METEOR) ? Items.OSMIUM_DUST : Items.SEGGANESSON;
 
                 drops.add(itemStack.clone());
                 if (fortune == 0) return true;

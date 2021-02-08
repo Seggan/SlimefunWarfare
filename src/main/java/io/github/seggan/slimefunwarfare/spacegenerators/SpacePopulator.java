@@ -35,9 +35,9 @@ class SpacePopulator extends BlockPopulator {
                     BlockStorage.addBlockInfo(block.getLocation(), "id",
                         Items.SEGGANESSON_METEOR.getItemId(), true);
                 } else {
-                    block.setType(Items.TITANIUM_METEOR.getType());
+                    block.setType(Items.OSMIUM_METEOR.getType());
                     BlockStorage.addBlockInfo(block.getLocation(), "id",
-                        Items.TITANIUM_METEOR.getItemId(), true);
+                        Items.OSMIUM_METEOR.getItemId(), true);
                 }
             }
         }

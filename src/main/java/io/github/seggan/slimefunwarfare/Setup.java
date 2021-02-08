@@ -3,10 +3,10 @@ package io.github.seggan.slimefunwarfare;
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Grenade;
-import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
-import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
+import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
+import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Explosives;
 import io.github.seggan.slimefunwarfare.lists.Guns;
@@ -34,41 +34,39 @@ public final class Setup {
             null, null, null,
             null, null, null
         }).register(addon);
+
         new SlimefunItem(
             Categories.GENERAL, Items.REINFORCED_SLIMESTEEL, RecipeType.SMELTERY, new ItemStack[]{
             Items.SLIMESTEEL, new ItemStack(Material.SLIME_BLOCK), SlimefunItems.DAMASCUS_STEEL_INGOT,
             SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.CORINTHIAN_BRONZE_INGOT, SlimefunItems.ALUMINUM_BRONZE_INGOT,
             null, null, null
         }).register(addon);
-        new VanillaItem(
-            Categories.GENERAL, new ItemStack(Material.GUNPOWDER),
-            "GUNPOWDER", RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            SlimefunItems.SULFATE, new ItemStack(Material.BONE_MEAL), new ItemStack(Material.CHARCOAL),
-            null, null, null,
-            null, null, null
-        }).register(addon);
-        new SlimefunItem(
-            Categories.GENERAL, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
-            new ItemStack(Material.TNT), null, null,
-            null, null, null,
-            null, null, null
-        }, new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(addon);
+
         new SlimefunItem(Categories.GENERAL, Items.SCOPE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.PLASTIC_SHEET, SlimefunItems.MULTIMETER, SlimefunItems.PLASTIC_SHEET,
             SlimefunItems.HARDENED_GLASS, null, SlimefunItems.HARDENED_GLASS,
             SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET, SlimefunItems.PLASTIC_SHEET
         }).register(addon);
+
         new SlimefunItem(Categories.GENERAL, Items.BARREL, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.SLIMESTEEL, Items.SLIMESTEEL, Items.SLIMESTEEL,
             null, null, null,
             Items.SLIMESTEEL, Items.SLIMESTEEL, Items.SLIMESTEEL
         }).register(addon);
+
         new SlimefunItem(
             Categories.GENERAL, Items.ADVANCED_BARREL, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL,
             Items.BARREL, Items.BARREL, Items.BARREL,
             Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL
         }).register(addon);
+
+        // Energy
+        new SlimefunItem(Categories.GENERAL, Items.OSMIUM_SUPERALLOY, RecipeType.SMELTERY, new ItemStack[]{
+            Items.OSMIUM_INGOT, Items.SEGGANESSON, Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_ALLOY_INGOT,
+            Items.OSMIUM_DUST, null, null,
+            null, null, null
+        });
     }
     
     static void setupBullets(SlimefunWarfare addon) {
@@ -195,6 +193,21 @@ public final class Setup {
 
         new Arsenic(Explosives.ARSENIC).register();
 
+        new VanillaItem(
+            Categories.GENERAL, new ItemStack(Material.GUNPOWDER),
+            "GUNPOWDER", RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            SlimefunItems.SULFATE, new ItemStack(Material.BONE_MEAL), new ItemStack(Material.CHARCOAL),
+            null, null, null,
+            null, null, null
+        }).register(addon);
+
+        new SlimefunItem(
+            Categories.GENERAL, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
+            new ItemStack(Material.TNT), null, null,
+            null, null, null,
+            null, null, null
+        }, new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(addon);
+
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -219,17 +232,17 @@ public final class Setup {
     }
 
     static void setupSpace(SlimefunWarfare addon) {
-        new Meteor(Items.TITANIUM_METEOR).register(addon);
+        new Meteor(Items.OSMIUM_METEOR).register(addon);
         new Meteor(Items.SEGGANESSON_METEOR).register(addon);
 
-        new SlimefunItem(Categories.RESOURCES, Items.TITANIUM_DUST, RecipeType.ORE_CRUSHER, new ItemStack[]{
-            Items.TITANIUM_METEOR, null, null,
+        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_DUST, RecipeType.ORE_CRUSHER, new ItemStack[]{
+            Items.OSMIUM_METEOR, null, null,
             null, null, null,
             null, null, null
         }).register(addon);
 
-        new SlimefunItem(Categories.RESOURCES, Items.TITANIUM_INGOT, RecipeType.SMELTERY, new ItemStack[]{
-            Items.TITANIUM_DUST, null, null,
+        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_INGOT, RecipeType.SMELTERY, new ItemStack[]{
+            Items.OSMIUM_DUST, null, null,
             null, null, null,
             null, null, null
         }).register(addon);

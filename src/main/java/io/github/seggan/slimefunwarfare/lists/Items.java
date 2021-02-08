@@ -172,32 +172,32 @@ public final class Items {
         "&7As pure as can be"
     );
 
-    public static final SlimefunItemStack TITANIUM_METEOR = new SlimefunItemStack(
-        "TITANIUM_METEOR",
+    public static final SlimefunItemStack OSMIUM_METEOR = new SlimefunItemStack(
+        "OSMIUM_METEOR",
         Material.IRON_ORE,
-        "&7Titanium Meteor",
+        "&7Osmium Meteor",
         "",
-        "&7The source of the rare metal titanium"
+        "&7The source of the rare metal osmium"
     );
 
-    public static final SlimefunItemStack TITANIUM_DUST = new SlimefunItemStack(
-        "TITANIUM_DUST",
+    public static final SlimefunItemStack OSMIUM_DUST = new SlimefunItemStack(
+        "OSMIUM_DUST",
         Material.SUGAR,
-        "&fTitanium Dust"
+        "&fOsmium Dust"
     );
 
-    public static final SlimefunItemStack TITANIUM_INGOT = new SlimefunItemStack(
-        "TITANIUM_INGOT",
+    public static final SlimefunItemStack OSMIUM_INGOT = new SlimefunItemStack(
+        "OSMIUM_INGOT",
         Material.IRON_INGOT,
-        "&fTitanium Ingot",
+        "&fOsmium Ingot",
         "",
         "&7A very strong metal found only in outer space"
     );
 
-    public static final SlimefunItemStack TITANIUM_SUPERALLOY = new SlimefunItemStack(
-        "TITANIUM_SUPERALLOY",
+    public static final SlimefunItemStack OSMIUM_SUPERALLOY = new SlimefunItemStack(
+        "OSMIUM_SUPERALLOY",
         Material.IRON_INGOT,
-        "&fTitanium Superalloy",
+        "&fOsmium Superalloy",
         "",
         "&7The hardest, toughest, strongest material known",
         "&7to Mineraftkind"
@@ -218,5 +218,13 @@ public final class Items {
         "",
         "&7A rare element that has the potential of powering",
         "&7entire cities"
+    );
+
+    public static final SlimefunItemStack ENERGY_RECTIFIER = new SlimefunItemStack(
+        "ENERGY_RECTIFIER",
+        Material.POWERED_RAIL,
+        "&bEnergy Rectifier",
+        "",
+        "&7Converts electricity into pure energy"
     );
 }
