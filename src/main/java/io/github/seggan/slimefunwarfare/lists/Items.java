@@ -6,6 +6,8 @@ import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public final class Items {
 
@@ -227,4 +229,25 @@ public final class Items {
         "",
         "&7Converts electricity into pure energy"
     );
+
+    public static final SlimefunItemStack ENERGY_BLADE = new SlimefunItemStack(
+        "ENERGY_BLADE",
+        Material.DIAMOND_SWORD,
+        "&bEnergy Blade",
+        "",
+        "&7Known in some circles as a \"lightsaber\",",
+        "&7this advanced sword uses pure energy to",
+        "&7slice through living tissue",
+        "",
+        "&7Uses 5J per hit",
+        LoreBuilder.powerCharged(0, 2500)
+    );
+
+    static {
+        ENERGY_BLADE.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 5);
+
+        ItemMeta meta = ENERGY_BLADE.getItemMeta();
+        meta.setUnbreakable(true);
+        ENERGY_BLADE.setItemMeta(meta);
+    }
 }

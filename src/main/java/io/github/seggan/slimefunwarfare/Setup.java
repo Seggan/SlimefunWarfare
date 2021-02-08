@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
+import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
@@ -25,9 +26,10 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public final class Setup {
-    
-    private Setup() {}
-    
+
+    private Setup() {
+    }
+
     static void setupItems(SlimefunWarfare addon) {
         new SlimefunItem(Categories.GENERAL, Items.SLIMESTEEL, RecipeType.SMELTERY, new ItemStack[]{
             SlimefunItems.STEEL_INGOT, new ItemStack(Material.SLIME_BALL), null,
@@ -67,8 +69,16 @@ public final class Setup {
             Items.OSMIUM_DUST, null, null,
             null, null, null
         });
+
+        new SlimefunItem(Categories.GENERAL, Items.ENERGY_RECTIFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.CARBONADO_EDGED_CAPACITOR, Items.OSMIUM_SUPERALLOY,
+            SlimefunItems.POWER_CRYSTAL, SlimefunItems.ENERGY_REGULATOR, SlimefunItems.POWER_CRYSTAL,
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.CARBONADO_EDGED_CAPACITOR, Items.OSMIUM_SUPERALLOY
+        }).register(addon);
+
+        new EnergyBlade().register(addon);
     }
-    
+
     static void setupBullets(SlimefunWarfare addon) {
         new BulletPress().register(addon);
         new Bullet(Items.IRON_BULLET, new ItemStack(Material.IRON_INGOT), 0.75, false).register(addon);
@@ -77,7 +87,7 @@ public final class Setup {
         new Bullet(Items.GOLD_BULLET, SlimefunItems.GOLD_12K, 2, false).register(addon);
         new Bullet(Items.TRINITROBULLETENE, Items.PYRO_POWDER, 2.75, true).register(addon);
     }
-    
+
     static void setupGuns(SlimefunWarfare addon) {
         new SlimefunItem(Categories.GENERAL, Items.GUN_CASE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.SLIMESTEEL, new ItemStack(Material.GUNPOWDER), Items.SLIMESTEEL,
@@ -85,19 +95,19 @@ public final class Setup {
             SlimefunItems.PLASTIC_SHEET, new ItemStack(Material.CROSSBOW), SlimefunItems.PLASTIC_SHEET
         }).register(addon);
 
-        new Gun(Guns.PISTOL, new ItemStack[] {
+        new Gun(Guns.PISTOL, new ItemStack[]{
             null, Items.SLIMESTEEL, null,
             null, Items.GUN_CASE, Items.SLIMESTEEL,
             null, Items.SLIMESTEEL, new ItemStack(Material.STICK)
         }, 7, 4, 0.75).register(addon);
 
-        new Gun(Guns.REVOLVER, new ItemStack[] {
+        new Gun(Guns.REVOLVER, new ItemStack[]{
             null, Items.SLIMESTEEL, null,
             null, Guns.PISTOL, Items.SLIMESTEEL,
             null, Items.SLIMESTEEL, null
         }, 10, 6, 0.5).register(addon);
 
-        new Gun(Guns.MACHINE_GUN, new ItemStack[] {
+        new Gun(Guns.MACHINE_GUN, new ItemStack[]{
             Items.SLIMESTEEL, Items.SCOPE, null,
             Items.BARREL, Guns.REVOLVER, Items.SLIMESTEEL,
             Items.SLIMESTEEL, Items.SLIMESTEEL, SlimefunItems.PLASTIC_SHEET
@@ -146,7 +156,7 @@ public final class Setup {
                 SlimefunItems.IRON_DUST, new ItemStack(Material.GRAY_CONCRETE_POWDER), null,
                 null, null, null,
                 null, null, null
-        }).register(addon);
+            }).register(addon);
 
         new SlimefunItem(Categories.EXPLOSIVES, Items.LIQUID_AIR, RecipeTypes.AIR_LIQUEFIER,
             new ItemStack[]{
@@ -177,7 +187,7 @@ public final class Setup {
                 Items.LIQUID_NITROGEN, new ItemStack(Material.DRIED_KELP), null,
                 null, null, null,
                 null, null, null
-        }).register(addon);
+            }).register(addon);
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.AZIDOAZIDE_AZIDE, RecipeTypes.EXPLOSIVE_SYNTHESIZER,
@@ -185,14 +195,13 @@ public final class Setup {
                 Items.PURIFIED_LIQUID_NITROGEN, new ItemStack(Material.COAL), null,
                 null, null, null,
                 null, null, null
-        }).register(addon);
+            }).register(addon);
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.ARSENIC, RecipeType.GEO_MINER, new ItemStack[9]
         ).register(addon);
 
-        new SlimefunItem(
-            Items.sfwarfareExplosivesCategory, Explosives.THIOACETONE, ExplosiveSynthesizer.RECIPE_TYPE,
+        new SlimefunItem(Categories.EXPLOSIVES, Explosives.THIOACETONE, RecipeTypes.EXPLOSIVE_SYNTHESIZER,
             new ItemStack[]{
                 SlimefunItems.OIL_BUCKET, SlimefunItems.SULFATE, null,
                 null, null, null,
@@ -202,7 +211,7 @@ public final class Setup {
         new Arsenic(Explosives.ARSENIC).register();
 
         new VanillaItem(
-            Categories.GENERAL, new ItemStack(Material.GUNPOWDER),
+            Categories.EXPLOSIVES, new ItemStack(Material.GUNPOWDER),
             "GUNPOWDER", RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.SULFATE, new ItemStack(Material.BONE_MEAL), new ItemStack(Material.CHARCOAL),
             null, null, null,
@@ -210,7 +219,7 @@ public final class Setup {
         }).register(addon);
 
         new SlimefunItem(
-            Categories.GENERAL, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
+            Categories.EXPLOSIVES, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
             new ItemStack(Material.TNT), null, null,
             null, null, null,
             null, null, null
@@ -218,12 +227,12 @@ public final class Setup {
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[] {
+            new ItemStack[]{
                 Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
                 SlimefunItems.STEEL_INGOT, SlimefunItems.TIN_CAN, SlimefunItems.STEEL_INGOT,
                 Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
             },
-        new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
+            new SlimefunItemStack(Explosives.EMPTY_GRENADE, 4)).register(addon);
 
         new Grenade(Explosives.NITROGEN_TRIIODIDE).register(addon);
         new Grenade(Explosives.AZIDOAZIDE_AZIDE).register(addon);

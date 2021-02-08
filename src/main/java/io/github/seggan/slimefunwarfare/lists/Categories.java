@@ -20,6 +20,11 @@ public final class Categories {
         new CustomItem(Material.CROSSBOW, "Slimefun Warfare - Guns")
     );
 
+    public static final Category MELEE = new Category(
+        new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_melee"),
+        new CustomItem(Material.IRON_AXE, "Slimefun Warfare - Melee Weapons")
+    );
+
     public static final Category EXPLOSIVES = new Category(
         new NamespacedKey(SlimefunWarfare.getInstance(), "slimefunwarfare_explosives"),
         new CustomItem(Material.TNT, "Slimefun Warfare - Explosives")

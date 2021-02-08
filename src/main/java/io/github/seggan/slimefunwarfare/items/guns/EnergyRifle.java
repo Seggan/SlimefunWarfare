@@ -3,7 +3,9 @@ package io.github.seggan.slimefunwarfare.items.guns;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.lists.Guns;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -16,7 +18,9 @@ public class EnergyRifle extends Gun implements Rechargeable {
 
     public EnergyRifle() {
         super(Guns.ENERGY_RIFLE, new ItemStack[]{
-
+            Items.OSMIUM_SUPERALLOY, Items.OSMIUM_SUPERALLOY, Items.SEGGANESSON,
+            Items.ADVANCED_BARREL, Items.ADVANCED_BARREL, SlimefunItems.ADVANCED_CIRCUIT_BOARD,
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.ENERGIZED_CAPACITOR, Items.ENERGY_RECTIFIER
         }, 100, 20, 0.2);
     }
 
