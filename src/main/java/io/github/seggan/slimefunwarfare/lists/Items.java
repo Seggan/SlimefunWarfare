@@ -5,9 +5,17 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
+import java.util.UUID;
 
 public final class Items {
 
@@ -243,11 +251,40 @@ public final class Items {
         LoreBuilder.powerCharged(0, 2500)
     );
 
+    public static final SlimefunItemStack BATTLE_AXE = new SlimefunItemStack(
+        "BATTLE_AXE",
+        Material.IRON_AXE,
+        "&6&lBattle Axe",
+        "",
+        "&7This axe is designed for battle. No more annoying cooldowns!",
+        "",
+        "&7When In Main Hand:"
+    );
+
     static {
         ENERGY_BLADE.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 5);
 
         ItemMeta meta = ENERGY_BLADE.getItemMeta();
         meta.setUnbreakable(true);
         ENERGY_BLADE.setItemMeta(meta);
+
+        // Sets the attack speed to match that of a sword
+        meta = BATTLE_AXE.getItemMeta();
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(
+            UUID.randomUUID(),
+            "generic.attackSpeed",
+            -2.4,
+            AttributeModifier.Operation.ADD_NUMBER,
+            EquipmentSlot.HAND
+        ));
+
+        List<String> lore = meta.getLore();
+        lore.add(ChatColor.DARK_GREEN + " 9 Attack Damage");
+        lore.add(ChatColor.DARK_GREEN + " 1.6 Attack Speed");
+        meta.setLore(lore);
+
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        BATTLE_AXE.setItemMeta(meta);
     }
 }

@@ -63,6 +63,12 @@ public final class Setup {
             Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL
         }).register(addon);
 
+        new SlimefunItem(Categories.MELEE, Items.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            new ItemStack(Material.IRON_AXE), new ItemStack(Material.STICK), new ItemStack(Material.IRON_AXE),
+            null, new ItemStack(Material.STICK), null,
+            null, new ItemStack(Material.STICK), null
+        }).register(addon);
+
         // Energy
         new SlimefunItem(Categories.GENERAL, Items.OSMIUM_SUPERALLOY, RecipeType.SMELTERY, new ItemStack[]{
             Items.OSMIUM_INGOT, Items.SEGGANESSON, Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_ALLOY_INGOT,
