@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 import java.util.regex.Pattern;
 
@@ -43,10 +42,10 @@ public class SpaceListener implements Listener {
         ), PlayerTeleportEvent.TeleportCause.PLUGIN);
     }
 
-    @EventHandler
-    public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
-        if (!e.isFlying() && e.getPlayer().getWorld().getName().endsWith("_space")) {
-            e.setCancelled(true);
-        }
-    }
+//    @EventHandler
+//    public void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
+//        if (!e.isFlying() && e.getPlayer().getWorld().getName().endsWith("_space")) {
+//            e.setCancelled(true);
+//        }
+//    }
 }
