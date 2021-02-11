@@ -6,7 +6,56 @@ import org.bukkit.Material;
 
 public final class Explosives {
 
-    private Explosives() {}
+    private Explosives() {
+    }
+
+    public static final SlimefunItemStack PYRO_POWDER = new SlimefunItemStack(
+        "PYRO_POWDER",
+        Material.REDSTONE,
+        "&4Pyro Powder",
+        "",
+        "&7A very explosive substance indeed"
+    );
+
+    public static final SlimefunItemStack LIQUID_AIR = new SlimefunItemStack(
+        "LIQUID_AIR",
+        HeadTexture.TIN_CAN,
+        "&fLiquid Air",
+        "",
+        "&7Don't touch!"
+    );
+
+    public static final SlimefunItemStack LIQUID_NITROGEN = new SlimefunItemStack(
+        "LIQUID_NITROGEN",
+        HeadTexture.TIN_CAN,
+        "&fLiquid Nitrogen",
+        "",
+        "&7Ice cream anyone?"
+    );
+
+    public static final SlimefunItemStack PURIFIED_LIQUID_NITROGEN = new SlimefunItemStack(
+        "PURIFIED_LIQUID_NITROGEN",
+        HeadTexture.TIN_CAN,
+        "&fPurified Liquid Nitrogen",
+        "",
+        "&7As pure as can be"
+    );
+
+    public static final SlimefunItemStack LIQUID_OXYGEN = new SlimefunItemStack(
+        "LIQUID_OXYGEN",
+        HeadTexture.TIN_CAN,
+        "&fLiquid Oxygen",
+        "",
+        "&7Refreshing"
+    );
+
+    public static final SlimefunItemStack FLOX = new SlimefunItemStack(
+        "FLOX",
+        HeadTexture.TIN_CAN,
+        "&fFLOX",
+        "",
+        "&7Fuel + liquid oxygen. Right click to go to space"
+    );
 
     public static final SlimefunItemStack THIOACETONE = new SlimefunItemStack(
         "THIOACETONE",

@@ -98,6 +98,8 @@ public final class Melee {
 
         BATTLE_AXE.setItemMeta(meta);
 
+        OSMIUM_SWORD.addUnsafeEnchantment(Enchantment.DURABILITY, 8);
+
         meta = OSMIUM_SWORD.getItemMeta();
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(
             UUID.randomUUID(),

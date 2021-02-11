@@ -1,6 +1,7 @@
 package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.seggan.slimefunwarfare.lists.items.Explosives;
 import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -21,7 +22,7 @@ public class AirLiquefier extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(5, SlimefunItems.TIN_CAN, Items.LIQUID_AIR);
+        registerRecipe(5, SlimefunItems.TIN_CAN, Explosives.LIQUID_AIR);
     }
 
     @Override

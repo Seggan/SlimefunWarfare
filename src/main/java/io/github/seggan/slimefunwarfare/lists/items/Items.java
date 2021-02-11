@@ -140,38 +140,6 @@ public final class Items {
         "&7The base of all guns"
     );
 
-    public static final SlimefunItemStack PYRO_POWDER = new SlimefunItemStack(
-        "PYRO_POWDER",
-        Material.REDSTONE,
-        "&4Pyro Powder",
-        "",
-        "&7A very explosive substance indeed"
-    );
-
-    public static final SlimefunItemStack LIQUID_AIR = new SlimefunItemStack(
-        "LIQUID_AIR",
-        HeadTexture.TIN_CAN,
-        "&fLiquid Air",
-        "",
-        "&7Don't touch!"
-    );
-
-    public static final SlimefunItemStack LIQUID_NITROGEN = new SlimefunItemStack(
-        "LIQUID_NITROGEN",
-        HeadTexture.TIN_CAN,
-        "&fLiquid Nitrogen",
-        "",
-        "&7Ice cream anyone?"
-    );
-
-    public static final SlimefunItemStack PURIFIED_LIQUID_NITROGEN = new SlimefunItemStack(
-        "PURIFIED_LIQUID_NITROGEN",
-        HeadTexture.TIN_CAN,
-        "&fPurified Liquid Nitrogen",
-        "",
-        "&7As pure as can be"
-    );
-
     public static final SlimefunItemStack OSMIUM_METEOR = new SlimefunItemStack(
         "OSMIUM_METEOR",
         Material.IRON_ORE,

@@ -56,6 +56,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         configSettings.loadConfig();
 
         Setup.setupItems(this);
+        Setup.setupMelee(this);
         Setup.setupBullets(this);
         Setup.setupGuns(this);
         Setup.setupExplosives(this);

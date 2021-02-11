@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
-import io.github.seggan.slimefunwarfare.lists.items.Items;
+import io.github.seggan.slimefunwarfare.lists.items.Explosives;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -23,7 +23,7 @@ public class PyroListener implements Listener {
         if (sfItem == null) {
             return;
         }
-        if (sfItem.getItem().equals(Items.PYRO_POWDER)) {
+        if (sfItem.getItem().equals(Explosives.PYRO_POWDER)) {
             entity.getWorld().createExplosion(entity.getLocation(), 3F);
         }
     }

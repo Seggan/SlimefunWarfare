@@ -24,12 +24,12 @@ public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayIte
     @Override
     protected void registerDefaultRecipes() {
         registerRecipe(5,
-            new ItemStack[]{Items.PURIFIED_LIQUID_NITROGEN, new ItemStack(Material.COAL)},
+            new ItemStack[]{Explosives.PURIFIED_LIQUID_NITROGEN, new ItemStack(Material.COAL)},
             new ItemStack[]{new SlimefunItemStack(Explosives.AZIDOAZIDE_AZIDE, 2)}
         );
 
         registerRecipe(5,
-            new ItemStack[]{Items.LIQUID_NITROGEN, new ItemStack(Material.DRIED_KELP)},
+            new ItemStack[]{Explosives.LIQUID_NITROGEN, new ItemStack(Material.DRIED_KELP)},
             new ItemStack[]{new SlimefunItemStack(Explosives.NITROGEN_TRIIODIDE, 2)}
         );
 
@@ -37,11 +37,16 @@ public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayIte
             new ItemStack[]{SlimefunItems.SULFATE, SlimefunItems.OIL_BUCKET},
             new ItemStack[]{new SlimefunItemStack(Explosives.THIOACETONE, 2)}
         );
+
+        registerRecipe(5,
+            new ItemStack[]{SlimefunItems.FUEL_BUCKET, Explosives.LIQUID_OXYGEN},
+            new ItemStack[]{Explosives.FLOX, new ItemStack(Material.BUCKET)}
+        );
     }
 
     @Override
     public ItemStack getProgressBar() {
-        return new ItemStack(Material.TNT);
+        return new ItemStack(Material.GUNPOWDER);
     }
 
     @Override
