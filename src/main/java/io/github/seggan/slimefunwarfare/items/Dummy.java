@@ -38,8 +38,6 @@ public class Dummy extends SlimefunItem {
             Husk z = l.getWorld().spawn(l, Husk.class);
             PersistentDataAPI.setString(z, KEY, "DUMMY");
 
-            z.setConversionTime(Integer.MAX_VALUE);
-
             z.setCustomName("Dummy");
             z.setCustomNameVisible(true);
 

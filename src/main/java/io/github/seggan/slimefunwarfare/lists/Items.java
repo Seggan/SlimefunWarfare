@@ -270,7 +270,7 @@ public final class Items {
     public static final SlimefunItemStack DUMMY = new SlimefunItemStack(
         "DUMMY",
         Material.HUSK_SPAWN_EGG,
-        "&fSpawn Dummy",
+        "&fDummy Spawn Egg",
         "",
         "&7Right click to spawn a dummy; if you hit him",
         "&7he'll tell you how much damage you dealt.",
