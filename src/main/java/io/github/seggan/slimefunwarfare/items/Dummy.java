@@ -2,7 +2,7 @@ package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.seggan.slimefunwarfare.lists.items.Melee;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -22,7 +22,7 @@ public class Dummy extends SlimefunItem {
     public static final NamespacedKey KEY = new NamespacedKey(SlimefunWarfare.getInstance(), "dummy");
 
     public Dummy() {
-        super(Categories.GENERAL, Items.DUMMY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        super(Categories.GENERAL, Melee.DUMMY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.LEATHER_CHESTPLATE), null, null,
             new ItemStack(Material.LEATHER_LEGGINGS), new ItemStack(Material.ARMOR_STAND), null,
             new ItemStack(Material.LEATHER_BOOTS), null, null

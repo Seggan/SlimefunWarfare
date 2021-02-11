@@ -1,4 +1,4 @@
-package io.github.seggan.slimefunwarfare.lists;
+package io.github.seggan.slimefunwarfare.lists.items;
 
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;

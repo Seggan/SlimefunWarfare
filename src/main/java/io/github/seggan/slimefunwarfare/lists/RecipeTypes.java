@@ -1,6 +1,7 @@
 package io.github.seggan.slimefunwarfare.lists;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.seggan.slimefunwarfare.lists.items.Items;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;

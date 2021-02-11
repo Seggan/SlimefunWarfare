@@ -2,7 +2,7 @@ package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.lists.Explosives;
+import io.github.seggan.slimefunwarfare.lists.items.Explosives;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;

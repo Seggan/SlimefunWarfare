@@ -1,8 +1,8 @@
 package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.lists.Explosives;
-import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.seggan.slimefunwarfare.lists.items.Explosives;
+import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;

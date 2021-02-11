@@ -10,10 +10,11 @@ import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.lists.Explosives;
-import io.github.seggan.slimefunwarfare.lists.Guns;
-import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.seggan.slimefunwarfare.lists.items.Explosives;
+import io.github.seggan.slimefunwarfare.lists.items.Guns;
+import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
+import io.github.seggan.slimefunwarfare.lists.items.Melee;
 import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.Boominator9000;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
@@ -64,7 +65,7 @@ public final class Setup {
             Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL
         }).register(addon);
 
-        new SlimefunItem(Categories.MELEE, Items.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        new SlimefunItem(Categories.MELEE, Melee.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
             new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
             null, new ItemStack(Material.STICK), null
