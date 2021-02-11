@@ -5,7 +5,6 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -14,7 +13,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.List;
 import java.util.UUID;
 
 public final class Items {
@@ -185,7 +183,7 @@ public final class Items {
     public static final SlimefunItemStack OSMIUM_METEOR = new SlimefunItemStack(
         "OSMIUM_METEOR",
         Material.IRON_ORE,
-        "&7Osmium Meteor",
+        "&9Osmium Meteor",
         "",
         "&7The source of the rare metal osmium"
     );
@@ -193,13 +191,15 @@ public final class Items {
     public static final SlimefunItemStack OSMIUM_DUST = new SlimefunItemStack(
         "OSMIUM_DUST",
         Material.SUGAR,
-        "&fOsmium Dust"
+        "&9Osmium Dust",
+        "",
+        "&7Highly toxic. Do not inhale!"
     );
 
     public static final SlimefunItemStack OSMIUM_INGOT = new SlimefunItemStack(
         "OSMIUM_INGOT",
         Material.IRON_INGOT,
-        "&fOsmium Ingot",
+        "&9Osmium Ingot",
         "",
         "&7A very strong metal found only in outer space"
     );
@@ -207,7 +207,7 @@ public final class Items {
     public static final SlimefunItemStack OSMIUM_SUPERALLOY = new SlimefunItemStack(
         "OSMIUM_SUPERALLOY",
         Material.IRON_INGOT,
-        "&fOsmium Superalloy",
+        "&9Osmium Superalloy",
         "",
         "&7The hardest, toughest, strongest material known",
         "&7to Mineraftkind"
@@ -247,8 +247,12 @@ public final class Items {
         "&7this advanced sword uses pure energy to",
         "&7slice through living tissue",
         "",
-        "&7Uses 5J per hit",
-        LoreBuilder.powerCharged(0, 2500)
+        "&9Uses 5J per hit",
+        LoreBuilder.powerCharged(0, 2500),
+        "",
+        "&7When In Main Hand:",
+        "&2 14 Attack Damage",
+        "&2 1.6 Attack Speed"
     );
 
     public static final SlimefunItemStack BATTLE_AXE = new SlimefunItemStack(
@@ -258,7 +262,19 @@ public final class Items {
         "",
         "&7This axe is designed for battle. No more annoying cooldowns!",
         "",
-        "&7When In Main Hand:"
+        "&7When In Main Hand:",
+        "&2 9 Attack Damage",
+        "&2 1.6 Attack Speed"
+    );
+
+    public static final SlimefunItemStack DUMMY = new SlimefunItemStack(
+        "DUMMY",
+        Material.HUSK_SPAWN_EGG,
+        "&fSpawn Dummy",
+        "",
+        "&7Right click to spawn a dummy; if you hit him",
+        "&7he'll tell you how much damage you dealt.",
+        "&7Right click on him to destroy him"
     );
 
     static {
@@ -266,6 +282,16 @@ public final class Items {
 
         ItemMeta meta = ENERGY_BLADE.getItemMeta();
         meta.setUnbreakable(true);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(
+            UUID.randomUUID(),
+            "generic.attackDamage",
+            13,
+            AttributeModifier.Operation.ADD_NUMBER,
+            EquipmentSlot.HAND
+        ));
+
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
         ENERGY_BLADE.setItemMeta(meta);
 
         // Sets the attack speed to match that of a sword
@@ -277,11 +303,6 @@ public final class Items {
             AttributeModifier.Operation.ADD_NUMBER,
             EquipmentSlot.HAND
         ));
-
-        List<String> lore = meta.getLore();
-        lore.add(ChatColor.DARK_GREEN + " 9 Attack Damage");
-        lore.add(ChatColor.DARK_GREEN + " 1.6 Attack Speed");
-        meta.setLore(lore);
 
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 

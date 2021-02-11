@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.items.Bullet;
+import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
@@ -64,8 +65,8 @@ public final class Setup {
         }).register(addon);
 
         new SlimefunItem(Categories.MELEE, Items.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            new ItemStack(Material.IRON_AXE), new ItemStack(Material.STICK), new ItemStack(Material.IRON_AXE),
-            null, new ItemStack(Material.STICK), null,
+            new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
+            new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
             null, new ItemStack(Material.STICK), null
         }).register(addon);
 
@@ -83,6 +84,9 @@ public final class Setup {
         }).register(addon);
 
         new EnergyBlade().register(addon);
+
+        // Misc
+        new Dummy().register(addon);
     }
 
     static void setupBullets(SlimefunWarfare addon) {
