@@ -55,7 +55,8 @@ public final class Explosives {
         "&fFLOX",
         "",
         "&7Fuel + liquid oxygen. Right click to go to space",
-        "&cMAKE SURE TO DOUBLE TAP SPACE BAR WHEN TELEPORTED TO KEEP FROM FALLING"
+        "&cMAKE SURE TO DOUBLE TAP SPACE BAR WHEN",
+        "&cTELEPORTED TO KEEP FROM FALLING"
     );
 
     public static final SlimefunItemStack THIOACETONE = new SlimefunItemStack(
