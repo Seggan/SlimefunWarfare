@@ -34,4 +34,9 @@ public final class RecipeTypes {
         new NamespacedKey(SlimefunWarfare.getInstance(), "explosive_synthesizer"),
         Items.EXPLOSIVE_SYNTHESIZER
     );
+
+    public static final RecipeType BOOMINATOR = new RecipeType(
+        new NamespacedKey(SlimefunWarfare.getInstance(), "boominator_9000"),
+        Items.BOOMINATOR_9000
+    );
 }

@@ -94,6 +94,14 @@ public final class Melee {
             EquipmentSlot.HAND
         ));
 
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(
+            UUID.randomUUID(),
+            "generic.attackDamage",
+            8,
+            AttributeModifier.Operation.ADD_NUMBER,
+            EquipmentSlot.HAND
+        ));
+
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         BATTLE_AXE.setItemMeta(meta);

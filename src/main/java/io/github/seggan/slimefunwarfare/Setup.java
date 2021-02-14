@@ -86,7 +86,7 @@ public final class Setup {
             Items.OSMIUM_INGOT, Items.SEGGANESSON, Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_ALLOY_INGOT,
             Items.OSMIUM_DUST, null, null,
             null, null, null
-        });
+        }).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.ENERGY_RECTIFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.OSMIUM_SUPERALLOY, SlimefunItems.CARBONADO_EDGED_CAPACITOR, Items.OSMIUM_SUPERALLOY,
@@ -251,6 +251,13 @@ public final class Setup {
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
             new ItemStack(Material.TNT), null, null,
+            null, null, null,
+            null, null, null
+        }, new SlimefunItemStack(Explosives.PYRO_POWDER, 4)).register(addon);
+
+        new SlimefunItem(
+            Categories.EXPLOSIVES, Explosives.ENRICHED_URANIUM, RecipeTypes.BOOMINATOR, new ItemStack[]{
+            SlimefunItems.BOOSTED_URANIUM, null, null,
             null, null, null,
             null, null, null
         }, new SlimefunItemStack(Explosives.PYRO_POWDER, 4)).register(addon);
