@@ -260,7 +260,7 @@ public final class Setup {
             SlimefunItems.BOOSTED_URANIUM, null, null,
             null, null, null,
             null, null, null
-        }, new SlimefunItemStack(Explosives.PYRO_POWDER, 4)).register(addon);
+        }).register(addon);
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Explosives.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
