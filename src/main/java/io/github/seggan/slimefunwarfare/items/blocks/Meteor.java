@@ -34,7 +34,7 @@ public class Meteor extends SlimefunItem {
 
                     for (int i = 0; i < fortune; i++) {
                         if (ThreadLocalRandom.current().nextBoolean()) {
-                            drops.add(itemStack.clone());
+                            drops.add(stack.clone());
                         }
                     }
                 }
