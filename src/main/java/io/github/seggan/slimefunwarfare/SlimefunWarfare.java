@@ -40,7 +40,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         saveDefaultConfig();
 
         UpdaterService updater = SlimefunPlugin.getUpdater();
-        if (!(updater.getBranch() == SlimefunBranch.STABLE && updater.getBuildNumber() > 819)) {
+        if (updater.getBranch() != SlimefunBranch.DEVELOPMENT || updater.getBuildNumber() < 820) {
             this.getLogger().log(Level.SEVERE, "You are using a version of Slimefun that doesn't support this SlimefunWarfare version! Please use Slimefun version 820 or above.");
             this.getServer().getPluginManager().disablePlugin(this);
         }
