@@ -22,6 +22,7 @@ import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
+import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
@@ -69,7 +70,7 @@ public final class Setup {
 
     static void setupMelee(SlimefunWarfare addon) {
 
-        new SlimefunItem(Categories.MELEE, Melee.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        new UnplaceableBlock(Categories.MELEE, Melee.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
             new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
             null, new ItemStack(Material.STICK), null
