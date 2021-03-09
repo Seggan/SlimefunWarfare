@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -39,7 +40,12 @@ public class SpaceListener implements Listener {
             loc.getX(),
             overworld.getMaxHeight() + 10,
             loc.getZ()
-        ), PlayerTeleportEvent.TeleportCause.PLUGIN);
+        ), PlayerTeleportEvent.TeleportCause.PLUGIN).thenAccept((b) -> {
+            if (entity instanceof Player) {
+                ((Player) entity).setFlying(false);
+                ((Player) entity).setAllowFlight(false);
+            }
+        });
     }
 
 //    @EventHandler
