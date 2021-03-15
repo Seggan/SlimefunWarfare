@@ -10,8 +10,6 @@ import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.core.services.UpdaterService;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -25,7 +23,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
-import java.util.logging.Level;
 
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
@@ -38,12 +35,6 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-
-        UpdaterService updater = SlimefunPlugin.getUpdater();
-        if (updater.getBranch() != SlimefunBranch.DEVELOPMENT || updater.getBuildNumber() < 820) {
-            this.getLogger().log(Level.SEVERE, "You are using a version of Slimefun that doesn't support this SlimefunWarfare version! Please use Slimefun version 820 or above.");
-            this.getServer().getPluginManager().disablePlugin(this);
-        }
 
         getServer().getPluginManager().registerEvents(new BulletListener(), this);
         getServer().getPluginManager().registerEvents(new PyroListener(), this);
