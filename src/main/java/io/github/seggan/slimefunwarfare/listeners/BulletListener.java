@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
+import io.github.mooy1.infinitylib.core.ConfigUtils;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
@@ -35,9 +36,7 @@ public class BulletListener implements Listener {
                 }
 
                 if (bullet instanceof ShulkerBullet && shot instanceof LivingEntity) {
-                    Bukkit.getScheduler().runTaskLater(SlimefunWarfare.getInstance(), () -> {
-                        ((LivingEntity) shot).removePotionEffect(PotionEffectType.LEVITATION);
-                    }, 1);
+                    Bukkit.getScheduler().runTaskLater(SlimefunWarfare.getInstance(), () -> ((LivingEntity) shot).removePotionEffect(PotionEffectType.LEVITATION), 1);
                 }
             } else {
                 e.setCancelled(true);
@@ -52,7 +51,7 @@ public class BulletListener implements Listener {
 
         if (!(entity instanceof ShulkerBullet) || b == null) return;
 
-        if (e.getEntity().hasMetadata("isGunBullet")) {
+        if (e.getEntity().hasMetadata("isGunBullet") && ConfigUtils.getBoolean("guns.energy-rifle-explosions", true)) {
             b.getWorld().createExplosion(b.getLocation(), 1F);
         }
     }
