@@ -6,8 +6,6 @@ import io.github.seggan.slimefunwarfare.lists.items.Guns;
 import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.ShulkerBullet;
 import org.bukkit.inventory.ItemStack;
@@ -25,23 +23,7 @@ public class EnergyRifle extends Gun implements Rechargeable {
     }
 
     @Override
-    public void shoot(Player p) {
-
-        ItemStack gun = p.getInventory().getItemInMainHand();
-        if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
-            return;
-        }
-
-        Long lastUse = this.getLAST_USES().get(p.getUniqueId());
-        long currentTime = System.currentTimeMillis();
-        if (lastUse != null) {
-            if ((currentTime - lastUse) < this.getCooldown()) {
-                p.sendMessage(ChatColor.RED + "The gun is still reloading!");
-                return;
-            }
-        }
-        this.getLAST_USES().put(p.getUniqueId(), currentTime);
-
+    public void shoot(Player p, ItemStack gun) {
         if (getItemCharge(gun) < 5) {
             return;
         } else {
