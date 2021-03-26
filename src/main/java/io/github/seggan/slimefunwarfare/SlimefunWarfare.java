@@ -1,5 +1,7 @@
 package io.github.seggan.slimefunwarfare;
 
+import io.github.mooy1.infinitylib.core.ConfigUtils;
+import io.github.mooy1.infinitylib.core.PluginUtils;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.listeners.BetterExplosiveListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
@@ -13,47 +15,36 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.UUID;
 
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
     @Getter
     private static SlimefunWarfare instance = null;
 
-    @Getter
-    private static ConfigSettings configSettings = null;
-
     @Override
     public void onEnable() {
-        saveDefaultConfig();
-
-        getServer().getPluginManager().registerEvents(new BulletListener(), this);
-        getServer().getPluginManager().registerEvents(new PyroListener(), this);
-        getServer().getPluginManager().registerEvents(new GrenadeListener(), this);
-        getServer().getPluginManager().registerEvents(new ConcreteListener(), this);
-        getServer().getPluginManager().registerEvents(new BetterExplosiveListener(), this);
-        getServer().getPluginManager().registerEvents(new SpaceListener(), this);
-        getServer().getPluginManager().registerEvents(new HitListener(), this);
-
         instance = this;
 
-        new Metrics(this, 9227);
+        PluginUtils.setup("SlimefunWarfare", this, "Seggan/SlimefunWarfare/master", getFile());
+        PluginUtils.setupMetrics(9227);
 
-        if (getConfig().getBoolean("auto-updates") && getDescription().getVersion().startsWith("DEV - ")) {
-            new GitHubBuildsUpdater(this, getFile(), "Seggan/SlimefunWarfare/master").start();
-        }
-
-        configSettings = new ConfigSettings(this);
-        configSettings.loadConfig();
+        PluginUtils.registerListener(new BulletListener());
+        PluginUtils.registerListener(new PyroListener());
+        PluginUtils.registerListener(new GrenadeListener());
+        PluginUtils.registerListener(new ConcreteListener());
+        PluginUtils.registerListener(new BetterExplosiveListener());
+        PluginUtils.registerListener(new SpaceListener());
+        PluginUtils.registerListener(new HitListener());
 
         Setup.setupItems(this);
         Setup.setupMelee(this);
@@ -81,25 +72,27 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
             space.setTime(18000L);
         }
 
-        if (configSettings.isAutoshoot()) {
+        if (ConfigUtils.getBoolean("guns.autoshoot", true)) {
             // Gun autoshoot task
             Bukkit.getScheduler().runTaskTimer(this, () -> {
                 for (Player p : getServer().getOnlinePlayers()) {
                     if (p.isSneaking() && !p.isFlying()) {
-                        SlimefunItem item = SlimefunItem.getByItem(p.getInventory().getItemInMainHand());
+                        ItemStack stack = p.getInventory().getItemInMainHand();
+                        SlimefunItem item = SlimefunItem.getByItem(stack);
                         if (!(item instanceof Gun)) {
                             continue;
                         }
-                        UUID uuid = p.getUniqueId();
                         Gun gun = (Gun) item;
-                        Long lastUse = gun.getLAST_USES().get(uuid);
-                        long time = System.currentTimeMillis();
-                        if (lastUse != null) {
-                            if ((time - lastUse) < gun.getCooldown()) {
-                                continue;
-                            }
+                        ItemMeta meta = stack.getItemMeta();
+                        PersistentDataContainer container = meta.getPersistentDataContainer();
+                        long lastUse = container.getOrDefault(Gun.LAST_USE, PersistentDataType.LONG, 0L);
+                        long currentTime = System.currentTimeMillis();
+                        if ((currentTime - lastUse) < gun.getCooldown()) {
+                            return;
                         }
-                        gun.shoot(p);
+                        container.set(Gun.LAST_USE, PersistentDataType.LONG, currentTime);
+                        stack.setItemMeta(meta);
+                        gun.shoot(p, stack);
                     }
                 }
             }, 0, 1);

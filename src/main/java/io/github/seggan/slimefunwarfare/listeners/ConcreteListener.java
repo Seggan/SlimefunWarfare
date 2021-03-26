@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.core.ConfigUtils;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -27,7 +27,7 @@ public class ConcreteListener implements Listener {
             EXPLOSIONS.remove(location);
         } else {
             Random random = ThreadLocalRandom.current();
-            int percentChance = SlimefunWarfare.getConfigSettings().getConcreteExplodePercent();
+            int percentChance = ConfigUtils.getInt("explosions.concrete-explode-chance", 1, 100, 10);
             Iterator<Block> iter = e.blockList().iterator();
 
             while (iter.hasNext()) {
@@ -50,7 +50,7 @@ public class ConcreteListener implements Listener {
                 entity.getMetadata("setFire").get(0).asBoolean());
         } else {
             Random random = ThreadLocalRandom.current();
-            int percentChance = SlimefunWarfare.getConfigSettings().getConcreteExplodePercent();
+            int percentChance = ConfigUtils.getInt("explosions.concrete-explode-chance", 1, 100, 10);
             Iterator<Block> iter = e.blockList().iterator();
 
             while (iter.hasNext()) {

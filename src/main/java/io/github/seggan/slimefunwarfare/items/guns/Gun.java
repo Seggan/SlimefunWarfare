@@ -1,5 +1,7 @@
 package io.github.seggan.slimefunwarfare.items.guns;
 
+import io.github.mooy1.infinitylib.core.ConfigUtils;
+import io.github.mooy1.infinitylib.core.PluginUtils;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.items.Bullet;
@@ -12,20 +14,21 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
-
-import java.util.HashMap;
-import java.util.UUID;
 
 @Getter
 public class Gun extends SlimefunItem implements DamageableItem {
 
-    private final HashMap<UUID, Long> LAST_USES = new HashMap<>();
+    public static final NamespacedKey LAST_USE = PluginUtils.getKey("last_use");
 
     private final int range;
     private final int minRange;
@@ -47,7 +50,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
         super(Categories.GUNS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 
         this.range = range;
-        this.minRange = SlimefunWarfare.getConfigSettings().isMinRangeOn() ? minRange : 0;
+        this.minRange = ConfigUtils.getBoolean("guns.min-range-on", true) ? minRange : 0;
         damageDealt = damage;
         this.cooldown = (int) (cooldown * 1000);
 
@@ -58,28 +61,27 @@ public class Gun extends SlimefunItem implements DamageableItem {
         return e -> {
             e.cancel();
             Player p = e.getPlayer();
-            shoot(p);
-        };
-    }
+            ItemStack gun = p.getInventory().getItemInMainHand();
+            if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
+                return;
+            }
 
-    public void shoot(Player p) {
-
-        PlayerInventory inv = p.getInventory();
-
-        ItemStack gun = inv.getItemInMainHand();
-        if (!(SlimefunItem.getByItem(gun) instanceof Gun)) {
-            return;
-        }
-
-        Long lastUse = LAST_USES.get(p.getUniqueId());
-        long currentTime = System.currentTimeMillis();
-        if (lastUse != null) {
+            ItemMeta meta = gun.getItemMeta();
+            PersistentDataContainer container = meta.getPersistentDataContainer();
+            long lastUse = container.getOrDefault(Gun.LAST_USE, PersistentDataType.LONG, 0L);
+            long currentTime = System.currentTimeMillis();
             if ((currentTime - lastUse) < cooldown) {
                 p.sendMessage(ChatColor.RED + "The gun is still reloading!");
                 return;
             }
-        }
-        LAST_USES.put(p.getUniqueId(), currentTime);
+            container.set(LAST_USE, PersistentDataType.LONG, currentTime);
+            gun.setItemMeta(meta);
+            shoot(p, gun);
+        };
+    }
+
+    public void shoot(Player p, ItemStack gun) {
+        PlayerInventory inv = p.getInventory();
 
         double multiplier;
         boolean isFire;
@@ -94,7 +96,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
                 inv.setItemInOffHand(stack);
                 break bulletLoop;
             } else {
-                if (SlimefunWarfare.getConfigSettings().isUseBulletsFromInv()) {
+                if (ConfigUtils.getBoolean("guns.use-bullets-from-inv", true)) {
                     for (int i = 0; i < inv.getSize(); i++) {
                         stack = inv.getItem(i);
                         item = SlimefunItem.getByItem(stack);
@@ -102,7 +104,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
                             Bullet bullet = (Bullet) item;
                             multiplier = bullet.getMultiplier();
                             isFire = bullet.isFire();
-                            ItemUtils.consumeItem(stack, false); // idk the replaceConsumables thing
+                            ItemUtils.consumeItem(stack, true);
                             break bulletLoop;
                         }
                     }
