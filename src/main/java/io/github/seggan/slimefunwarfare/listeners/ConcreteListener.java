@@ -43,11 +43,11 @@ public class ConcreteListener implements Listener {
     @EventHandler
     public void onEntityExplodeConcrete(EntityExplodeEvent e) {
         Entity entity = e.getEntity();
-        if (entity.hasMetadata("isBetterExplosive")) {
+        if (entity.hasMetadata("isNuke")) {
             e.setCancelled(true);
             EXPLOSIONS.add(e.getLocation());
             entity.getWorld().createExplosion(e.getLocation(), entity.getMetadata("rad").get(0).asFloat(),
-                entity.getMetadata("setFire").get(0).asBoolean());
+                true);
         } else {
             Random random = ThreadLocalRandom.current();
             int percentChance = ConfigUtils.getInt("explosions.concrete-explode-chance", 1, 100, 10);
