@@ -10,6 +10,10 @@ import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
+import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
+import io.github.seggan.slimefunwarfare.items.powersuits.ElementForge;
+import io.github.seggan.slimefunwarfare.items.powersuits.ModuleManipulator;
+import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
 import io.github.seggan.slimefunwarfare.lists.items.Explosives;
@@ -66,6 +70,8 @@ public final class Setup {
             Items.BARREL, Items.BARREL, Items.BARREL,
             Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL, Items.REINFORCED_SLIMESTEEL
         }).register(addon);
+
+        new ElementForge(Categories.POWER_SUITS, Items.ELEMENT_FORGE).register(addon);
     }
 
     static void setupMelee(SlimefunWarfare addon) {
@@ -307,5 +313,51 @@ public final class Setup {
             null, null, null,
             null, null, null
         }).register(addon);
+    }
+
+    public static void setupSuits(SlimefunWarfare addon) {
+        new SlimefunItem(Categories.RESOURCES, Items.UNPATENTABLIUM, RecipeTypes.ELEMENT_FORGE, new ItemStack[]{
+            Items.SEGGANESSON, Explosives.ARSENIC, Items.SEGGANESSON,
+            Items.SEGGANESSON, Items.OSMIUM_INGOT, Items.SEGGANESSON,
+            Items.SEGGANESSON, Explosives.ARSENIC, Items.SEGGANESSON
+        }).register(addon);
+
+        new SlimefunItem(Categories.POWER_SUITS, Items.POWER_SUIT_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            Items.UNPATENTABLIUM, Items.UNPATENTABLIUM, Items.UNPATENTABLIUM,
+            Items.UNPATENTABLIUM, SlimefunItems.NETHER_STAR_REACTOR, Items.UNPATENTABLIUM,
+            Items.UNPATENTABLIUM, Items.UNPATENTABLIUM, Items.UNPATENTABLIUM
+        }).register(addon);
+
+        new SlimefunItem(Categories.POWER_SUITS, Items.MODULE_CASE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            null, Items.OSMIUM_INGOT, null,
+            Items.OSMIUM_INGOT, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_INGOT,
+            null, Items.OSMIUM_INGOT, null
+        }).register(addon);
+
+        new PowerSuit(Items.POWER_SUIT_HELMET, new ItemStack[]{
+            SlimefunItems.ADVANCED_CIRCUIT_BOARD, Items.POWER_SUIT_GENERATOR, SlimefunItems.ADVANCED_CIRCUIT_BOARD,
+            SlimefunItems.REINFORCED_PLATE, SlimefunItems.SCUBA_HELMET, SlimefunItems.REINFORCED_PLATE,
+            Items.OSMIUM_SUPERALLOY, Items.OSMIUM_SUPERALLOY, Items.OSMIUM_SUPERALLOY
+        }, ArmorPiece.HEAD).register(addon);
+
+        new PowerSuit(Items.POWER_SUIT_CHESTPLATE, new ItemStack[] {
+            Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
+            Items.POWER_SUIT_GENERATOR, SlimefunItems.HAZMAT_CHESTPLATE, Items.POWER_SUIT_GENERATOR,
+            SlimefunItems.BLISTERING_INGOT_3, Items.SEGGANESSON, SlimefunItems.BLISTERING_INGOT_3
+        }, ArmorPiece.CHEST).register(addon);
+
+        new PowerSuit(Items.POWER_SUIT_LEGGINGS, new ItemStack[]{
+            SlimefunItems.ELECTRIC_MOTOR, Items.POWER_SUIT_GENERATOR, SlimefunItems.ELECTRIC_MOTOR,
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.HAZMAT_LEGGINGS, Items.OSMIUM_SUPERALLOY,
+            Items.OSMIUM_SUPERALLOY, null, Items.OSMIUM_SUPERALLOY
+        }, ArmorPiece.LEGS).register(addon);
+
+        new PowerSuit(Items.POWER_SUIT_BOOTS, new ItemStack[]{
+            null, null, null,
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.HAZMAT_BOOTS, Items.OSMIUM_SUPERALLOY,
+            Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY
+        }, ArmorPiece.FEET).register(addon);
+
+        new ModuleManipulator().register(addon);
     }
 }

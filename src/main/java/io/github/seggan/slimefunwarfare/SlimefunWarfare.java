@@ -3,13 +3,17 @@ package io.github.seggan.slimefunwarfare;
 import io.github.mooy1.infinitylib.core.ConfigUtils;
 import io.github.mooy1.infinitylib.core.PluginUtils;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
+import io.github.seggan.slimefunwarfare.items.powersuits.Module;
+import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
 import io.github.seggan.slimefunwarfare.listeners.BetterExplosiveListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
 import io.github.seggan.slimefunwarfare.listeners.HitListener;
+import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
+import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
@@ -25,6 +29,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
 
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
@@ -45,6 +50,9 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         PluginUtils.registerListener(new BetterExplosiveListener());
         PluginUtils.registerListener(new SpaceListener());
         PluginUtils.registerListener(new HitListener());
+        PluginUtils.registerListener(new ModuleListener());
+
+        Categories.setup(this);
 
         Setup.setupItems(this);
         Setup.setupMelee(this);
@@ -52,6 +60,9 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         Setup.setupGuns(this);
         Setup.setupExplosives(this);
         Setup.setupSpace(this);
+        Setup.setupSuits(this);
+
+        Module.setup(this);
 
         for (World world : Bukkit.getWorlds()) {
             String name = world.getName();
@@ -74,7 +85,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
         if (ConfigUtils.getBoolean("guns.autoshoot", true)) {
             // Gun autoshoot task
-            Bukkit.getScheduler().runTaskTimer(this, () -> {
+            PluginUtils.scheduleRepeatingSync(() -> {
                 for (Player p : getServer().getOnlinePlayers()) {
                     if (p.isSneaking() && !p.isFlying()) {
                         ItemStack stack = p.getInventory().getItemInMainHand();
@@ -95,8 +106,30 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
                         gun.shoot(p, stack);
                     }
                 }
-            }, 0, 1);
+            },1);
         }
+
+        PluginUtils.scheduleRepeatingSync(() -> {
+            for (Player p : getServer().getOnlinePlayers()) {
+                for (ItemStack stack : p.getInventory().getArmorContents()) {
+                    SlimefunItem sfi = SlimefunItem.getByItem(stack);
+                    if (sfi instanceof PowerSuit) {
+                        PowerSuit suit = (PowerSuit) sfi;
+                        for (Module module : PowerSuit.getModules(stack)) {
+                            PotionEffect effect = module.getEffect();
+                            if (effect != null) {
+                                p.addPotionEffect(effect);
+                            }
+
+                            module.moreEffects(p, stack);
+
+                            suit.addItemCharge(stack, 10);
+                            suit.removeItemCharge(stack, module.getPower());
+                        }
+                    }
+                }
+            }
+        }, 20);
     }
 
     @Override

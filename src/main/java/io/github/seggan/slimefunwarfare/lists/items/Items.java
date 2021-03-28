@@ -1,10 +1,11 @@
 package io.github.seggan.slimefunwarfare.lists.items;
 
+import io.github.seggan.slimefunwarfare.lists.Heads;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
-import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.bukkit.Color;
 import org.bukkit.Material;
 
 public final class Items {
@@ -196,5 +197,91 @@ public final class Items {
         "&bEnergy Rectifier",
         "",
         "&7Converts electricity into pure energy"
+    );
+
+    public static final SlimefunItemStack UNPATENTABLIUM = new SlimefunItemStack(
+        "UNPATENTABLIUM",
+        Material.LIGHT_BLUE_DYE,
+        "&bUnpatentablium",
+        "",
+        "&7For some reason, the",
+        "&7Feds wouldn't let you",
+        "&7patent this powerful",
+        "&7power source"
+    );
+
+    public static final SlimefunItemStack POWER_SUIT_GENERATOR = new SlimefunItemStack(
+        "POWER_SUIT_GENERATOR",
+        "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTFkNWExZmY3Zjk3NmMxYzJlYmQ0ZWY5YTkwYWQ5MTQ2Nzk1YzFjNDRmZGFlNjI5NjQ5NDg0MzRhNzI1NyJ9fX0=",
+        "&6Power Suit Generator",
+        "",
+        "&7The central power",
+        "&7source of any power",
+        "&7suit"
+    );
+
+    public static final SlimefunItemStack ELEMENT_FORGE = new SlimefunItemStack(
+        "ELEMENT_FORGE",
+        Material.SMITHING_TABLE,
+        "&cElement Forge",
+        "",
+        "&7Used to create new elements",
+        "&cMultiblock Structure"
+    );
+
+    public static final SlimefunItemStack POWER_SUIT_HELMET = new SlimefunItemStack(
+        "POWER_SUIT_HELMET",
+        Heads.SUIT_HELMET,
+        "&4Power Suit Helmet",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerCharged(0, 1000)
+    );
+    public static final SlimefunItemStack POWER_SUIT_CHESTPLATE = new SlimefunItemStack(
+        "POWER_SUIT_CHESTPLATE",
+        Material.LEATHER_CHESTPLATE, Color.MAROON,
+        "&4Power Suit Chestplate",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerCharged(0, 1000)
+    );
+    public static final SlimefunItemStack POWER_SUIT_LEGGINGS = new SlimefunItemStack(
+        "POWER_SUIT_LEGGINGS",
+        Material.LEATHER_LEGGINGS, Color.MAROON,
+        "&4Power Suit Leggings",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerCharged(0, 1000)
+    );
+    public static final SlimefunItemStack POWER_SUIT_BOOTS = new SlimefunItemStack(
+        "POWER_SUIT_BOOTS",
+        Material.LEATHER_BOOTS, Color.MAROON,
+        "&4Power Suit Boots",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerCharged(0, 1000)
+    );
+
+    public static final SlimefunItemStack MODULE_MANIPULATOR = new SlimefunItemStack(
+        "MODULE_MANIPULATOR",
+        Material.CRAFTING_TABLE,
+        "&fModule Manipulator",
+        "",
+        "&7Allows you to install, uninstall",
+        "&7and view modules"
+    );
+
+    public static final SlimefunItemStack MODULE_CASE = new SlimefunItemStack(
+        "MODULE_CASE",
+        Heads.MODULE,
+        "&6Module Case"
     );
 }

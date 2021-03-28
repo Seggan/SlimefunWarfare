@@ -1,16 +1,17 @@
 package io.github.seggan.slimefunwarfare;
 
-import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+
+import javax.annotation.Nonnull;
 
 public final class Util {
 
     private Util() {}
 
-    @NonNull
-    public static Location deserializeLocation(@NonNull String s) {
+    @Nonnull
+    public static Location deserializeLocation(@Nonnull String s) {
         if (s == null || s.trim().equals("")) {
             throw new IllegalArgumentException("Invalid location deserialization parameter, got " + s);
         }
@@ -28,8 +29,8 @@ public final class Util {
         throw new IllegalArgumentException("Invalid location deserialization parameter, got " + s);
     }
 
-    @NonNull
-    public static String serializeLocation(@NonNull Location loc) {
+    @Nonnull
+    public static String serializeLocation(@Nonnull Location loc) {
         return loc.getWorld().getName() +
             ":" + loc.getX() +
             ":" + loc.getY() +
