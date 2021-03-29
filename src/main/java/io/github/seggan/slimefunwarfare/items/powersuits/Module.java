@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
+import io.github.mooy1.infinitylib.core.ConfigUtils;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
@@ -11,6 +12,7 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -25,36 +27,52 @@ import java.util.List;
 import java.util.Map;
 
 public enum Module {
-    NANOFIBER_CUSHION(0, "Nanofober Cushion", new ArmorPiece[]{ArmorPiece.FEET}, new ItemStack[]{
+    NANOFIBER_CUSHION(0, "Nanofober Cushion", ArmorPiece.FEET, new ItemStack[]{
         new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
         Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
         new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
     }, 5, "&7This module keeps you from", "&7taking fall damage"),
-    MINI_JETS(1, "Mini Jets", new ArmorPiece[]{ArmorPiece.FEET}, new ItemStack[]{
+    MINI_JETS(1, "Mini Jets", ArmorPiece.FEET, new ItemStack[]{
         Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY,
         SlimefunItems.STEEL_THRUSTER, Items.MODULE_CASE, SlimefunItems.STEEL_THRUSTER,
         Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY
-    }, 8),
-    LIFE_SUPPORT(2, "Life Support Sysc d etems", PotionEffectType.REGENERATION, 2, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+    }, 8, "&7Gives you creative flight"),
+    LIFE_SUPPORT(2, "Life Support Systems", PotionEffectType.REGENERATION, 2, ArmorPiece.CHEST, new ItemStack[]{
         SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE,
         Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
         SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE
-    }, 1),
-    HEAT_SINKS(3, "Heat Sinks", PotionEffectType.FIRE_RESISTANCE, 0, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+    }, 5),
+    HEAT_SINKS(3, "Heat Sinks", PotionEffectType.FIRE_RESISTANCE, 0, ArmorPiece.CHEST, new ItemStack[]{
         new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM),
         Items.OSMIUM_INGOT, Items.MODULE_CASE, Items.OSMIUM_INGOT,
         new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM)
     }, 1),
-    HYDRAULICS(4, "Integrated Hydraulics", PotionEffectType.INCREASE_DAMAGE, 1, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+    HYDRAULICS(4, "Integrated Hydraulics", PotionEffectType.INCREASE_DAMAGE, 1, ArmorPiece.CHEST, new ItemStack[]{
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
         SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
-    }, 1, "&7These integrated hydraulics make", "&7you much stronger"),
-    REACTION_WHEELS(5, "Reaction Wheels", new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+    }, 3),
+    REACTION_WHEELS(5, "Reaction Wheels", ArmorPiece.LEGS, new ItemStack[]{
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
         SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
-    }, 1)
+    }, 5, "&7This module makes you", "&7sprint faster"),
+    ENERGY_SHIELD(6, "Personal Energy Shield", ArmorPiece.CHEST, new ItemStack[]{
+        Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM,
+        Items.POWER_SUIT_GENERATOR, Items.MODULE_CASE, Items.POWER_SUIT_GENERATOR,
+        Items.ENERGY_RECTIFIER, Items.SEGGANESSON, Items.ENERGY_RECTIFIER
+    }, 3, "&7This module has a",
+        "&7" + ConfigUtils.getInt("suits.energy-shield-chance", 0, 100, 90) +
+            "% chance of deflecting",
+        "&7kinetic damage. See the",
+        "&7README for the definition of",
+        "&7kinetic damage"
+    ),
+    AQUAMASK(7, "AquaMask™", PotionEffectType.CONDUIT_POWER, 0, ArmorPiece.HEAD, new ItemStack[]{
+        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH),
+        Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
+        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH)
+    }, 2)
 
     ;
     @Getter
@@ -62,7 +80,7 @@ public enum Module {
     private final PotionEffect effect;
     @Getter
     @Nonnull
-    private final ArmorPiece[] allowed;
+    private final ArmorPiece allowed;
     @Getter
     @Nonnull
     private final SlimefunItemStack item;
@@ -82,12 +100,12 @@ public enum Module {
         }
     }
 
-    Module(int id, @Nonnull String name, @Nullable PotionEffectType effect, int level, @Nonnull ArmorPiece[] allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
+    Module(int id, @Nonnull String name, @Nullable PotionEffectType effect, int level, @Nonnull ArmorPiece allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
         this.id = id;
         this.allowed = allowed;
         this.power = power;
         if (effect != null) {
-            this.effect = new PotionEffect(effect, 20, level, false, false, false);
+            this.effect = new PotionEffect(effect, 21, level, false, false, false);
         } else {
             this.effect = null;
         }
@@ -99,13 +117,9 @@ public enum Module {
         }
         loreList.add("");
         if (effect != null) {
-            loreList.add(String.format("&7Effect: %s %d", effect.getName(), level + 1));
+            loreList.add(String.format("&7Effect: &a%s %d", WordUtils.capitalizeFully(effect.getName().replace('_', ' ')), level + 1));
         }
-        String[] pieces = new String[allowed.length];
-        for (int i = 0; i < allowed.length; i++) {
-            pieces[i] = allowed[i].toString();
-        }
-        loreList.add("&7Install on " + String.join(", ", pieces));
+        loreList.add("&7Install on " + allowed.toString());
         loreList.add(String.format("&eUses %dJ", power));
 
         this.item = new SlimefunItemStack(
@@ -116,7 +130,7 @@ public enum Module {
         );
     }
 
-    Module(int id, @Nonnull String name, ArmorPiece[] allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
+    Module(int id, @Nonnull String name, ArmorPiece allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
         this(id, name, null, 0, allowed, recipe, power, lore);
     }
 

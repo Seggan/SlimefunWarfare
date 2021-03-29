@@ -20,7 +20,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ModuleManipulator extends AbstractContainer {
@@ -97,7 +96,7 @@ public class ModuleManipulator extends AbstractContainer {
         if (slimefunItem instanceof Module.ModuleItem) {
             Module.ModuleItem module = (Module.ModuleItem) slimefunItem;
 
-            if (Arrays.asList(module.getModule().getAllowed()).contains(powerSuit.getType())) {
+            if (module.getModule().getAllowed() == powerSuit.getType()) {
                 PowerSuit.addModule(stack, module.getModule());
 
                 menu.pushItem(stack, OUTPUT_SLOTS);

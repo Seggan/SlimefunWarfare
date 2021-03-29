@@ -18,3 +18,9 @@ space:
   meteor-spawn-rate: 20
   meteors-per-chunk: 1
   segganesson-chance: 15
+
+suits:
+  # This will spawn blue particles underneath you when flying with a power suit
+  flight-particles: true
+  # The chance for the Personal Energy Shield to deflect kinetic damage
+  energy-shield-chance: 90

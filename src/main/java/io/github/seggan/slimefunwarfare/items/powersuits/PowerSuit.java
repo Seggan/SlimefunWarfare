@@ -11,6 +11,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -28,6 +29,12 @@ public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Recharge
     public PowerSuit(SlimefunItemStack item, ItemStack[] recipe, ArmorPiece type) {
         super(Categories.POWER_SUITS, item, RecipeType.ARMOR_FORGE, recipe);
         this.type = type;
+
+        ItemMeta meta = this.getItem().getItemMeta();
+        meta.setUnbreakable(true);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addItemFlags(ItemFlag.HIDE_DYE);
+        this.getItem().setItemMeta(meta);
     }
 
     @Nonnull

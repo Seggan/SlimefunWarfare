@@ -17,6 +17,7 @@ import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
+import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.utils.ChargeUtils;
@@ -24,6 +25,7 @@ import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
+import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
@@ -128,9 +130,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
             for (Player p : getServer().getOnlinePlayers()) {
                 UUID uuid = p.getUniqueId();
                 for (ItemStack stack : p.getInventory().getArmorContents()) {
-                    SlimefunItem sfi = SlimefunItem.getByItem(stack);
-                    if (sfi instanceof PowerSuit) {
-                        PowerSuit suit = (PowerSuit) sfi;
+                    Util.ifPowerSuit(stack, suit -> {
                         for (Module module : PowerSuit.getModules(stack)) {
                             ItemMeta im = stack.getItemMeta();
 
@@ -162,23 +162,26 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
 
                             suit.addItemCharge(stack, 10);
                         }
-                    }
+                    });
                 }
             }
         }, 20);
 
-        PluginUtils.scheduleRepeatingSync(() -> {
-            for (UUID uuid : flying) {
-                Player p = getServer().getPlayer(uuid);
-                if (p == null) {
-                    flying.remove(uuid);
-                    return;
+        if (SlimefunPlugin.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_16) &&
+            ConfigUtils.getBoolean("suits.flight-particles", true)) {
+            PluginUtils.scheduleRepeatingSync(() -> {
+                for (UUID uuid : flying) {
+                    Player p = getServer().getPlayer(uuid);
+                    if (p == null) {
+                        flying.remove(uuid);
+                        return;
+                    }
+                    if (p.isFlying()) {
+                        p.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, p.getLocation().subtract(0, 1, 0), 20, 0.5, 0.5, 0.5);
+                    }
                 }
-                if (p.isFlying()) {
-
-                }
-            }
-        }, 4);
+            }, 4);
+        }
     }
 
     @EventHandler
