@@ -5,13 +5,13 @@ import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
 import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -29,7 +29,32 @@ public enum Module {
         new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
         Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
         new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
-    }, 5),
+    }, 5, "&7This module keeps you from", "&7taking fall damage"),
+    MINI_JETS(1, "Mini Jets", new ArmorPiece[]{ArmorPiece.FEET}, new ItemStack[]{
+        Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY,
+        SlimefunItems.STEEL_THRUSTER, Items.MODULE_CASE, SlimefunItems.STEEL_THRUSTER,
+        Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY
+    }, 8),
+    LIFE_SUPPORT(2, "Life Support Sysc d etems", PotionEffectType.REGENERATION, 2, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+        SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE,
+        Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
+        SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE
+    }, 1),
+    HEAT_SINKS(3, "Heat Sinks", PotionEffectType.FIRE_RESISTANCE, 0, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM),
+        Items.OSMIUM_INGOT, Items.MODULE_CASE, Items.OSMIUM_INGOT,
+        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM)
+    }, 1),
+    HYDRAULICS(4, "Integrated Hydraulics", PotionEffectType.INCREASE_DAMAGE, 1, new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
+        SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
+        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
+    }, 1, "&7These integrated hydraulics make", "&7you much stronger"),
+    REACTION_WHEELS(5, "Reaction Wheels", new ArmorPiece[]{ArmorPiece.CHEST}, new ItemStack[]{
+        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
+        SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
+        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
+    }, 1)
 
     ;
     @Getter
@@ -118,6 +143,4 @@ public enum Module {
             this.module = module;
         }
     }
-
-    public void moreEffects(Player p, ItemStack suit) {}
 }

@@ -3,6 +3,7 @@ package io.github.seggan.slimefunwarfare;
 import io.github.mooy1.infinitylib.core.ConfigUtils;
 import io.github.mooy1.infinitylib.core.PluginUtils;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
+import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
 import io.github.seggan.slimefunwarfare.listeners.BetterExplosiveListener;
@@ -31,10 +32,17 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 
+import javax.annotation.Nonnull;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
 
     @Getter
     private static SlimefunWarfare instance = null;
+
+    private static final Set<UUID> flying = new HashSet<>();
 
     @Override
     public void onEnable() {
@@ -116,15 +124,26 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
                     if (sfi instanceof PowerSuit) {
                         PowerSuit suit = (PowerSuit) sfi;
                         for (Module module : PowerSuit.getModules(stack)) {
+                            suit.addItemCharge(stack, 10);
+
                             PotionEffect effect = module.getEffect();
                             if (effect != null) {
                                 p.addPotionEffect(effect);
+                                suit.removeItemCharge(stack, module.getPower());
                             }
 
-                            module.moreEffects(p, stack);
-
-                            suit.addItemCharge(stack, 10);
-                            suit.removeItemCharge(stack, module.getPower());
+                            switch (module) {
+                                case MINI_JETS:
+                                    if (!p.getAllowFlight()) {
+                                        p.setAllowFlight(true);
+                                    }
+                                    suit.removeItemCharge(stack, module.getPower());
+                                    break;
+                                default:
+                                    if (p.getAllowFlight() && suit.getType() == ArmorPiece.LEGS) {
+                                        p.setAllowFlight(false);
+                                    }
+                            }
                         }
                     }
                 }
@@ -137,6 +156,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon {
         getLogger().info("Slimefun Warfare disabled.");
     }
 
+    @Nonnull
     public JavaPlugin getJavaPlugin() {
         return this;
     }
