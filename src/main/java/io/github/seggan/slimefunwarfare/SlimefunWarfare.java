@@ -114,7 +114,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
                         long lastUse = container.getOrDefault(Gun.LAST_USE, PersistentDataType.LONG, 0L);
                         long currentTime = System.currentTimeMillis();
                         if ((currentTime - lastUse) < gun.getCooldown()) {
-                            return;
+                            continue;
                         }
                         container.set(Gun.LAST_USE, PersistentDataType.LONG, currentTime);
                         stack.setItemMeta(meta);
