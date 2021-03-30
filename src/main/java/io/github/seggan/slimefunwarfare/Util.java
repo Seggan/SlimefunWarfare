@@ -43,9 +43,15 @@ public final class Util {
     }
 
     public static void ifPowerSuit(@Nullable ItemStack stack, @Nonnull Consumer<PowerSuit> callback) {
+        ifPowerSuit(stack, callback, () -> {});
+    }
+
+    public static void ifPowerSuit(@Nullable ItemStack stack, @Nonnull Consumer<PowerSuit> callback, @Nonnull Runnable orElse) {
         SlimefunItem sfitem = SlimefunItem.getByItem(stack);
         if (sfitem instanceof PowerSuit) {
             callback.accept((PowerSuit) sfitem);
+        } else {
+            orElse.run();
         }
     }
 }

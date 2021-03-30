@@ -38,7 +38,10 @@ public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Recharge
     }
 
     @Nonnull
-    public static Module[] getModules(@Nonnull ItemStack stack) {
+    public static Module[] getModules(@Nullable ItemStack stack) {
+        if (stack == null) {
+            return new Module[0];
+        }
         ItemMeta meta = stack.getItemMeta();
         PersistentDataContainer container = meta.getPersistentDataContainer();
         return container.getOrDefault(MODULES, PersistentModuleArray.TYPE, new Module[0]);
