@@ -10,6 +10,8 @@ import io.github.seggan.slimefunwarfare.lists.items.Guns;
 import io.github.seggan.slimefunwarfare.lists.items.Melee;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
+import org.bukkit.entity.Enderman;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
@@ -17,6 +19,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -137,7 +141,15 @@ public class ModuleListener implements Listener {
                     }
                 }
             });
+        } else if (e.getEntity() instanceof Enderman && e.getDamager() instanceof Player) {
+            ((Enderman) e.getEntity()).setTarget((Player) e.getDamager());
         }
+    }
 
+    @EventHandler
+    public void onEndermanTarget(@Nonnull EntityTargetLivingEntityEvent e) {
+        if (e.getEntity().getType() == EntityType.ENDERMAN && e.getReason() == EntityTargetEvent.TargetReason.CLOSEST_PLAYER) {
+            Util.ifPowerSuit(((Player) e.getTarget()).getInventory().getHelmet(), suit -> e.setCancelled(true));
+        }
     }
 }

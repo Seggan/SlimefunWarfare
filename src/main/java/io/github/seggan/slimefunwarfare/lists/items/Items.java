@@ -236,7 +236,7 @@ public final class Items {
         "",
         "&7A powerful piece of armor",
         "&7that is designed to be modified.",
-        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerPerSecond(5),
         LoreBuilder.powerCharged(0, 1000)
     );
     public static final SlimefunItemStack POWER_SUIT_CHESTPLATE = new SlimefunItemStack(
@@ -246,7 +246,7 @@ public final class Items {
         "",
         "&7A powerful piece of armor",
         "&7that is designed to be modified.",
-        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerPerSecond(5),
         LoreBuilder.powerCharged(0, 1000)
     );
     public static final SlimefunItemStack POWER_SUIT_LEGGINGS = new SlimefunItemStack(
@@ -256,7 +256,7 @@ public final class Items {
         "",
         "&7A powerful piece of armor",
         "&7that is designed to be modified.",
-        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerPerSecond(5),
         LoreBuilder.powerCharged(0, 1000)
     );
     public static final SlimefunItemStack POWER_SUIT_BOOTS = new SlimefunItemStack(
@@ -266,7 +266,7 @@ public final class Items {
         "",
         "&7A powerful piece of armor",
         "&7that is designed to be modified.",
-        LoreBuilder.powerPerSecond(10),
+        LoreBuilder.powerPerSecond(5),
         LoreBuilder.powerCharged(0, 1000)
     );
 

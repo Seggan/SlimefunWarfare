@@ -206,19 +206,24 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
                 suit.removeItemCharge(stack, module.getPower());
             }
 
-            if (module == Module.MINI_JETS) {
-                if (!p.getAllowFlight()) {
-                    p.setAllowFlight(true);
-                    flying.add(uuid);
-                }
-                if (p.isFlying()) {
-                    if (suit.getItemCharge(stack) < module.getPower()) {
-                        p.setAllowFlight(false);
-                        flying.remove(uuid);
-                    } else {
-                        suit.removeItemCharge(stack, module.getPower());
+            switch (module) {
+                case MINI_JETS:
+                    if (!p.getAllowFlight()) {
+                        p.setAllowFlight(true);
+                        flying.add(uuid);
                     }
-                }
+                    if (p.isFlying()) {
+                        if (suit.getItemCharge(stack) < module.getPower()) {
+                            p.setAllowFlight(false);
+                            flying.remove(uuid);
+                        } else {
+                            suit.removeItemCharge(stack, module.getPower());
+                        }
+                    }
+                    break;
+                case AUXILIARY_GENERATOR:
+                    suit.addItemCharge(stack, module.getPower());
+                    break;
             }
         }
 
@@ -227,6 +232,6 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
             flying.remove(uuid);
         }
 
-        suit.addItemCharge(stack, 10);
+        suit.addItemCharge(stack, 5);
     }
 }

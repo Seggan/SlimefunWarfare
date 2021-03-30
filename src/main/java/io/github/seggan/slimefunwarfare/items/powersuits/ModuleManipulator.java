@@ -96,7 +96,7 @@ public class ModuleManipulator extends AbstractContainer {
         if (slimefunItem instanceof Module.ModuleItem) {
             Module.ModuleItem module = (Module.ModuleItem) slimefunItem;
 
-            if (module.getModule().getAllowed() == powerSuit.getType()) {
+            if (module.getModule().getAllowed() == null || module.getModule().getAllowed() == powerSuit.getType()) {
                 PowerSuit.addModule(stack, module.getModule());
 
                 menu.pushItem(stack, OUTPUT_SLOTS);

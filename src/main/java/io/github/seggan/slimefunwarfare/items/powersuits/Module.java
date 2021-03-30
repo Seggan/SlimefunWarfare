@@ -72,14 +72,24 @@ public enum Module {
         new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH),
         Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
         new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH)
-    }, 2)
+    }, 2),
+    AUXILIARY_GENERATOR(8, "Auxiliary Generator", null, new ItemStack[]{
+        Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
+        Items.POWER_SUIT_GENERATOR, Items.MODULE_CASE, Items.POWER_SUIT_GENERATOR,
+        Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY
+    }, 5, "&7Boosts the suit's energy production"),
+    ELECTRONIC_SPRINGS(9, "Electronic Springs", PotionEffectType.JUMP, 1, ArmorPiece.LEGS, new ItemStack[]{
+        Items.REINFORCED_SLIMESTEEL, SlimefunItems.ADVANCED_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL,
+        Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
+        Items.REINFORCED_SLIMESTEEL, SlimefunItems.BASIC_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL
+    }, 3),
 
     ;
     @Getter
     @Nullable
     private final PotionEffect effect;
     @Getter
-    @Nonnull
+    @Nullable
     private final ArmorPiece allowed;
     @Getter
     @Nonnull
@@ -100,7 +110,7 @@ public enum Module {
         }
     }
 
-    Module(int id, @Nonnull String name, @Nullable PotionEffectType effect, int level, @Nonnull ArmorPiece allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
+    Module(int id, @Nonnull String name, @Nullable PotionEffectType effect, int level, @Nullable ArmorPiece allowed, @Nonnull ItemStack[] recipe, int power, @Nonnull String... lore) {
         this.id = id;
         this.allowed = allowed;
         this.power = power;
@@ -119,7 +129,7 @@ public enum Module {
         if (effect != null) {
             loreList.add(String.format("&7Effect: &a%s %d", WordUtils.capitalizeFully(effect.getName().replace('_', ' ')), level + 1));
         }
-        loreList.add("&7Install on " + allowed.toString());
+        loreList.add(allowed == null ? "&7Install anywhere" : "&7Install on " + allowed.toString());
         loreList.add(String.format("&eUses %dJ", power));
 
         this.item = new SlimefunItemStack(
