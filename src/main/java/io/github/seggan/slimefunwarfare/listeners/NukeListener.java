@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 
-public class BetterExplosiveListener implements Listener {
+public class NukeListener implements Listener {
 
     @EventHandler
     public void onExplosiveDispense(BlockDispenseEvent e) {

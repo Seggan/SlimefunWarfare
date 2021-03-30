@@ -6,8 +6,10 @@ import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -28,6 +30,7 @@ import org.bukkit.util.Vector;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 public class Gun extends SlimefunItem implements DamageableItem {
@@ -139,14 +142,16 @@ public class Gun extends SlimefunItem implements DamageableItem {
 
     @Nullable
     protected static Bullet checkAndConsume(@Nonnull ItemStack stack) {
-        Bullet bullet = null;
+        AtomicReference<Bullet> bullet = new AtomicReference<>(null);
 
         SlimefunItem item = SlimefunItem.getByItem(stack);
         if (item instanceof Bullet) {
-            bullet = (Bullet) item;
+            bullet.set((Bullet) item);
             ItemUtils.consumeItem(stack, true);
+        } else if (item instanceof SlimefunBackpack) {
+            PlayerProfile.getBackpack(stack, backpack -> bullet.set(checkAndConsumeInv(backpack.getInventory())));
         }
 
-        return bullet;
+        return bullet.get();
     }
 }

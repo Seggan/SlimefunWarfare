@@ -7,7 +7,7 @@ import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
-import io.github.seggan.slimefunwarfare.listeners.BetterExplosiveListener;
+import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
@@ -63,7 +63,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
         PluginUtils.registerListener(new PyroListener());
         PluginUtils.registerListener(new GrenadeListener());
         PluginUtils.registerListener(new ConcreteListener());
-        PluginUtils.registerListener(new BetterExplosiveListener());
+        PluginUtils.registerListener(new NukeListener());
         PluginUtils.registerListener(new SpaceListener());
         PluginUtils.registerListener(new HitListener());
         PluginUtils.registerListener(new ModuleListener());
