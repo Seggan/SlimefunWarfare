@@ -12,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
+import javax.annotation.Nonnull;
+
 public class EnergyRifle extends Gun implements Rechargeable {
 
     public EnergyRifle() {
@@ -23,7 +25,7 @@ public class EnergyRifle extends Gun implements Rechargeable {
     }
 
     @Override
-    public void shoot(Player p, ItemStack gun) {
+    public void shoot(@Nonnull Player p, @Nonnull ItemStack gun) {
         if (getItemCharge(gun) < 5) {
             return;
         } else {
