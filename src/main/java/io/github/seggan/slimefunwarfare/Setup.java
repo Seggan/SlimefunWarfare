@@ -127,13 +127,13 @@ public final class Setup {
             null, Items.SLIMESTEEL, null,
             null, Items.GUN_CASE, Items.SLIMESTEEL,
             null, Items.SLIMESTEEL, new ItemStack(Material.STICK)
-        }, 7, 4, 0.75).register(addon);
+        }, 10, 6, 0.5).register(addon);
 
         new Gun(Guns.REVOLVER, new ItemStack[]{
             null, Items.SLIMESTEEL, null,
             null, Guns.PISTOL, Items.SLIMESTEEL,
             null, Items.SLIMESTEEL, null
-        }, 10, 6, 0.5).register(addon);
+        }, 10, 6, 0.3).register(addon);
 
         new Gun(Guns.MACHINE_GUN, new ItemStack[]{
             Items.SLIMESTEEL, Items.SCOPE, null,

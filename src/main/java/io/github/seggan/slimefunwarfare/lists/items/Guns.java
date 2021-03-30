@@ -16,9 +16,9 @@ public final class Guns {
         "&7A short range gun",
         "&7that reloads quickly.",
         "&7Useful for close combat.",
-        "&cRange: 7",
-        "&cDamage: 2 hearts",
-        "&cCooldown: 0.75 seconds"
+        "&cRange: 10",
+        "&cDamage: 3 hearts",
+        "&cCooldown: 0.5 seconds"
     );
 
     public static final SlimefunItemStack REVOLVER = new SlimefunItemStack(
@@ -31,7 +31,7 @@ public final class Guns {
         "&7Useful for close combat.",
         "&cRange: 10",
         "&cDamage: 3 hearts",
-        "&cCooldown: 0.5 seconds"
+        "&cCooldown: 0.3 seconds"
     );
 
     public static final SlimefunItemStack MACHINE_GUN = new SlimefunItemStack(
