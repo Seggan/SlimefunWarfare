@@ -23,7 +23,7 @@ public class BulletPress extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(10, new ItemStack(Material.IRON_INGOT), new SlimefunItemStack(Items.LEAD_BULLET, 9));
+        registerRecipe(10, new ItemStack(Material.IRON_INGOT), new SlimefunItemStack(Items.IRON_BULLET, 9));
         registerRecipe(10, SlimefunItems.LEAD_INGOT, new SlimefunItemStack(Items.LEAD_BULLET, 9));
         registerRecipe(10, SlimefunItems.SMALL_URANIUM, new SlimefunItemStack(Items.DU_BULLET, 9));
         registerRecipe(10, SlimefunItems.GOLD_12K, new SlimefunItemStack(Items.GOLD_BULLET, 9));
