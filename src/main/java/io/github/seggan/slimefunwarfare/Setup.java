@@ -77,8 +77,8 @@ public final class Setup {
     static void setupMelee(SlimefunWarfare addon) {
 
         new UnplaceableBlock(Categories.MELEE, Melee.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
-            new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
+            new ItemStack(Material.IRON_AXE), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_AXE),
+            null, new ItemStack(Material.STICK), null,
             null, new ItemStack(Material.STICK), null
         }).register(addon);
 
