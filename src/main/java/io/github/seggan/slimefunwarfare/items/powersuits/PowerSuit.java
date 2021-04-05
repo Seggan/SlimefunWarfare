@@ -33,7 +33,6 @@ public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Recharge
         ItemMeta meta = this.getItem().getItemMeta();
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        meta.addItemFlags(ItemFlag.HIDE_DYE);
         this.getItem().setItemMeta(meta);
     }
 
