@@ -83,7 +83,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
 
         for (World world : Bukkit.getWorlds()) {
             String name = world.getName();
-            if (name.endsWith("_nether") || name.endsWith("_the_end")) continue;
+            if (name.endsWith("_nether") || name.endsWith("_the_end") || name.endsWith("_space")) continue;
 
             World space = Bukkit.getWorld(name + "_space");
             if (space != null) continue;
