@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.mooy1.infinitylib.core.PluginUtils;
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectionType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectiveArmor;
@@ -22,7 +22,7 @@ import java.util.Arrays;
 
 public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Rechargeable {
 
-    private static final NamespacedKey MODULES = PluginUtils.getKey("modules");
+    private static final NamespacedKey MODULES = SlimefunWarfare.inst().getKey("modules");
     @Getter
     private final ArmorPiece type;
 
@@ -85,7 +85,7 @@ public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Recharge
     @Nonnull
     @Override
     public NamespacedKey getArmorSetId() {
-        return PluginUtils.getKey("power_suit");
+        return SlimefunWarfare.inst().getKey("power_suit");
     }
 
     @Override
