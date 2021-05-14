@@ -1,6 +1,5 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.mooy1.infinitylib.core.ConfigUtils;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
@@ -57,17 +56,11 @@ public enum Module {
         SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
     }, 5, "&7This module makes you", "&7sprint faster"),
-    ENERGY_SHIELD(6, "Personal Energy Shield", ArmorPiece.CHEST, new ItemStack[]{
+    ENERGY_SHIELD(6, "Personal Energy Shield", PotionEffectType.DAMAGE_RESISTANCE, 2, ArmorPiece.CHEST, new ItemStack[]{
         Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM,
         Items.POWER_SUIT_GENERATOR, Items.MODULE_CASE, Items.POWER_SUIT_GENERATOR,
         Items.ENERGY_RECTIFIER, Items.SEGGANESSON, Items.ENERGY_RECTIFIER
-    }, 3, "&7This module has a",
-        "&7" + ConfigUtils.getInt("suits.energy-shield-chance", 0, 100, 90) +
-            "% chance of deflecting",
-        "&7kinetic damage. See the",
-        "&7README for the definition of",
-        "&7kinetic damage"
-    ),
+    }, 3),
     AQUAMASK(7, "AquaMask™", PotionEffectType.CONDUIT_POWER, 0, ArmorPiece.HEAD, new ItemStack[]{
         new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH),
         Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
@@ -129,7 +122,7 @@ public enum Module {
         if (effect != null) {
             loreList.add(String.format("&7Effect: &a%s %d", WordUtils.capitalizeFully(effect.getName().replace('_', ' ')), level + 1));
         }
-        loreList.add(allowed == null ? "&7Install anywhere" : "&7Install on " + allowed.toString());
+        loreList.add(allowed == null ? "&7Install anywhere" : "&7Install on " + allowed);
         loreList.add(String.format("&eUses %dJ", power));
 
         this.item = new SlimefunItemStack(
