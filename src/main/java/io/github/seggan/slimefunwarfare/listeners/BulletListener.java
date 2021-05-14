@@ -50,7 +50,7 @@ public class BulletListener implements Listener {
 
         if (!(entity instanceof ShulkerBullet) || b == null) return;
 
-        if (e.getEntity().hasMetadata("isGunBullet") && SlimefunWarfare.inst().getConfig().getBoolean("guns.energy-rifle-explosions", true)) {
+        if (e.getEntity().hasMetadata("isGunBullet") && SlimefunWarfare.inst().getConfig().getBoolean("guns.energy-rifle-explosions", false)) {
             b.getWorld().createExplosion(b.getLocation(), 1F);
         }
     }
