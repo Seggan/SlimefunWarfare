@@ -1,26 +1,25 @@
 package io.github.seggan.slimefunwarfare;
 
 import com.google.common.collect.Sets;
-import io.github.mooy1.infinitylib.core.ConfigUtils;
-import io.github.mooy1.infinitylib.core.PluginUtils;
+import io.github.mooy1.infinitylib.AbstractAddon;
+import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
+import io.github.mooy1.infinitylib.commands.AbstractCommand;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
-import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
 import io.github.seggan.slimefunwarfare.listeners.HitListener;
 import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
+import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import lombok.Getter;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
@@ -37,37 +36,31 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listener {
+public class SlimefunWarfare extends AbstractAddon implements SlimefunAddon, Listener {
 
-    @Getter
     private static SlimefunWarfare instance = null;
 
     private static final Set<UUID> flying = new HashSet<>();
 
     @Override
     public void onEnable() {
+        super.onEnable();
+
         instance = this;
 
-        PluginUtils.setup("SlimefunWarfare", this, "Seggan/SlimefunWarfare/master", getFile());
-        PluginUtils.setupMetrics(9227);
-
-        PluginUtils.registerListener(new BulletListener());
-        PluginUtils.registerListener(new PyroListener());
-        PluginUtils.registerListener(new GrenadeListener());
-        PluginUtils.registerListener(new ConcreteListener());
-        PluginUtils.registerListener(new NukeListener());
-        PluginUtils.registerListener(new SpaceListener());
-        PluginUtils.registerListener(new HitListener());
-        PluginUtils.registerListener(new ModuleListener());
-        PluginUtils.registerListener(this);
+        registerListener(new BulletListener(), new PyroListener(),
+            new GrenadeListener(), new ConcreteListener(), new NukeListener(),
+            new SpaceListener(), new HitListener(), new ModuleListener(), this);
 
         Categories.setup(this);
 
@@ -100,9 +93,9 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
             space.setTime(18000L);
         }
 
-        if (ConfigUtils.getBoolean("guns.autoshoot", true)) {
+        if (getConfig().getBoolean("guns.autoshoot", true)) {
             // Gun autoshoot task
-            PluginUtils.scheduleRepeatingSync(() -> {
+            scheduleRepeatingSync(() -> {
                 for (Player p : getServer().getOnlinePlayers()) {
                     if (p.isSneaking() && !p.isFlying()) {
                         ItemStack stack = p.getInventory().getItemInMainHand();
@@ -126,7 +119,7 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
             }, 1);
         }
 
-        PluginUtils.scheduleRepeatingSync(() -> {
+        scheduleRepeatingSync(() -> {
             for (Player p : getServer().getOnlinePlayers()) {
                 PlayerInventory inv = p.getInventory();
 
@@ -150,9 +143,8 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
             }
         }, 20);
 
-        if (SlimefunPlugin.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_16) &&
-            ConfigUtils.getBoolean("suits.flight-particles", true)) {
-            PluginUtils.scheduleRepeatingSync(() -> {
+        if (getConfig().getBoolean("suits.flight-particles", true)) {
+            scheduleRepeatingSync(() -> {
                 for (UUID uuid : flying) {
                     Player p = getServer().getPlayer(uuid);
                     if (p == null) {
@@ -165,6 +157,24 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
                 }
             }, 4);
         }
+    }
+
+    @Nullable
+    @Override
+    protected Metrics setupMetrics() {
+        return new Metrics(this, 9227);
+    }
+
+    @Nonnull
+    @Override
+    protected String getGithubPath() {
+        return "Seggan/SlimefunWarfare/master";
+    }
+
+    @Nonnull
+    @Override
+    protected List<AbstractCommand> getSubCommands() {
+        return new ArrayList<>();
     }
 
     @EventHandler
@@ -185,15 +195,6 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
     @Override
     public void onDisable() {
         getLogger().info("Slimefun Warfare disabled.");
-    }
-
-    @Nonnull
-    public JavaPlugin getJavaPlugin() {
-        return this;
-    }
-
-    public String getBugTrackerURL() {
-        return null;
     }
 
     private static void process(ItemStack stack, Module[] modules, PowerSuit suit, Player p) {
@@ -233,5 +234,9 @@ public class SlimefunWarfare extends JavaPlugin implements SlimefunAddon, Listen
         }
 
         suit.addItemCharge(stack, 5);
+    }
+
+    public static SlimefunWarfare inst() {
+        return instance;
     }
 }

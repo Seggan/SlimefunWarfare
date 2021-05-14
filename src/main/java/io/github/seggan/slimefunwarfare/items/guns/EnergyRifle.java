@@ -36,17 +36,17 @@ public class EnergyRifle extends Gun implements Rechargeable {
         ShulkerBullet bullet = p.launchProjectile(ShulkerBullet.class);
         bullet.setTarget(null);
 
-        bullet.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.getInstance(), true));
+        bullet.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.inst(), true));
         bullet.setMetadata("damage",
-            new FixedMetadataValue(SlimefunWarfare.getInstance(), this.getDamageDealt())
+            new FixedMetadataValue(SlimefunWarfare.inst(), this.getDamageDealt())
         );
-        bullet.setMetadata("isFire", new FixedMetadataValue(SlimefunWarfare.getInstance(), true));
+        bullet.setMetadata("isFire", new FixedMetadataValue(SlimefunWarfare.inst(), true));
         bullet.setMetadata("locInfo", new FixedMetadataValue(
-            SlimefunWarfare.getInstance(),
+            SlimefunWarfare.inst(),
             Util.serializeLocation(p.getEyeLocation())
         ));
         bullet.setMetadata("rangeInfo", new FixedMetadataValue(
-            SlimefunWarfare.getInstance(),
+            SlimefunWarfare.inst(),
             this.getRange() + ":0"
         ));
         bullet.setVelocity(v);

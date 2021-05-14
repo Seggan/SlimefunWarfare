@@ -1,7 +1,5 @@
 package io.github.seggan.slimefunwarfare.items.guns;
 
-import io.github.mooy1.infinitylib.core.ConfigUtils;
-import io.github.mooy1.infinitylib.core.PluginUtils;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.items.Bullet;
@@ -35,7 +33,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Getter
 public class Gun extends SlimefunItem implements DamageableItem {
 
-    public static final NamespacedKey LAST_USE = PluginUtils.getKey("last_use");
+    public static final NamespacedKey LAST_USE = SlimefunWarfare.inst().getKey("last_use");
 
     private final int range;
     private final int minRange;
@@ -57,7 +55,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
         super(Categories.GUNS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
 
         this.range = range;
-        this.minRange = ConfigUtils.getBoolean("guns.min-range-on", true) ? minRange : 0;
+        this.minRange = SlimefunWarfare.inst().getConfig().getBoolean("guns.min-range-on", true) ? minRange : 0;
         damageDealt = damage;
         this.cooldown = (int) (cooldown * 1000);
 
@@ -93,7 +91,7 @@ public class Gun extends SlimefunItem implements DamageableItem {
         Bullet bullet = checkAndConsume(inv.getItemInOffHand());
 
         if (bullet == null) {
-            if (ConfigUtils.getBoolean("guns.use-bullets-from-inv", true)) {
+            if (SlimefunWarfare.inst().getConfig().getBoolean("guns.use-bullets-from-inv", true)) {
                 bullet = checkAndConsumeInv(inv);
             }
 
@@ -105,17 +103,17 @@ public class Gun extends SlimefunItem implements DamageableItem {
 
         Vector v = p.getEyeLocation().subtract(0, 1, 0).getDirection().multiply(20);
         LlamaSpit spit = p.launchProjectile(LlamaSpit.class);
-        spit.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.getInstance(), true));
+        spit.setMetadata("isGunBullet", new FixedMetadataValue(SlimefunWarfare.inst(), true));
         spit.setMetadata("damage",
-            new FixedMetadataValue(SlimefunWarfare.getInstance(), this.damageDealt * bullet.getMultiplier())
+            new FixedMetadataValue(SlimefunWarfare.inst(), this.damageDealt * bullet.getMultiplier())
         );
-        spit.setMetadata("isFire", new FixedMetadataValue(SlimefunWarfare.getInstance(), bullet.isFire()));
+        spit.setMetadata("isFire", new FixedMetadataValue(SlimefunWarfare.inst(), bullet.isFire()));
         spit.setMetadata("locInfo", new FixedMetadataValue(
-            SlimefunWarfare.getInstance(),
+            SlimefunWarfare.inst(),
             Util.serializeLocation(p.getEyeLocation())
         ));
         spit.setMetadata("rangeInfo", new FixedMetadataValue(
-            SlimefunWarfare.getInstance(),
+            SlimefunWarfare.inst(),
             range + ":" + minRange
         ));
         spit.setVelocity(v);

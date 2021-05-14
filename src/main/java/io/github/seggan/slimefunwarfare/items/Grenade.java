@@ -44,7 +44,7 @@ public class Grenade extends SlimefunItem {
                 e.cancel();
                 Snowball snowball = e.getPlayer().launchProjectile(Snowball.class);
                 snowball.setMetadata("effect", new FixedMetadataValue(
-                    SlimefunWarfare.getInstance(),
+                    SlimefunWarfare.inst(),
                     chemical.getItemId()
                 ));
                 if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {

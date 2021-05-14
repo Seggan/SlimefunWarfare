@@ -90,14 +90,14 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-21</version>
+            <version>RC-22</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.github.mooy1</groupId>
             <artifactId>InfinityLib</artifactId>
-            <version>ed2b94b</version>
+            <version>43d8c43</version>
             <scope>compile</scope>
         </dependency>
 

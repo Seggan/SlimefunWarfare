@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class Dummy extends SlimefunItem {
 
-    public static final NamespacedKey KEY = new NamespacedKey(SlimefunWarfare.getInstance(), "dummy");
+    public static final NamespacedKey KEY = new NamespacedKey(SlimefunWarfare.inst(), "dummy");
 
     public Dummy() {
         super(Categories.GENERAL, Melee.DUMMY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{

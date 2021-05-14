@@ -7,17 +7,19 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class Arsenic implements GEOResource {
     private final NamespacedKey key;
     private final ItemStack item;
 
     public Arsenic(ItemStack stack) {
-        key = new NamespacedKey(SlimefunWarfare.getInstance(), "arsenic");
+        key = new NamespacedKey(SlimefunWarfare.inst(), "arsenic");
         item = stack;
     }
 
     @Override
-    public int getDefaultSupply(Environment environment, Biome biome) {
+    public int getDefaultSupply(@Nonnull Environment environment, @Nonnull Biome biome) {
         if (environment == Environment.THE_END) {
             return 5;
         } else {
@@ -30,11 +32,13 @@ public class Arsenic implements GEOResource {
         return 1;
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Arsenic";
     }
 
+    @Nonnull
     @Override
     public ItemStack getItem() {
         return item.clone();
@@ -45,6 +49,7 @@ public class Arsenic implements GEOResource {
         return true;
     }
 
+    @Nonnull
     @Override
     public NamespacedKey getKey() {
         return key;

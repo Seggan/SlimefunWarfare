@@ -44,11 +44,11 @@ public class NuclearBomb extends SlimefunItem {
                 TNTPrimed tnt = b.getWorld().spawn(b.getLocation(), TNTPrimed.class);
                 tnt.setFuseTicks(100);
                 tnt.setMetadata("isNuke", new FixedMetadataValue(
-                    SlimefunWarfare.getInstance(),
+                    SlimefunWarfare.inst(),
                     true
                 ));
                 tnt.setMetadata("rad", new FixedMetadataValue(
-                    SlimefunWarfare.getInstance(),
+                    SlimefunWarfare.inst(),
                     getExplosionPower()
                 ));
 

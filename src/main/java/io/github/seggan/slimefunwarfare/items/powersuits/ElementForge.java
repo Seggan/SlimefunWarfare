@@ -1,12 +1,13 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.mooy1.infinitylib.core.PluginUtils;
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
@@ -25,6 +26,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Function;
 
@@ -38,12 +40,20 @@ public class ElementForge extends MultiBlockMachine {
 
     public ElementForge(Category category, SlimefunItemStack item) {
         super(category, item, new ItemStack[]{
-            new ItemStack(Material.IRON_BLOCK), new CustomItem(Material.PISTON, "&fPiston &7(Facing Down)"),
-            new ItemStack(Material.IRON_BLOCK),
+            getCorner(), new CustomItem(Material.PISTON, "&fPiston &7(Facing Down)"), getCorner(),
             new ItemStack(Material.NETHER_BRICK_WALL), null, new ItemStack(Material.NETHER_BRICK_WALL),
             new CustomItem(Material.HOPPER, "&fHopper &7(Facing Inwards)"), new ItemStack(Material.SMITHING_TABLE),
             new ItemStack(Material.DISPENSER)
         }, BlockFace.UP);
+    }
+
+    @Nonnull
+    private static ItemStack getCorner() {
+        if (SlimefunWarfare.inst().getConfig().getBoolean("suits.legacy-element-forge", false)) {
+            return new ItemStack(Material.IRON_BLOCK);
+        } else {
+            return new ItemStack(Material.NETHERITE_BLOCK);
+        }
     }
 
     @Override
@@ -63,7 +73,7 @@ public class ElementForge extends MultiBlockMachine {
             && ((Piston) pistonData).getFacing() == BlockFace.DOWN
             && piston.getRelative(0, -1, 0).getType() == Material.AIR) {
             Dispenser disp = (Dispenser) dispenserState;
-            Piston pistun = (Piston) pistonData;
+            Piston pstn = (Piston) pistonData;
             Inventory inv = disp.getInventory();
             List<ItemStack[]> inputs = RecipeType.getRecipeInputList(this);
 
@@ -71,15 +81,15 @@ public class ElementForge extends MultiBlockMachine {
                 if (isCraftable(inv, input)) {
                     ItemStack output = RecipeType.getRecipeOutputList(this, input).clone();
 
-                    if (Slimefun.hasUnlocked(p, output, true)) {
+                    if (Slimefun.hasPermission(p, SlimefunItem.getByItem(output), true)) {
                         Inventory outputInv = findOutputInventory(output, dispenser, inv);
 
                         if (outputInv != null) {
                             craft(output, inv, outputInv);
 
-                            movePiston(piston, pistun, true);
+                            movePiston(piston, pstn, true);
 
-                            PluginUtils.runSync(() -> movePiston(piston, pistun, false), 10L);
+                            SlimefunWarfare.inst().runSync(() -> movePiston(piston, pstn, false), 10L);
 
                         } else {
                             SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);

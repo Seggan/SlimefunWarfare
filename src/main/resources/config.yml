@@ -24,3 +24,5 @@ suits:
   flight-particles: true
   # The chance for the Personal Energy Shield to deflect kinetic damage
   energy-shield-chance: 90
+  # If this is true, the Element Forge will use iron blocks instead of netherite blocks for the corners
+  legacy-element-forge: false
