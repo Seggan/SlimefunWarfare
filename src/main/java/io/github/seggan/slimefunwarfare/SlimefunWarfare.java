@@ -3,7 +3,6 @@ package io.github.seggan.slimefunwarfare;
 import com.google.common.collect.Sets;
 import io.github.mooy1.infinitylib.AbstractAddon;
 import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
-import io.github.mooy1.infinitylib.commands.AbstractCommand;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
@@ -40,9 +39,7 @@ import org.bukkit.potion.PotionEffect;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -171,12 +168,6 @@ public class SlimefunWarfare extends AbstractAddon implements SlimefunAddon, Lis
         return "Seggan/SlimefunWarfare/master";
     }
 
-    @Nonnull
-    @Override
-    protected List<AbstractCommand> getSubCommands() {
-        return new ArrayList<>();
-    }
-
     @EventHandler
     public void onPlayerJoin(@Nonnull PlayerJoinEvent e) {
         Player p = e.getPlayer();
@@ -190,11 +181,6 @@ public class SlimefunWarfare extends AbstractAddon implements SlimefunAddon, Lis
     @EventHandler
     public void onPlayerLeave(@Nonnull PlayerQuitEvent e) {
         flying.remove(e.getPlayer().getUniqueId());
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().info("Slimefun Warfare disabled.");
     }
 
     private static void process(ItemStack stack, Module[] modules, PowerSuit suit, Player p) {
