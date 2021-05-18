@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.items;
 
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
 import io.github.seggan.slimefunwarfare.lists.items.Explosives;
@@ -40,7 +41,7 @@ public class FLOX extends SlimefunItem implements NotPlaceable {
                 PaperLib.teleportAsync(p, new Location(
                     Bukkit.getWorld(worldName + "_space"),
                     loc.getX(),
-                    100,
+                    SlimefunWarfare.inst().getConfig().getInt("space.tp-height", 1, 255),
                     loc.getZ()
                 ));
                 p.setAllowFlight(true);

@@ -18,6 +18,8 @@ space:
   meteor-spawn-rate: 20
   meteors-per-chunk: 1
   segganesson-chance: 15
+  # The y height that FLOX will teleport you to space
+  tp-height: 100
 
 suits:
   # This will spawn blue particles underneath you when flying with a power suit
