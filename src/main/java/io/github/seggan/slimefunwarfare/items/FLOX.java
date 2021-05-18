@@ -40,7 +40,7 @@ public class FLOX extends SlimefunItem implements NotPlaceable {
                 PaperLib.teleportAsync(p, new Location(
                     Bukkit.getWorld(worldName + "_space"),
                     loc.getX(),
-                    10,
+                    100,
                     loc.getZ()
                 ));
                 p.setAllowFlight(true);
