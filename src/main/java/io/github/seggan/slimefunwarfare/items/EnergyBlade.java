@@ -23,14 +23,4 @@ public class EnergyBlade extends SlimefunItem implements Rechargeable {
     public float getMaxItemCharge(ItemStack itemStack) {
         return 2500;
     }
-
-    @Override
-    public boolean isDisenchantable() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnchantable() {
-        return false;
-    }
 }
