@@ -52,9 +52,9 @@ public enum Module {
         SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
     }, 3),
     REACTION_WHEELS(5, "Reaction Wheels", ArmorPiece.LEGS, new ItemStack[]{
-        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
-        SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
-        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
+        SlimefunItems.STEEL_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.STEEL_PLATE,
+        SlimefunItems.STEEL_INGOT, Items.MODULE_CASE, SlimefunItems.STEEL_INGOT,
+        SlimefunItems.STEEL_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.STEEL_PLATE
     }, 5, "&7This module makes you", "&7sprint faster"),
     ENERGY_SHIELD(6, "Personal Energy Shield", PotionEffectType.DAMAGE_RESISTANCE, 2, ArmorPiece.CHEST, new ItemStack[]{
         Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM,
