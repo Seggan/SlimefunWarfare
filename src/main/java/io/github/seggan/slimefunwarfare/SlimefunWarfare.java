@@ -17,7 +17,6 @@ import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.Bukkit;
@@ -44,14 +43,14 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
 
-public class SlimefunWarfare extends AbstractAddon implements SlimefunAddon, Listener {
+public class SlimefunWarfare extends AbstractAddon implements Listener {
 
     private static SlimefunWarfare instance = null;
 
     private static final Set<UUID> flying = new HashSet<>();
 
     @Override
-    public void onEnable() {
+    public void onAddonEnable() {
         super.onEnable();
 
         instance = this;
@@ -159,6 +158,11 @@ public class SlimefunWarfare extends AbstractAddon implements SlimefunAddon, Lis
                 }
             }, 4);
         }
+    }
+
+    @Override
+    protected void onAddonDisable() {
+        instance = null;
     }
 
     @Nullable

@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.mooy1.infinitylib.slimefun.abstracts.AbstractContainer;
+import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
 import io.github.seggan.slimefunwarfare.lists.items.Items;

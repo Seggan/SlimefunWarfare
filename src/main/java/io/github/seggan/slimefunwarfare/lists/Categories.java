@@ -1,7 +1,7 @@
 package io.github.seggan.slimefunwarfare.lists;
 
-import io.github.mooy1.infinitylib.slimefun.utils.MultiCategory;
-import io.github.mooy1.infinitylib.slimefun.utils.SubCategory;
+import io.github.mooy1.infinitylib.categories.MultiCategory;
+import io.github.mooy1.infinitylib.categories.SubCategory;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.Objects.Category;
