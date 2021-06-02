@@ -51,7 +51,6 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
     @Override
     public void onAddonEnable() {
-        super.onEnable();
 
         instance = this;
 
