@@ -50,7 +50,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
     private static final Set<UUID> flying = new HashSet<>();
 
     @Override
-    public void onAddonEnable() {
+    public void enable() {
 
         instance = this;
 
@@ -67,6 +67,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
         Setup.setupExplosives(this);
         Setup.setupSpace(this);
         Setup.setupSuits(this);
+        Setup.setupResearches();
 
         Module.setup(this);
 
@@ -160,7 +161,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
     }
 
     @Override
-    protected void onAddonDisable() {
+    protected void disable() {
         instance = null;
     }
 
@@ -168,6 +169,12 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
     @Override
     protected Metrics setupMetrics() {
         return new Metrics(this, 9227);
+    }
+
+    @Nullable
+    @Override
+    public String getAutoUpdatePath() {
+        return "auto-update";
     }
 
     @Nonnull

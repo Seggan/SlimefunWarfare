@@ -7,8 +7,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
@@ -81,7 +79,7 @@ public class ElementForge extends MultiBlockMachine {
                 if (isCraftable(inv, input)) {
                     ItemStack output = RecipeType.getRecipeOutputList(this, input).clone();
 
-                    if (Slimefun.hasPermission(p, SlimefunItem.getByItem(output), true)) {
+                    if (SlimefunUtils.canPlayerUseItem(p, output, true)) {
                         Inventory outputInv = findOutputInventory(output, dispenser, inv);
 
                         if (outputInv != null) {

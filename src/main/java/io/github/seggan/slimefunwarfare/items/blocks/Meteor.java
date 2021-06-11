@@ -1,8 +1,8 @@
 package io.github.seggan.slimefunwarfare.items.blocks;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
-import io.github.seggan.slimefunwarfare.lists.items.Items;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;

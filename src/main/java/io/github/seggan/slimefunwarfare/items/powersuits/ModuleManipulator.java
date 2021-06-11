@@ -3,7 +3,7 @@ package io.github.seggan.slimefunwarfare.items.powersuits;
 import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
-import io.github.seggan.slimefunwarfare.lists.items.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;

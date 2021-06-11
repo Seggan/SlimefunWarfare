@@ -1,8 +1,7 @@
 package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.lists.items.Explosives;
-import io.github.seggan.slimefunwarfare.lists.items.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
@@ -21,7 +20,7 @@ public class Boominator9000 extends AContainer {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(600, SlimefunItems.BOOSTED_URANIUM, Explosives.ENRICHED_URANIUM);
+        registerRecipe(600, SlimefunItems.BOOSTED_URANIUM, Items.ENRICHED_URANIUM);
     }
 
     @Override

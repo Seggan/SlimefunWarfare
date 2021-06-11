@@ -98,14 +98,14 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-22</version>
+            <version>RC-24</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>io.github.mooy1</groupId>
+            <groupId>com.github.Mooy1</groupId>
             <artifactId>InfinityLib</artifactId>
-            <version>71cff3336d</version>
+            <version>beef552a60</version>
             <scope>compile</scope>
         </dependency>
 

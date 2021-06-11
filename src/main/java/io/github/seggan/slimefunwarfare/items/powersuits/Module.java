@@ -3,7 +3,7 @@ package io.github.seggan.slimefunwarfare.items.powersuits;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
-import io.github.seggan.slimefunwarfare.lists.items.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import lombok.Getter;

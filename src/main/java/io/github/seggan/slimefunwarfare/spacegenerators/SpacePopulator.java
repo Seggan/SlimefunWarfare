@@ -1,7 +1,7 @@
 package io.github.seggan.slimefunwarfare.spacegenerators;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
-import io.github.seggan.slimefunwarfare.lists.items.Items;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import org.bukkit.Chunk;
 import org.bukkit.World;

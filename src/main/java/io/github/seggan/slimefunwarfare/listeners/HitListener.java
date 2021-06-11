@@ -2,7 +2,7 @@ package io.github.seggan.slimefunwarfare.listeners;
 
 import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
-import io.github.seggan.slimefunwarfare.lists.items.Melee;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.chat.ChatColors;
 import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
@@ -58,7 +58,7 @@ public class HitListener implements Listener {
         Entity entity = e.getRightClicked();
         if (PersistentDataAPI.getString(entity, Dummy.KEY) != null) {
             entity.remove();
-            ItemStack stack = Melee.DUMMY.clone();
+            ItemStack stack = Items.DUMMY.clone();
             stack.setAmount(1);
             entity.getWorld().dropItemNaturally(entity.getLocation(), stack);
         }

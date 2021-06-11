@@ -2,8 +2,8 @@ package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
-import io.github.seggan.slimefunwarfare.lists.items.Explosives;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -20,8 +20,8 @@ import org.bukkit.inventory.ItemStack;
 public class FLOX extends SlimefunItem implements NotPlaceable {
 
     public FLOX() {
-        super(Categories.EXPLOSIVES, Explosives.FLOX, RecipeTypes.EXPLOSIVE_SYNTHESIZER, new ItemStack[]{
-            SlimefunItems.FUEL_BUCKET, Explosives.LIQUID_OXYGEN, null,
+        super(Categories.EXPLOSIVES, Items.FLOX, RecipeTypes.EXPLOSIVE_SYNTHESIZER, new ItemStack[]{
+            SlimefunItems.FUEL_BUCKET, Items.LIQUID_OXYGEN, null,
             null, null, null,
             null, null, null
         });

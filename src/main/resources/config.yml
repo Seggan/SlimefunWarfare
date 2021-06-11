@@ -1,3 +1,5 @@
+auto-update: true
+
 explosions:
   concrete-explode-chance: 10
 
