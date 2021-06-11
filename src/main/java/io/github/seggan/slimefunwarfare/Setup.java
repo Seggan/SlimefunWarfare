@@ -362,7 +362,7 @@ public final class Setup {
 
     static void setupResearches() {
         addResearch("Weapons of Mass Destruction", 70, Items.NUCLEAR_BOMB, Items.BOOMINATOR_9000);
-        addResearch("Iron Man's Suit", 70, Items.POWER_SUIT_HELMET, Items.POWER_SUIT_CHESTPLATE, Items.POWER_SUIT_LEGGINGS, Items.POWER_SUIT_BOOTS);
+        addResearch("I am Iron Man", 70, Items.POWER_SUIT_HELMET, Items.POWER_SUIT_CHESTPLATE, Items.POWER_SUIT_LEGGINGS, Items.POWER_SUIT_BOOTS);
         addResearch("Energy Weapons", 45, Items.ENERGY_BLADE, Items.ENERGY_RECTIFIER, Items.ENERGY_RIFLE);
         addResearch("Alien Metals", 40, Items.OSMIUM_DUST, Items.OSMIUM_INGOT, Items.OSMIUM_SUPERALLOY);
     }
