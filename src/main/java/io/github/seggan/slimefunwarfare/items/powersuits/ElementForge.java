@@ -24,9 +24,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Function;
+import javax.annotation.Nonnull;
 
 /**
  * This is a multiblock machine for crafting materials. Heavily influenced by the
@@ -104,7 +104,7 @@ public class ElementForge extends MultiBlockMachine {
 
     private boolean isCraftable(Inventory inv, ItemStack[] recipe) {
         for (int j = 0; j < inv.getContents().length; j++) {
-            if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], true)) {
+            if (!SlimefunUtils.isItemSimilar(inv.getContents()[j], recipe[j], true, false)) {
                 return false;
             }
         }
