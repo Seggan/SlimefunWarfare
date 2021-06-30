@@ -25,12 +25,15 @@ import io.github.thebusybiscuit.slimefun4.core.researching.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+
+import lombok.experimental.UtilityClass;
+
+import java.util.Locale;
 
 @UtilityClass
 public final class Setup {
@@ -369,7 +372,7 @@ public final class Setup {
 
     private static void addResearch(String name, int xp, SlimefunItemStack... items) {
         Research research = new Research(
-            SlimefunWarfare.inst().getKey(name.toLowerCase().replace(' ', '_')),
+            SlimefunWarfare.inst().getKey(name.toLowerCase(Locale.ROOT).replace(' ', '_')),
             researchId++,
             name,
             xp

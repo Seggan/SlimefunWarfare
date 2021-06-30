@@ -36,12 +36,12 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SlimefunWarfare extends AbstractAddon implements Listener {
 
@@ -51,7 +51,6 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
     @Override
     public void enable() {
-
         instance = this;
 
         registerListener(new BulletListener(), new PyroListener(),
