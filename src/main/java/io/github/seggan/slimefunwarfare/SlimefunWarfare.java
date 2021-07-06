@@ -16,14 +16,8 @@ import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import io.github.seggan.slimefunwarfare.spacegenerators.SpaceGenerator;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import org.bukkit.Bukkit;
-import org.bukkit.GameRule;
 import org.bukkit.Particle;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -72,25 +66,6 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
         if (getJavaVersion() < 11) {
             log(Level.WARNING, "You are using a Java version that is less that 11! Please use Java 11 or above");
-        }
-
-        for (World world : Bukkit.getWorlds()) {
-            String name = world.getName();
-            if (name.endsWith("_nether") || name.endsWith("_the_end") || name.endsWith("_space")) continue;
-
-            World space = Bukkit.getWorld(name + "_space");
-            if (space != null) continue;
-
-            if (!SlimefunPlugin.getWorldSettingsService().isWorldEnabled(world)) continue;
-
-            WorldCreator creator = new WorldCreator(name + "_space")
-                .seed(world.getSeed())
-                .generator(new SpaceGenerator());
-            space = creator.createWorld();
-
-            space.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-            space.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
-            space.setTime(18000L);
         }
 
         if (getConfig().getBoolean("guns.autoshoot", true)) {
