@@ -56,10 +56,10 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
 
         processor.setProgressBar(new ItemStack(Material.IRON_PICKAXE));
 
-        results.add(Items.LANTHANUM);
-        results.add(Items.NEODYMIUM);
-        results.add(Items.GADOLINIUM);
-        results.add(Items.TERBIUM);
+        results.add(Items.LANTHANUM_INGOT);
+        results.add(Items.NEODYMIUM_INGOT);
+        results.add(Items.GADOLINIUM_INGOT);
+        results.add(Items.TERBIUM_INGOT);
 
         addItemHandler(onBreak());
     }

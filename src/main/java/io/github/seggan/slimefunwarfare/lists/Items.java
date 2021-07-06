@@ -330,28 +330,29 @@ public final class Items {
         "&eMonazite",
         "",
         "&7The source of all the rare earths.",
-        "&7Find it in the nether. I won't",
-        "&7say which biome"
+        "&7Find it in igneous rock"
     );
-    public static final SlimefunItemStack LANTHANUM = new SlimefunItemStack(
-        "LANTHANUM",
+    public static final SlimefunItemStack LANTHANUM_INGOT = new SlimefunItemStack(
+        "LANTHANUM_INGOT",
         Material.IRON_INGOT,
-        "&eLanthanum"
+        "&eLanthanum Ingot",
+        "",
+        "&7Can be used as infinite flint and steel"
     );
-    public static final SlimefunItemStack NEODYMIUM = new SlimefunItemStack(
-        "NEODYMIUM",
+    public static final SlimefunItemStack NEODYMIUM_INGOT = new SlimefunItemStack(
+        "NEODYMIUM_INGOT",
         Material.NETHERITE_INGOT,
-        "&eNeodymium"
+        "&eNeodymium Ingot"
     );
-    public static final SlimefunItemStack GADOLINIUM = new SlimefunItemStack(
-        "GADOLINIUM",
+    public static final SlimefunItemStack GADOLINIUM_INGOT = new SlimefunItemStack(
+        "GADOLINIUM_INGOT",
         Material.IRON_INGOT,
-        "&eGadolinium"
+        "&eGadolinium Ingot"
     );
-    public static final SlimefunItemStack TERBIUM = new SlimefunItemStack(
-        "TERBIUM",
+    public static final SlimefunItemStack TERBIUM_INGOT = new SlimefunItemStack(
+        "TERBIUM_INGOT",
         Material.IRON_INGOT,
-        "&eTerbium"
+        "&eTerbium Ingot"
     );
     // endregion
 
