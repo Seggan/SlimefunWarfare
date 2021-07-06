@@ -64,8 +64,8 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
         Module.setup(this);
 
-        if (getJavaVersion() < 11) {
-            log(Level.WARNING, "You are using a Java version that is less that 11! Please use Java 11 or above");
+        if (getJavaVersion() < 16) {
+            log(Level.WARNING, "You are using a Java version that is less that 16! Please use Java 16 or above");
         }
 
         if (getConfig().getBoolean("guns.autoshoot", true)) {
