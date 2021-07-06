@@ -14,15 +14,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import javax.annotation.Nonnull;
 
 public class Meteor extends SlimefunItem {
 
     public Meteor(SlimefunItemStack item) {
-        super(Categories.RESOURCES, item, RecipeTypes.SPACE, null);
+        super(Categories.RESOURCES, item, RecipeTypes.SPACE, new ItemStack[9]);
 
         addItemHandler(new BlockBreakHandler(false, false) {
             @Override
-            public void onPlayerBreak(BlockBreakEvent e, ItemStack itemStack, List<ItemStack> drops) {
+            public void onPlayerBreak(@Nonnull BlockBreakEvent e, @Nonnull ItemStack itemStack, @Nonnull List<ItemStack> drops) {
                 if (itemStack.containsEnchantment(Enchantment.SILK_TOUCH)) {
                     drops.add(getItem().clone());
                 } else {
@@ -42,6 +43,7 @@ public class Meteor extends SlimefunItem {
         });
     }
 
+    @Nonnull
     @Override
     public Collection<ItemStack> getDrops() {
         return new ArrayList<>();

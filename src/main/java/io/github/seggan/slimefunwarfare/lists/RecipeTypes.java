@@ -1,10 +1,11 @@
 package io.github.seggan.slimefunwarfare.lists;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
-import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
+
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class RecipeTypes {
@@ -43,5 +44,10 @@ public final class RecipeTypes {
     public static final RecipeType BOOMINATOR = new RecipeType(
         SlimefunWarfare.inst().getKey("boominator_9000"),
         Items.BOOMINATOR_9000
+    );
+
+    public static final RecipeType ION_SEPARATOR = new RecipeType(
+        SlimefunWarfare.inst().getKey("iron_exchange_separator"),
+        Items.ION_EXCHANGE_SEPARATOR
     );
 }

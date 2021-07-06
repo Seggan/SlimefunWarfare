@@ -1,11 +1,13 @@
 package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
+import io.github.seggan.slimefunwarfare.georesources.Monazite;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.FLOX;
 import io.github.seggan.slimefunwarfare.items.Grenade;
+import io.github.seggan.slimefunwarfare.items.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
@@ -315,6 +317,35 @@ public final class Setup {
             null, null, null,
             null, null, null
         }).register(addon);
+
+        new IonExchangeSeparator().register(addon);
+
+        new Monazite(Items.MONAZITE).register();
+        new SlimefunItem(Categories.RESOURCES, Items.MONAZITE, RecipeType.GEO_MINER, new ItemStack[9]).register(addon);
+
+        new SlimefunItem(Categories.RESOURCES, Items.LANTHANUM, RecipeTypes.ION_SEPARATOR, new ItemStack[]{
+            Items.MONAZITE, null, null,
+            null, null, null,
+            null, null, null
+        }).register(addon);
+
+        new SlimefunItem(Categories.RESOURCES, Items.NEODYMIUM, RecipeTypes.ION_SEPARATOR, new ItemStack[]{
+            Items.MONAZITE, null, null,
+            null, null, null,
+            null, null, null
+        }).register(addon);
+
+        new SlimefunItem(Categories.RESOURCES, Items.GADOLINIUM, RecipeTypes.ION_SEPARATOR, new ItemStack[]{
+            Items.MONAZITE, null, null,
+            null, null, null,
+            null, null, null
+        }).register(addon);
+
+        new SlimefunItem(Categories.RESOURCES, Items.TERBIUM, RecipeTypes.ION_SEPARATOR, new ItemStack[]{
+            Items.MONAZITE, null, null,
+            null, null, null,
+            null, null, null
+        }).register(addon);
     }
 
     static void setupSuits(SlimefunWarfare addon) {
@@ -368,6 +399,7 @@ public final class Setup {
         addResearch("I am Iron Man", 70, Items.POWER_SUIT_HELMET, Items.POWER_SUIT_CHESTPLATE, Items.POWER_SUIT_LEGGINGS, Items.POWER_SUIT_BOOTS);
         addResearch("Energy Weapons", 45, Items.ENERGY_BLADE, Items.ENERGY_RECTIFIER, Items.ENERGY_RIFLE);
         addResearch("Alien Metals", 40, Items.OSMIUM_DUST, Items.OSMIUM_INGOT, Items.OSMIUM_SUPERALLOY);
+        addResearch("Rare Earths", 50, Items.MONAZITE, Items.LANTHANUM, Items.NEODYMIUM, Items.GADOLINIUM, Items.TERBIUM);
     }
 
     private static void addResearch(String name, int xp, SlimefunItemStack... items) {

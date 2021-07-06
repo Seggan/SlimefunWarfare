@@ -4,7 +4,6 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import lombok.experimental.UtilityClass;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -14,6 +13,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import lombok.experimental.UtilityClass;
 
 import java.util.UUID;
 
@@ -307,6 +308,50 @@ public final class Items {
         "&bEnergy Rectifier",
         "",
         "&7Converts electricity into pure energy"
+    );
+    // endregion
+
+    // region rare earths
+    public static final SlimefunItemStack ION_EXCHANGE_SEPARATOR = new SlimefunItemStack(
+        "ION_EXCHANGE_SEPARATOR",
+        Material.SEA_LANTERN,
+        "&bIon Exchange Separator",
+        "",
+        "&7Separates the hard-to-separate",
+        "&7rare earths from monazite",
+        LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
+        LoreBuilder.powerPerSecond(256),
+        LoreBuilder.powerBuffer(512)
+    );
+
+    public static final SlimefunItemStack MONAZITE = new SlimefunItemStack(
+        "MONAZITE",
+        Material.ORANGE_DYE,
+        "&eMonazite",
+        "",
+        "&7The source of all the rare earths.",
+        "&7Find it in the nether. I won't",
+        "&7say which biome"
+    );
+    public static final SlimefunItemStack LANTHANUM = new SlimefunItemStack(
+        "LANTHANUM",
+        Material.IRON_INGOT,
+        "&eLanthanum"
+    );
+    public static final SlimefunItemStack NEODYMIUM = new SlimefunItemStack(
+        "NEODYMIUM",
+        Material.NETHERITE_INGOT,
+        "&eNeodymium"
+    );
+    public static final SlimefunItemStack GADOLINIUM = new SlimefunItemStack(
+        "GADOLINIUM",
+        Material.IRON_INGOT,
+        "&eGadolinium"
+    );
+    public static final SlimefunItemStack TERBIUM = new SlimefunItemStack(
+        "TERBIUM",
+        Material.IRON_INGOT,
+        "&eTerbium"
     );
     // endregion
 
