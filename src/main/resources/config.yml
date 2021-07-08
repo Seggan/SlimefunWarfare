@@ -14,14 +14,8 @@ guns:
   energy-rifle-explosions: false
 
 space:
-  # This will define the spawn rate for titanium/segganesson meteors. It is defined as a max of meteors-per-chunk
-  # meteors that each have a chance of meteor-spawn-rate percent of being generated. There is a segganesson-chance
-  # that a meteor will be a segganesson meteor instead of a titanium meteor
-  meteor-spawn-rate: 20
-  meteors-per-chunk: 1
+  # The percent chance that a Segganesson meteor will be dropped instead of an Osmium meteor
   segganesson-chance: 15
-  # The y height that FLOX will teleport you to space
-  tp-height: 100
 
 suits:
   # This will spawn blue particles underneath you when flying with a power suit

@@ -10,10 +10,12 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class BulletPress extends AContainer implements RecipeDisplayItem {
 
     public BulletPress() {
-        super(Categories.GENERAL, Items.BULLET_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        super(Categories.MACHINES, Items.BULLET_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.REINFORCED_ALLOY_INGOT, new ItemStack(Material.PISTON), SlimefunItems.REINFORCED_ALLOY_INGOT,
             SlimefunItems.ELECTRIC_MOTOR, null, SlimefunItems.ELECTRIC_MOTOR,
             SlimefunItems.REINFORCED_ALLOY_INGOT, new ItemStack(Material.PISTON), SlimefunItems.REINFORCED_ALLOY_INGOT
@@ -44,6 +46,7 @@ public class BulletPress extends AContainer implements RecipeDisplayItem {
         return 1;
     }
 
+    @Nonnull
     @Override
     public String getMachineIdentifier() {
         return "BULLET_PRESS";

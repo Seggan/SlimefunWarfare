@@ -9,10 +9,12 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class AirLiquefier extends AContainer implements RecipeDisplayItem {
 
     public AirLiquefier() {
-        super(Categories.GENERAL, Items.AIR_LIQUEFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        super(Categories.MACHINES, Items.AIR_LIQUEFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT, new ItemStack(Material.PACKED_ICE),
             SlimefunItems.COOLING_UNIT, SlimefunItems.FREEZER, SlimefunItems.COOLING_UNIT,
             new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT, new ItemStack(Material.PACKED_ICE)
@@ -39,6 +41,7 @@ public class AirLiquefier extends AContainer implements RecipeDisplayItem {
         return 1;
     }
 
+    @Nonnull
     @Override
     public String getMachineIdentifier() {
         return "AIR_LIQUEFIER";

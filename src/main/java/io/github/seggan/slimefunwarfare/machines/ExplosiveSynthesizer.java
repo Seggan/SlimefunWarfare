@@ -10,10 +10,12 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayItem {
 
     public ExplosiveSynthesizer() {
-        super(Categories.GENERAL, Items.EXPLOSIVE_SYNTHESIZER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        super(Categories.MACHINES, Items.EXPLOSIVE_SYNTHESIZER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_PLATE, Items.REINFORCED_SLIMESTEEL,
             SlimefunItems.REINFORCED_PLATE, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.REINFORCED_PLATE,
             Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_PLATE, Items.REINFORCED_SLIMESTEEL
@@ -58,6 +60,7 @@ public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayIte
         return 1;
     }
 
+    @Nonnull
     @Override
     public String getMachineIdentifier() {
         return "EXPLOSIVE_SYNTHESIZER";

@@ -7,7 +7,6 @@ import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.FLOX;
 import io.github.seggan.slimefunwarfare.items.Grenade;
-import io.github.seggan.slimefunwarfare.items.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
@@ -25,6 +24,8 @@ import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.Boominator9000;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
+import io.github.seggan.slimefunwarfare.machines.IonExchangeSeparator;
+import io.github.seggan.slimefunwarfare.machines.MeteorAttractor;
 import io.github.thebusybiscuit.slimefun4.core.researching.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
@@ -37,6 +38,7 @@ import org.bukkit.inventory.ItemStack;
 
 import lombok.experimental.UtilityClass;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 @UtilityClass
@@ -261,19 +263,11 @@ public final class Setup {
             null, null, null
         }).register(addon);
 
-        new SlimefunItem(
-            Categories.EXPLOSIVES, Items.PYRO_POWDER, RecipeType.GRIND_STONE, new ItemStack[]{
-            new ItemStack(Material.TNT), null, null,
-            null, null, null,
-            null, null, null
-        }, new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(addon);
+        new SlimefunItem(Categories.EXPLOSIVES, Items.PYRO_POWDER, RecipeType.GRIND_STONE,
+            fillNulls(new ItemStack(Material.TNT)), new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(addon);
 
-        new SlimefunItem(
-            Categories.EXPLOSIVES, Items.ENRICHED_URANIUM, RecipeTypes.BOOMINATOR, new ItemStack[]{
-            SlimefunItems.BOOSTED_URANIUM, null, null,
-            null, null, null,
-            null, null, null
-        }).register(addon);
+        new SlimefunItem(Categories.EXPLOSIVES, Items.ENRICHED_URANIUM, RecipeTypes.BOOMINATOR,
+            fillNulls(SlimefunItems.BOOSTED_URANIUM)).register(addon);
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Items.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -281,8 +275,7 @@ public final class Setup {
                 Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
                 SlimefunItems.STEEL_INGOT, SlimefunItems.TIN_CAN, SlimefunItems.STEEL_INGOT,
                 Items.PYRO_POWDER, SlimefunItems.STEEL_INGOT, Items.PYRO_POWDER,
-            },
-            new SlimefunItemStack(Items.EMPTY_GRENADE, 4)).register(addon);
+            }, new SlimefunItemStack(Items.EMPTY_GRENADE, 4)).register(addon);
 
         new Grenade(Items.NITROGEN_TRIIODIDE).register(addon);
         new Grenade(Items.AZIDOAZIDE_AZIDE).register(addon);
@@ -302,23 +295,9 @@ public final class Setup {
         new Meteor(Items.OSMIUM_METEOR).register(addon);
         new Meteor(Items.SEGGANESSON_METEOR).register(addon);
 
-        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_DUST, RecipeType.ORE_CRUSHER, new ItemStack[]{
-            Items.OSMIUM_METEOR, null, null,
-            null, null, null,
-            null, null, null
-        }).register(addon);
-
-        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_INGOT, RecipeType.SMELTERY, new ItemStack[]{
-            Items.OSMIUM_DUST, null, null,
-            null, null, null,
-            null, null, null
-        }).register(addon);
-
-        new SlimefunItem(Categories.RESOURCES, Items.SEGGANESSON, RecipeType.ORE_CRUSHER, new ItemStack[]{
-            Items.SEGGANESSON_METEOR, null, null,
-            null, null, null,
-            null, null, null
-        }).register(addon);
+        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_DUST, RecipeType.ORE_CRUSHER, fillNulls(Items.OSMIUM_METEOR)).register(addon);
+        new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_INGOT, RecipeType.SMELTERY, fillNulls(Items.OSMIUM_DUST)).register(addon);
+        new SlimefunItem(Categories.RESOURCES, Items.SEGGANESSON, RecipeType.ORE_CRUSHER, fillNulls(Items.SEGGANESSON_METEOR)).register(addon);
 
         new IonExchangeSeparator().register(addon);
 
@@ -329,6 +308,28 @@ public final class Setup {
         new RareEarth(Items.NEODYMIUM_INGOT).register(addon);
         new RareEarth(Items.GADOLINIUM_INGOT).register(addon);
         new RareEarth(Items.TERBIUM_INGOT).register(addon);
+
+        new SlimefunItem(Categories.GENERAL, Items.TERFENOL_D, RecipeType.SMELTERY, fillNulls(new SlimefunItemStack(Items.TERBIUM_INGOT, 3),
+            new SlimefunItemStack(Items.GADOLINIUM_INGOT, 2), new ItemStack(Material.IRON_INGOT), SlimefunItems.COBALT_INGOT
+        )).register(addon);
+
+        new SlimefunItem(Categories.GENERAL, Items.TERFENOL_D_BLOCK, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            Items.TERFENOL_D, Items.TERFENOL_D, Items.TERFENOL_D,
+            Items.TERFENOL_D, Items.TERFENOL_D, Items.TERFENOL_D,
+            Items.TERFENOL_D, Items.TERFENOL_D, Items.TERFENOL_D
+        }).register(addon);
+
+        new SlimefunItem(Categories.GENERAL, Items.NDFEB_ALLOY, RecipeType.SMELTERY, fillNulls(
+            new SlimefunItemStack(Items.NEODYMIUM_INGOT, 4), Items.GADOLINIUM_INGOT, new ItemStack(Material.IRON_INGOT)
+        )).register(addon);
+
+        new SlimefunItem(Categories.GENERAL, Items.NDFEB_ALLOY_BLOCK, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            Items.NDFEB_ALLOY, Items.NDFEB_ALLOY, Items.NDFEB_ALLOY,
+            Items.NDFEB_ALLOY, Items.NDFEB_ALLOY, Items.NDFEB_ALLOY,
+            Items.NDFEB_ALLOY, Items.NDFEB_ALLOY, Items.NDFEB_ALLOY
+        }).register(addon);
+
+        new MeteorAttractor().register(addon);
     }
 
     static void setupSuits(SlimefunWarfare addon) {
@@ -394,5 +395,10 @@ public final class Setup {
         );
         research.addItems(items);
         research.register();
+    }
+
+    @SafeVarargs
+    private static <T> T[] fillNulls(T... original) {
+        return Arrays.copyOf(original, 9);
     }
 }

@@ -309,6 +309,15 @@ public final class Items {
         "",
         "&7Converts electricity into pure energy"
     );
+
+    public static final SlimefunItemStack METEOR_ATTRACTOR = new SlimefunItemStack(
+        "METEOR_ATTRACTOR",
+        HeadTexture.MAGNET,
+        "&fMeteor Attractor",
+        "",
+        "&7A magnet so strong, that it",
+        "&7can pull meteors from space"
+    );
     // endregion
 
     // region rare earths
@@ -332,6 +341,7 @@ public final class Items {
         "&7The source of all the rare earths.",
         "&7Find it in igneous rock"
     );
+
     public static final SlimefunItemStack LANTHANUM_INGOT = new SlimefunItemStack(
         "LANTHANUM_INGOT",
         Material.IRON_INGOT,
@@ -339,20 +349,54 @@ public final class Items {
         "",
         "&7Can be used as infinite flint and steel"
     );
+
     public static final SlimefunItemStack NEODYMIUM_INGOT = new SlimefunItemStack(
         "NEODYMIUM_INGOT",
         Material.NETHERITE_INGOT,
         "&eNeodymium Ingot"
     );
+
     public static final SlimefunItemStack GADOLINIUM_INGOT = new SlimefunItemStack(
         "GADOLINIUM_INGOT",
         Material.IRON_INGOT,
         "&eGadolinium Ingot"
     );
+
     public static final SlimefunItemStack TERBIUM_INGOT = new SlimefunItemStack(
         "TERBIUM_INGOT",
         Material.IRON_INGOT,
         "&eTerbium Ingot"
+    );
+
+    public static final SlimefunItemStack TERFENOL_D = new SlimefunItemStack(
+        "TERFENOL_D",
+        Material.IRON_INGOT,
+        "&6Terfenol-D",
+        "",
+        "&7This alloy has the interesting",
+        "&7property of changing shape in",
+        "&7a magnetic field"
+    );
+
+    public static final SlimefunItemStack TERFENOL_D_BLOCK = new SlimefunItemStack(
+        "TERFENOL_D_BLOCK",
+        Material.IRON_BLOCK,
+        "&6Block of Terfenol-D"
+    );
+
+    public static final SlimefunItemStack NDFEB_ALLOY = new SlimefunItemStack(
+        "NDFEB_ALLOY",
+        Material.NETHERITE_INGOT,
+        "&6NdFeB Alloy",
+        "",
+        "&7This alloy is the most magnetic",
+        "&7material known to man"
+    );
+
+    public static final SlimefunItemStack NDFEB_ALLOY_BLOCK = new SlimefunItemStack(
+        "NDFEB_ALLOY_BLOCK",
+        Material.NETHERITE_BLOCK,
+        "&6Block of NdFeB Alloy"
     );
     // endregion
 

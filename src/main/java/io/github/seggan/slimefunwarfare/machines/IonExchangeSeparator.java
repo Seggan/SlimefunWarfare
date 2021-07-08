@@ -1,4 +1,4 @@
-package io.github.seggan.slimefunwarfare.items;
+package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.mooy1.infinitylib.items.StackUtils;
 import io.github.mooy1.infinitylib.presets.MenuPreset;
@@ -48,7 +48,7 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
     private final List<SlimefunItemStack> results = new ArrayList<>();
 
     public IonExchangeSeparator() {
-        super(Categories.GENERAL, Items.ION_EXCHANGE_SEPARATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        super(Categories.MACHINES, Items.ION_EXCHANGE_SEPARATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.REINFORCED_SLIMESTEEL, SlimefunItems.ELECTRO_MAGNET, Items.REINFORCED_SLIMESTEEL,
             SlimefunItems.SULFATE, null, SlimefunItems.SULFATE,
             Items.REINFORCED_SLIMESTEEL, SlimefunItems.ELECTRO_MAGNET, Items.REINFORCED_SLIMESTEEL
@@ -87,7 +87,9 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
                 if (item == null) continue;
                 if (Objects.equals(StackUtils.getID(item), Items.MONAZITE.getItemId())) {
                     menu.consumeItem(i);
-                    processor.startOperation(b, new Operation(results.get(ThreadLocalRandom.current().nextInt(results.size()))));
+                    processor.startOperation(b, new Operation(
+                        results.get(ThreadLocalRandom.current().nextInt(results.size())).clone()
+                    ));
                     break;
                 }
             }
@@ -155,11 +157,11 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
     protected static final class Operation implements MachineOperation {
 
         @Getter
-        private final SlimefunItemStack result;
+        private final ItemStack result;
 
         private int ticks = 0;
 
-        protected Operation(SlimefunItemStack result) {
+        protected Operation(ItemStack result) {
             this.result = result;
         }
 

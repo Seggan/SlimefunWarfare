@@ -21,7 +21,7 @@ public class Monazite implements GEOResource {
     @Override
     public int getDefaultSupply(@Nonnull World.Environment environment, @Nonnull Biome biome) {
         if (biome == Biome.BASALT_DELTAS) {
-            return 4;
+            return 1;
         }
 
         return 0;

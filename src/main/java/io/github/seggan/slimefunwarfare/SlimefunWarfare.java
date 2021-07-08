@@ -14,7 +14,6 @@ import io.github.seggan.slimefunwarfare.listeners.HitListener;
 import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
 import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
-import io.github.seggan.slimefunwarfare.listeners.SpaceListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.Particle;
@@ -49,7 +48,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
         registerListener(new BulletListener(), new PyroListener(),
             new GrenadeListener(), new ConcreteListener(), new NukeListener(),
-            new SpaceListener(), new HitListener(), new ModuleListener(), this);
+            new HitListener(), new ModuleListener(), this);
 
         Categories.setup(this);
 
