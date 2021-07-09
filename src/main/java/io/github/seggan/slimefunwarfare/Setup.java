@@ -7,6 +7,7 @@ import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.FLOX;
 import io.github.seggan.slimefunwarfare.items.Grenade;
+import io.github.seggan.slimefunwarfare.items.LiquidOxygen;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
@@ -217,12 +218,7 @@ public final class Setup {
                 Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN
             }, new SlimefunItemStack(Items.PURIFIED_LIQUID_NITROGEN, 4)).register(addon);
 
-        new SlimefunItem(Categories.EXPLOSIVES, Items.LIQUID_OXYGEN, RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR,
-                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR,
-                Items.LIQUID_AIR, Items.LIQUID_AIR, Items.LIQUID_AIR
-            }, new SlimefunItemStack(Items.LIQUID_OXYGEN, 2)).register(addon);
+        new LiquidOxygen().register(addon);
 
         new FLOX().register(addon);
 

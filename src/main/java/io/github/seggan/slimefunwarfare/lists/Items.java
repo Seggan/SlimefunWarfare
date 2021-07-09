@@ -55,16 +55,16 @@ public final class Items {
         HeadTexture.TIN_CAN,
         "&fLiquid Oxygen",
         "",
-        "&7Refreshing"
+        "&7Old lab legends say that if",
+        "&7you drop this on carpet..."
     );
     public static final SlimefunItemStack FLOX = new SlimefunItemStack(
         "FLOX",
         HeadTexture.TIN_CAN,
         "&fFLOX",
         "",
-        "&7Fuel + liquid oxygen. Right click to go to space",
-        "&cMAKE SURE TO DOUBLE TAP SPACE BAR WHEN",
-        "&cTELEPORTED TO KEEP FROM FALLING"
+        "&7Fuel + liquid oxygen. What's",
+        "&7the worst that can happen?"
     );
     public static final SlimefunItemStack THIOACETONE = new SlimefunItemStack(
         "THIOACETONE",

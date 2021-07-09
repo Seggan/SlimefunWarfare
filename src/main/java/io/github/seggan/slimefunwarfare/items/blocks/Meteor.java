@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 public class Meteor extends SlimefunItem {
 
     public Meteor(SlimefunItemStack item) {
-        super(Categories.RESOURCES, item, RecipeTypes.SPACE, new ItemStack[9]);
+        super(Categories.RESOURCES, item, RecipeTypes.METEOR_ATTRACTOR, new ItemStack[9]);
 
         addItemHandler(new BlockBreakHandler(false, false) {
             @Override

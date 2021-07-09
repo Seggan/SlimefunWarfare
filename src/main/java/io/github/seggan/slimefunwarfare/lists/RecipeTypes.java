@@ -39,4 +39,9 @@ public final class RecipeTypes {
         SlimefunWarfare.inst().getKey("iron_exchange_separator"),
         Items.ION_EXCHANGE_SEPARATOR
     );
+
+    public static final RecipeType METEOR_ATTRACTOR = new RecipeType(
+        SlimefunWarfare.inst().getKey("meteor_attractor"),
+        Items.METEOR_ATTRACTOR
+    );
 }
