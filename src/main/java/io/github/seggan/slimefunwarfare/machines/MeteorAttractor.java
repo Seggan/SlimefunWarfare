@@ -3,39 +3,33 @@ package io.github.seggan.slimefunwarfare.machines;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
-import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+import javax.annotation.Nonnull;
 
-public class MeteorAttractor extends MultiBlockMachine {
+public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
     public MeteorAttractor() {
-        super(Categories.MACHINES, Items.METEOR_ATTRACTOR, new ItemStack[]{
+        super(Categories.MACHINES, Items.METEOR_ATTRACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.NDFEB_ALLOY_BLOCK, null, Items.NDFEB_ALLOY_BLOCK,
             Items.NDFEB_ALLOY_BLOCK, null, Items.NDFEB_ALLOY_BLOCK,
             Items.TERFENOL_D_BLOCK, Items.NDFEB_ALLOY_BLOCK, Items.TERFENOL_D_BLOCK
-        }, BlockFace.DOWN);
-    }
-
-    @Override
-    public void onInteract(Player p, Block b) {
-        int mins = ThreadLocalRandom.current().nextInt(10, 31);
-        Location l = b.getLocation();
-        p.sendMessage("Sending meteor in " + mins + " minutes");
-        SlimefunWarfare.inst().runSync(() -> drop(l), (long) mins * 60 * 20);
+        });
     }
 
     private void drop(Location l) {
         Block b = l.getBlock();
-        if (!(BlockStorage.check(b) instanceof MeteorAttractor)) return;
+        if (!Objects.equals(BlockStorage.checkID(b), Items.NDFEB_ALLOY_BLOCK.getItemId())) return;
 
         int x = ThreadLocalRandom.current().nextInt(b.getX() - 100, b.getX() + 101);
         int z = ThreadLocalRandom.current().nextInt(b.getZ() - 100, b.getZ() + 101);
@@ -53,5 +47,16 @@ public class MeteorAttractor extends MultiBlockMachine {
             landing.setType(stack.getType());
             BlockStorage.addBlockInfo(landing, "id", stack.getItemId());
         }, 2);
+    }
+
+    @Nonnull
+    @Override
+    public BlockUseHandler getItemHandler() {
+        return (b) -> {
+            int mins = ThreadLocalRandom.current().nextInt(10, 31);
+            Location l = b.getClickedBlock().get().getLocation();
+            b.getPlayer().sendMessage("Sending meteor in " + mins + " minutes");
+            SlimefunWarfare.inst().runSync(() -> drop(l),  mins * 60 * 20L);
+        };
     }
 }
