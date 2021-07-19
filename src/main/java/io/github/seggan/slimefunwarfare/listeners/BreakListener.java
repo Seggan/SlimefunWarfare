@@ -1,6 +1,7 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.seggan.slimefunwarfare.lists.Items;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,7 +18,7 @@ public class BreakListener implements Listener {
     public void onStoneBreak(BlockBreakEvent e) {
         if (e.getBlock().getType() != Material.STONE) return;
         if (ThreadLocalRandom.current().nextDouble(100) < boraxChance) {
-
+            e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), Items.BORAX.clone());
         }
     }
 }

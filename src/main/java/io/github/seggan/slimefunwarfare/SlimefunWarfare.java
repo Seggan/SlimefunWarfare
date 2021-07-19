@@ -7,6 +7,7 @@ import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
+import io.github.seggan.slimefunwarfare.listeners.BreakListener;
 import io.github.seggan.slimefunwarfare.listeners.BulletListener;
 import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
 import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
@@ -48,7 +49,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
         registerListener(new BulletListener(), new PyroListener(),
             new GrenadeListener(), new ConcreteListener(), new NukeListener(),
-            new HitListener(), new ModuleListener(), this);
+            new HitListener(), new ModuleListener(), new BreakListener(), this);
 
         Categories.setup(this);
 
