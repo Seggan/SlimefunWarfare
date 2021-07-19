@@ -15,6 +15,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class HitListener implements Listener {
@@ -55,12 +56,14 @@ public class HitListener implements Listener {
 
     @EventHandler
     public void onDummyDestroy(PlayerInteractEntityEvent e) {
-        Entity entity = e.getRightClicked();
-        if (PersistentDataAPI.getString(entity, Dummy.KEY) != null) {
-            entity.remove();
-            ItemStack stack = Items.DUMMY.clone();
-            stack.setAmount(1);
-            entity.getWorld().dropItemNaturally(entity.getLocation(), stack);
+        if (e.getHand() == EquipmentSlot.HAND) {
+            Entity entity = e.getRightClicked();
+            if (PersistentDataAPI.getString(entity, Dummy.KEY) != null) {
+                entity.remove();
+                ItemStack stack = Items.DUMMY.clone();
+                stack.setAmount(1);
+                entity.getWorld().dropItemNaturally(entity.getLocation(), stack);
+            }
         }
     }
 

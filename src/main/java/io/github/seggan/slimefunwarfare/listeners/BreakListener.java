@@ -1,0 +1,23 @@
+package io.github.seggan.slimefunwarfare.listeners;
+
+import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class BreakListener implements Listener {
+
+    private final double boraxChance = SlimefunWarfare.inst().getConfig().getDouble("guns.borax-drop-chance", 0, 100);
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
+    public void onStoneBreak(BlockBreakEvent e) {
+        if (e.getBlock().getType() != Material.STONE) return;
+        if (ThreadLocalRandom.current().nextDouble(100) < boraxChance) {
+
+        }
+    }
+}

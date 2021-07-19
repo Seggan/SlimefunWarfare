@@ -34,6 +34,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.Unplaceabl
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -48,6 +49,15 @@ public final class Setup {
     private static int researchId = 3478;
 
     static void setupItems(SlimefunWarfare addon) {
+        new SlimefunItem(Categories.RESOURCES, Items.BORAX, RecipeType.NULL, fillNulls(
+            new CustomItem(
+                Material.STONE,
+                "&fStone drop",
+                "",
+                "&7This item is dropped from stone"
+            )
+        )).register(addon);
+        new SlimefunItem(Categories.RESOURCES, Items.BORON, RecipeType.SMELTERY, fillNulls(Items.BORAX)).register(addon);
         new SlimefunItem(Categories.GENERAL, Items.SLIMESTEEL, RecipeType.SMELTERY, new ItemStack[]{
             SlimefunItems.STEEL_INGOT, new ItemStack(Material.SLIME_BALL), null,
             null, null, null,
@@ -60,6 +70,10 @@ public final class Setup {
             SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.CORINTHIAN_BRONZE_INGOT, SlimefunItems.ALUMINUM_BRONZE_INGOT,
             null, null, null
         }).register(addon);
+
+        new VanillaItem(Categories.GENERAL, new ItemStack(Material.SLIME_BALL), "SLIME_BALL", RecipeType.ENHANCED_CRAFTING_TABLE, fillNulls(
+            Items.BORAX, new ItemStack(Material.BONE_MEAL), new ItemStack(Material.WATER_BUCKET)
+        )).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.SCOPE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.PLASTIC_SHEET, SlimefunItems.MULTIMETER, SlimefunItems.PLASTIC_SHEET,
@@ -84,7 +98,6 @@ public final class Setup {
     }
 
     static void setupMelee(SlimefunWarfare addon) {
-
         new UnplaceableBlock(Categories.MELEE, Items.BATTLE_AXE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             new ItemStack(Material.IRON_AXE), new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_AXE),
             null, new ItemStack(Material.STICK), null,
@@ -316,7 +329,7 @@ public final class Setup {
         }).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.NDFEB_ALLOY, RecipeType.SMELTERY, fillNulls(
-            new SlimefunItemStack(Items.NEODYMIUM_INGOT, 4), Items.GADOLINIUM_INGOT, new ItemStack(Material.IRON_INGOT)
+            new SlimefunItemStack(Items.NEODYMIUM_INGOT, 4), Items.BORON, new ItemStack(Material.IRON_INGOT)
         )).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.NDFEB_ALLOY_BLOCK, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{

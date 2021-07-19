@@ -36,7 +36,7 @@ public final class RecipeTypes {
     );
 
     public static final RecipeType ION_SEPARATOR = new RecipeType(
-        SlimefunWarfare.inst().getKey("iron_exchange_separator"),
+        SlimefunWarfare.inst().getKey("ion_exchange_separator"),
         Items.ION_EXCHANGE_SEPARATOR
     );
 

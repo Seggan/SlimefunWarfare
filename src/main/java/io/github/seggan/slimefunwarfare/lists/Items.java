@@ -123,6 +123,18 @@ public final class Items {
     // endregion
 
     // region general
+    public static final SlimefunItemStack BORAX = new SlimefunItemStack(
+        "BORAX",
+        Material.QUARTZ,
+        "&fBorax",
+        "",
+        "&7A common mineral dropped from stone"
+    );
+    public static final SlimefunItemStack BORON = new SlimefunItemStack(
+        "BORON",
+        Material.CHARCOAL,
+        "&7Boron"
+    );
     public static final SlimefunItemStack SLIMESTEEL = new SlimefunItemStack(
         "SLIMESTEEL_INGOT",
         Material.IRON_INGOT,

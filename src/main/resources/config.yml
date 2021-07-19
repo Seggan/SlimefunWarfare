@@ -12,6 +12,8 @@ guns:
   # within max range
   min-range-on: true
   energy-rifle-explosions: false
+  # The % chance that borax will drop from a stone block. can be a decimal
+  borax-drop-chance: 2.0
 
 space:
   # The percent chance that a Segganesson meteor will be dropped instead of an Osmium meteor
