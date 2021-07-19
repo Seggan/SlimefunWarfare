@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.machines;
 
+import io.github.mooy1.infinitylib.players.CoolDownMap;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
@@ -8,16 +9,18 @@ import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunIte
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 
 public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
+
+    private static final CoolDownMap cooldowns = new CoolDownMap(1000 * 60);
 
     public MeteorAttractor() {
         super(Categories.MACHINES, Items.METEOR_ATTRACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
@@ -29,7 +32,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
     private void drop(Location l) {
         Block b = l.getBlock();
-        if (!Objects.equals(BlockStorage.checkID(b), Items.NDFEB_ALLOY_BLOCK.getItemId())) return;
+        if (!(BlockStorage.check(l) instanceof MeteorAttractor)) return;
 
         int x = ThreadLocalRandom.current().nextInt(b.getX() - 100, b.getX() + 101);
         int z = ThreadLocalRandom.current().nextInt(b.getZ() - 100, b.getZ() + 101);
@@ -53,10 +56,15 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
     @Override
     public BlockUseHandler getItemHandler() {
         return (b) -> {
-            int mins = ThreadLocalRandom.current().nextInt(10, 31);
-            Location l = b.getClickedBlock().get().getLocation();
-            b.getPlayer().sendMessage("Sending meteor in " + mins + " minutes");
-            SlimefunWarfare.inst().runSync(() -> drop(l),  mins * 60 * 20L);
+            if (cooldowns.check(b.getPlayer().getUniqueId())) {
+                cooldowns.reset(b.getPlayer().getUniqueId());
+                int mins = ThreadLocalRandom.current().nextInt(10, 31);
+                Location l = b.getClickedBlock().get().getLocation();
+                b.getPlayer().sendMessage("Sending meteor in " + mins + " minutes");
+                SlimefunWarfare.inst().runSync(() -> drop(l), mins * 60 * 20L);
+            } else {
+                b.getPlayer().sendMessage(ChatColor.RED + "The Meteor Attractor has a 1 minute cooldown");
+            }
         };
     }
 }
