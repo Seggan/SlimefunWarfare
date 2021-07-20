@@ -18,6 +18,15 @@ guns:
 space:
   # The percent chance that a Segganesson meteor will be dropped instead of an Osmium meteor
   segganesson-chance: 15
+  # The minimum delay between a meteor attractor activation and the drop (in minutes)
+  meteor-min-time: 10
+  # The maximum delay between a meteor attractor activation and the drop (in minutes)
+  meteor-max-time: 30
+  # The cooldown that a player can't use a meteor attractor (in minutes)
+  attractor-cooldown: 1
+  # The radius that a meteor will be dropped in. Since it's a radius, the meteor will drop
+  # in a value x 2 by value x 2 box (i.e. for the default 100, it's gonna drop in a 200x200 box)
+  meteor-drop-radius: 100
 
 suits:
   # This will spawn blue particles underneath you when flying with a power suit
