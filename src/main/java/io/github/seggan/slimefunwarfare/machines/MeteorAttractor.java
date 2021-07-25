@@ -6,14 +6,18 @@ import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,9 +37,9 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
         });
     }
 
-    private void drop(Location l) {
+    private void drop(Location l, Player p) {
         Block b = l.getBlock();
-        if (!(BlockStorage.check(l) instanceof MeteorAttractor)) return;
+        if (!SlimefunPlugin.getProtectionManager().hasPermission(p, b, ProtectableAction.BREAK_BLOCK)) return;
 
         AddonConfig config = SlimefunWarfare.inst().getConfig();
 
@@ -54,6 +58,9 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
             }
 
             Block landing = world.getHighestBlockAt(x, z);
+            if (!landing.isPassable()) {
+                landing = landing.getRelative(BlockFace.UP);
+            }
             landing.setType(stack.getType());
             BlockStorage.addBlockInfo(landing, "id", stack.getItemId());
         }, 2);
@@ -74,7 +81,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
                 Location l = b.getClickedBlock().get().getLocation();
                 b.getPlayer().sendMessage("Sending meteor in " + mins + " minutes");
-                SlimefunWarfare.inst().runSync(() -> drop(l), mins * 60 * 20L);
+                SlimefunWarfare.inst().runSync(() -> drop(l, b.getPlayer()), mins * 60 * 20L);
             } else {
                 b.getPlayer().sendMessage(ChatColor.RED + "The Meteor Attractor has a "
                     + config.getInt("space.space.attractor-cooldown", 1) +

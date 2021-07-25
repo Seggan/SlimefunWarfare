@@ -2,5 +2,8 @@ name: SlimefunWarfare
 main: io.github.seggan.slimefunwarfare.SlimefunWarfare
 version: ${version}
 author: Seggan
-depend: [Slimefun]
+depend:
+  - Slimefun
+softdepend:
+  - SimpleStorage
 api-version: 1.15

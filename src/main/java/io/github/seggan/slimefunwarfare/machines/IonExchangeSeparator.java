@@ -15,8 +15,8 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
@@ -45,7 +45,7 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
     private static final ItemStack NONE = new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " ");
 
     private final MachineProcessor<Operation> processor = new MachineProcessor<>(this);
-    private final List<SlimefunItemStack> results = new ArrayList<>();
+    private final List<ItemStack> results = new ArrayList<>();
 
     public IonExchangeSeparator() {
         super(Categories.MACHINES, Items.ION_EXCHANGE_SEPARATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
@@ -60,6 +60,15 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
         results.add(Items.NEODYMIUM_INGOT);
         results.add(Items.GADOLINIUM_INGOT);
         results.add(Items.TERBIUM_INGOT);
+        results.add(Items.DYSPROSIUM_INGOT);
+        results.add(Items.HOLMIUM_INGOT);
+        results.add(Items.ERBIUM_INGOT);
+        results.add(Items.YTTERBIUM_INGOT);
+
+        SlimefunItem cerium = SlimefunItem.getByID("MATERIAL_BASTNAESITE_INGOT");
+        if (cerium != null) {
+            results.add(cerium.getItem());
+        }
 
         addItemHandler(onBreak());
     }

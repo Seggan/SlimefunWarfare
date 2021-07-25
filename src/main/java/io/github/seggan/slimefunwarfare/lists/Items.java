@@ -380,6 +380,30 @@ public final class Items {
         "&eTerbium Ingot"
     );
 
+    public static final SlimefunItemStack DYSPROSIUM_INGOT = new SlimefunItemStack(
+        "DYSPROSIUM_INGOT",
+        Material.NETHERITE_INGOT,
+        "&eDysprosium Ingot"
+    );
+
+    public static final SlimefunItemStack HOLMIUM_INGOT = new SlimefunItemStack(
+        "HOLMIUM_INGOT",
+        Material.BRICK,
+        "&eHolmium Ingot"
+    );
+
+    public static final SlimefunItemStack ERBIUM_INGOT = new SlimefunItemStack(
+        "ERBIUM_INGOT",
+        Material.IRON_INGOT,
+        "&eErbium Ingot"
+    );
+
+    public static final SlimefunItemStack YTTERBIUM_INGOT = new SlimefunItemStack(
+        "YTTERBIUM_INGOT",
+        Material.IRON_INGOT,
+        "&eYtterbium Ingot"
+    );
+
     public static final SlimefunItemStack TERFENOL_D = new SlimefunItemStack(
         "TERFENOL_D",
         Material.IRON_INGOT,
