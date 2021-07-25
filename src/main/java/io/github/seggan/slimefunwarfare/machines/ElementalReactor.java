@@ -10,10 +10,10 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public class ElementalGenerator extends AGenerator {
+public class ElementalReactor extends AGenerator {
 
-    public ElementalGenerator() {
-        super(Categories.MACHINES, Items.ELEMENTAL_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+    public ElementalReactor() {
+        super(Categories.MACHINES, Items.ELEMENTAL_REACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM,
             Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
             Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM

@@ -24,7 +24,7 @@ import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
 import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.Boominator9000;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
-import io.github.seggan.slimefunwarfare.machines.ElementalGenerator;
+import io.github.seggan.slimefunwarfare.machines.ElementalReactor;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.seggan.slimefunwarfare.machines.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.machines.MeteorAttractor;
@@ -347,7 +347,7 @@ public final class Setup {
 
         new MeteorAttractor().register(addon);
 
-        new ElementalGenerator().register(addon);
+        new ElementalReactor().register(addon);
     }
 
     static void setupSuits(SlimefunWarfare addon) {

@@ -331,10 +331,10 @@ public final class Items {
         "&7can pull meteors from space"
     );
 
-    public static final SlimefunItemStack ELEMENTAL_GENERATOR = new SlimefunItemStack(
-        "ELEMENTAL_GENERATOR",
+    public static final SlimefunItemStack ELEMENTAL_REACTOR = new SlimefunItemStack(
+        "ELEMENTAL_REACTOR",
         HeadTexture.GENERATOR,
-        "&bElemental Generator",
+        "&bElemental Reactor",
         "",
         "&7Generates energy from the",
         "&7energy-rich elements Unpatentablium",
