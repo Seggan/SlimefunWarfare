@@ -330,6 +330,19 @@ public final class Items {
         "&7A magnet so strong, that it",
         "&7can pull meteors from space"
     );
+
+    public static final SlimefunItemStack ELEMENTAL_GENERATOR = new SlimefunItemStack(
+        "ELEMENTAL_GENERATOR",
+        HeadTexture.GENERATOR,
+        "&bElemental Generator",
+        "",
+        "&7Generates energy from the",
+        "&7energy-rich elements Unpatentablium",
+        "&7and Segganesson",
+        LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
+        LoreBuilder.powerBuffer(32_768),
+        LoreBuilder.powerPerSecond(32_768)
+    );
     // endregion
 
     // region rare earths

@@ -24,6 +24,7 @@ import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
 import io.github.seggan.slimefunwarfare.machines.AirLiquefier;
 import io.github.seggan.slimefunwarfare.machines.Boominator9000;
 import io.github.seggan.slimefunwarfare.machines.BulletPress;
+import io.github.seggan.slimefunwarfare.machines.ElementalGenerator;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.seggan.slimefunwarfare.machines.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.machines.MeteorAttractor;
@@ -113,7 +114,7 @@ public final class Setup {
         // Energy
         new SlimefunItem(Categories.GENERAL, Items.OSMIUM_SUPERALLOY, RecipeType.SMELTERY, new ItemStack[]{
             Items.OSMIUM_INGOT, Items.SEGGANESSON, Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_ALLOY_INGOT,
-            Items.OSMIUM_DUST, null, null,
+            Items.OSMIUM_DUST, Items.GADOLINIUM_INGOT, null,
             null, null, null
         }).register(addon);
 
@@ -345,6 +346,8 @@ public final class Setup {
         }).register(addon);
 
         new MeteorAttractor().register(addon);
+
+        new ElementalGenerator().register(addon);
     }
 
     static void setupSuits(SlimefunWarfare addon) {
