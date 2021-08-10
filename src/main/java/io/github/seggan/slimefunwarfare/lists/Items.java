@@ -343,6 +343,30 @@ public final class Items {
         LoreBuilder.powerBuffer(32_768),
         LoreBuilder.powerPerSecond(32_768)
     );
+
+    public static final SlimefunItemStack FIBER_OPTIC_GLASS = new SlimefunItemStack(
+        "FIBER_OPTIC_GLASS",
+        Material.BLUE_STAINED_GLASS,
+        "&fFiber Optic Glass"
+    );
+
+    public static final SlimefunItemStack FIBER_OPTIC_CABLE = new SlimefunItemStack(
+        "FIBER_OPTIC_CABLE",
+        Material.STRING,
+        "&fFiber Optic Cable"
+    );
+
+    public static final SlimefunItemStack LASER_DIODE = new SlimefunItemStack(
+        "LASER_DIODE",
+        Heads.LASER,
+        "&4Laser Diode"
+    );
+
+    public static final SlimefunItemStack ULTRA_MAGNET = new SlimefunItemStack(
+        "ULTRA_MAGNET",
+        HeadTexture.MAGNET.getTexture(),
+        "&fUltra Magnet"
+    );
     // endregion
 
     // region rare earths
