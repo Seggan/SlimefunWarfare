@@ -51,7 +51,6 @@ public class ChatListener implements Listener {
                         .append(decrypted)
                         .create()
                     );
-                    break;
                 }
             }
         }
