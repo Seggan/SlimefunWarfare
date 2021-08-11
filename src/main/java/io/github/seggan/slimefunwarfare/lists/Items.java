@@ -367,6 +367,19 @@ public final class Items {
         HeadTexture.MAGNET.getTexture(),
         "&fUltra Magnet"
     );
+
+    public static final SlimefunItemStack RADIO = new SlimefunItemStack(
+        "RADIO",
+        Material.REDSTONE_TORCH,
+        "&fRadio",
+        "",
+        "&7Hold this to chat to anyone else having",
+        "&7this in their inventory. The encryption key",
+        "&7is used to encode/decode messages so only",
+        "&7people with the same key as yours can",
+        "&7understand the message. Hold to chat using",
+        "&7this and right click to set the encryption key"
+    );
     // endregion
 
     // region rare earths

@@ -33,3 +33,11 @@ suits:
   flight-particles: true
   # If this is true, the Element Forge will use iron blocks instead of netherite blocks for the corners
   legacy-element-forge: false
+
+radar:
+  show-players: true
+  show-mobs: true
+  show-energy-nets: true
+  show-gps: true
+  # The distance up/down that the radar can see
+  y-range: 30

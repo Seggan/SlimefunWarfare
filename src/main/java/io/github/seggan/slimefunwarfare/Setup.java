@@ -9,6 +9,7 @@ import io.github.seggan.slimefunwarfare.items.FLOX;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.LiquidOxygen;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
+import io.github.seggan.slimefunwarfare.items.Radio;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
@@ -115,6 +116,8 @@ public final class Setup {
         new SlimefunItem(Categories.GENERAL, Items.ULTRA_MAGNET, RecipeType.SMELTERY, fillNulls(
             SlimefunItems.MAGNET, Items.NDFEB_ALLOY, new SlimefunItemStack(Items.HOLMIUM_INGOT, 2)
         )).register(addon);
+
+        new Radio().register(addon);
     }
 
     static void setupMelee(SlimefunWarfare addon) {
