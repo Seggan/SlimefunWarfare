@@ -18,9 +18,9 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 public class ModuleManipulator extends AbstractContainer {
 
@@ -39,9 +39,9 @@ public class ModuleManipulator extends AbstractContainer {
 
     public ModuleManipulator() {
         super(Categories.POWER_SUITS, Items.MODULE_MANIPULATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            null, Items.MODULE_CASE, null,
+            Items.FIBER_OPTIC_CABLE, Items.MODULE_CASE, Items.FIBER_OPTIC_CABLE,
             Items.SEGGANESSON, new ItemStack(Material.CRAFTING_TABLE), Items.SEGGANESSON,
-            null, Items.OSMIUM_INGOT, null
+            Items.LASER_DIODE, Items.OSMIUM_INGOT, Items.LASER_DIODE
         });
     }
 

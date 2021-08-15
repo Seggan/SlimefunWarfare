@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare.lists;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
@@ -118,7 +119,8 @@ public final class Items {
         Material.TNT,
         "&7Nuclear Bomb",
         "",
-        "&7KABOOM!"
+        "&7KABOOM!",
+        LoreBuilder.radioactive(Radioactivity.VERY_DEADLY)
     );
     // endregion
 

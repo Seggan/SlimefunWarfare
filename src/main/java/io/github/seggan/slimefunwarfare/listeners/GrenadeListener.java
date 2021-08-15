@@ -45,17 +45,16 @@ public class GrenadeListener implements Listener {
 
     private void applyEffect(Entity snowball, Location loc) {
         String id = snowball.getMetadata("effect").get(0).asString();
+        AreaEffectCloud cloud;
         switch (id) {
             case "NITROGEN_TRIIODIDE":
                 snowball.getWorld().createExplosion(loc, 3F, false, false);
-                AreaEffectCloud cloud = (AreaEffectCloud) snowball.getWorld()
+                cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
                 cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.BLINDNESS,
                     100,
-                    3,
-                    false,
-                    false
+                    3
                 ), true);
                 cloud.setDuration(100);
                 cloud.setDurationOnUse(0);
@@ -68,47 +67,61 @@ public class GrenadeListener implements Listener {
                 break;
             case "ARSENIC":
                 snowball.getWorld().createExplosion(loc, 1F, false, false);
-                AreaEffectCloud cloud1 = (AreaEffectCloud) snowball.getWorld()
+                cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-                cloud1.addCustomEffect(new PotionEffect(
+                cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.WITHER,
                     500,
-                    1,
-                    false,
-                    false
+                    1
                 ), true);
-                cloud1.addCustomEffect(new PotionEffect(
+                cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.CONFUSION,
                     500,
-                    2,
-                    false,
-                    false
+                    2
                 ), true);
-                cloud1.setDuration(200);
-                cloud1.setDurationOnUse(0);
-                cloud1.setRadiusOnUse(0);
-                cloud1.setColor(Color.GRAY);
-                cloud1.setRadius(4);
+                cloud.setDuration(200);
+                cloud.setDurationOnUse(0);
+                cloud.setRadiusOnUse(0);
+                cloud.setColor(Color.GRAY);
+                cloud.setRadius(4);
                 break;
             case "PYRO_POWDER":
                 snowball.getWorld().createExplosion(loc, 4F);
                 break;
             case "THIOACETONE":
                 snowball.getWorld().createExplosion(loc, 1F, false, false);
-                AreaEffectCloud cloud2 = (AreaEffectCloud) snowball.getWorld()
+                cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
-                cloud2.addCustomEffect(new PotionEffect(
+                cloud.addCustomEffect(new PotionEffect(
                     PotionEffectType.CONFUSION,
                     1200,
-                    9,
-                    false,
-                    false
+                    9
                 ), true);
-                cloud2.setDuration(600);
-                cloud2.setDurationOnUse(0);
-                cloud2.setRadiusOnUse(0);
-                cloud2.setColor(Color.ORANGE);
-                cloud2.setRadius(10);
+                cloud.setDuration(600);
+                cloud.setDurationOnUse(0);
+                cloud.setRadiusOnUse(0);
+                cloud.setColor(Color.ORANGE);
+                cloud.setRadius(10);
+                break;
+            case "OSMIUM":
+                snowball.getWorld().createExplosion(loc, 1F, false, false);
+                cloud = (AreaEffectCloud) snowball.getWorld()
+                    .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
+                cloud.addCustomEffect(new PotionEffect(
+                    PotionEffectType.CONFUSION,
+                    60 * 20,
+                    9
+                ), true);
+                cloud.addCustomEffect(new PotionEffect(
+                    PotionEffectType.WITHER,
+                    60 * 20,
+                    4
+                ), true);
+                cloud.setDuration(5 * 60 * 20);
+                cloud.setDurationOnUse(0);
+                cloud.setRadiusOnUse(0);
+                cloud.setColor(Color.BLUE);
+                cloud.setRadius(25);
                 break;
         }
     }

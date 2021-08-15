@@ -6,4 +6,5 @@ depend:
   - Slimefun
 softdepend:
   - SimpleStorage
+  - InfinityExpansion
 api-version: 1.15

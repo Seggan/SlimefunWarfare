@@ -314,6 +314,7 @@ public final class Setup {
         new Grenade(Items.ARSENIC).register(addon);
         new Grenade(Items.PYRO_POWDER).register(addon);
         new Grenade(Items.THIOACETONE).register(addon);
+        new Grenade(Items.OSMIUM_DUST).register(addon);
 
         new NuclearBomb(Categories.EXPLOSIVES, Items.NUCLEAR_BOMB, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
@@ -382,31 +383,31 @@ public final class Setup {
         new SlimefunItem(Categories.POWER_SUITS, Items.POWER_SUIT_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.UNPATENTABLIUM, Items.UNPATENTABLIUM, Items.UNPATENTABLIUM,
             Items.UNPATENTABLIUM, SlimefunItems.NETHER_STAR_REACTOR, Items.UNPATENTABLIUM,
-            Items.UNPATENTABLIUM, Items.UNPATENTABLIUM, Items.UNPATENTABLIUM
+            Items.UNPATENTABLIUM, Items.LASER_DIODE, Items.UNPATENTABLIUM
         }).register(addon);
 
         new SlimefunItem(Categories.POWER_SUITS, Items.MODULE_CASE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             null, Items.OSMIUM_INGOT, null,
-            Items.OSMIUM_INGOT, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_INGOT,
+            Items.FIBER_OPTIC_CABLE, Items.POWER_SUIT_GENERATOR, Items.FIBER_OPTIC_CABLE,
             null, Items.OSMIUM_INGOT, null
         }, new SlimefunItemStack(Items.MODULE_CASE, 2)).register(addon);
 
         new PowerSuit(Items.POWER_SUIT_HELMET, new ItemStack[]{
             SlimefunItems.ADVANCED_CIRCUIT_BOARD, Items.POWER_SUIT_GENERATOR, SlimefunItems.ADVANCED_CIRCUIT_BOARD,
-            SlimefunItems.REINFORCED_PLATE, SlimefunItems.SCUBA_HELMET, SlimefunItems.REINFORCED_PLATE,
-            Items.OSMIUM_SUPERALLOY, Items.OSMIUM_SUPERALLOY, Items.OSMIUM_SUPERALLOY
+            Items.OSMIUM_SUPERALLOY, SlimefunItems.SCUBA_HELMET, Items.OSMIUM_SUPERALLOY,
+            Items.FIBER_OPTIC_CABLE, Items.OSMIUM_SUPERALLOY, Items.FIBER_OPTIC_CABLE
         }, ArmorPiece.HEAD).register(addon);
 
         new PowerSuit(Items.POWER_SUIT_CHESTPLATE, new ItemStack[]{
-            Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
+            Items.OSMIUM_SUPERALLOY, Items.ULTRA_MAGNET, Items.OSMIUM_SUPERALLOY,
             Items.POWER_SUIT_GENERATOR, SlimefunItems.HAZMAT_CHESTPLATE, Items.POWER_SUIT_GENERATOR,
-            SlimefunItems.BLISTERING_INGOT_3, Items.SEGGANESSON, SlimefunItems.BLISTERING_INGOT_3
+            Items.LASER_DIODE, Items.SEGGANESSON, Items.LASER_DIODE
         }, ArmorPiece.CHEST).register(addon);
 
         new PowerSuit(Items.POWER_SUIT_LEGGINGS, new ItemStack[]{
             SlimefunItems.ELECTRIC_MOTOR, Items.POWER_SUIT_GENERATOR, SlimefunItems.ELECTRIC_MOTOR,
             Items.OSMIUM_SUPERALLOY, SlimefunItems.HAZMAT_LEGGINGS, Items.OSMIUM_SUPERALLOY,
-            Items.OSMIUM_SUPERALLOY, null, Items.OSMIUM_SUPERALLOY
+            Items.FIBER_OPTIC_CABLE, null, Items.FIBER_OPTIC_CABLE
         }, ArmorPiece.LEGS).register(addon);
 
         new PowerSuit(Items.POWER_SUIT_BOOTS, new ItemStack[]{

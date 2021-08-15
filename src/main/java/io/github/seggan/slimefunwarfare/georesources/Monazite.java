@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare.georesources;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
@@ -21,7 +22,7 @@ public class Monazite implements GEOResource {
     @Override
     public int getDefaultSupply(@Nonnull World.Environment environment, @Nonnull Biome biome) {
         if (biome == Biome.BASALT_DELTAS) {
-            return 1;
+            return Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion") ? 1 : 4;
         }
 
         return 0;
@@ -29,7 +30,7 @@ public class Monazite implements GEOResource {
 
     @Override
     public int getMaxDeviation() {
-        return 2;
+        return Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion") ? 2 : 3;
     }
 
     @Nonnull
