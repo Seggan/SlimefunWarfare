@@ -103,7 +103,7 @@ public class GrenadeListener implements Listener {
                 cloud.setColor(Color.ORANGE);
                 cloud.setRadius(10);
                 break;
-            case "OSMIUM":
+            case "OSMIUM_DUST":
                 snowball.getWorld().createExplosion(loc, 1F, false, false);
                 cloud = (AreaEffectCloud) snowball.getWorld()
                     .spawnEntity(loc, EntityType.AREA_EFFECT_CLOUD);
