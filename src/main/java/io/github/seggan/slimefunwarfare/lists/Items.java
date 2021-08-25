@@ -51,22 +51,6 @@ public final class Items {
         "",
         "&7As pure as can be"
     );
-    public static final SlimefunItemStack LIQUID_OXYGEN = new SlimefunItemStack(
-        "LIQUID_OXYGEN",
-        HeadTexture.TIN_CAN,
-        "&fLiquid Oxygen",
-        "",
-        "&7Old lab legends say that if",
-        "&7you drop this on carpet..."
-    );
-    public static final SlimefunItemStack FLOX = new SlimefunItemStack(
-        "FLOX",
-        HeadTexture.TIN_CAN,
-        "&fFLOX",
-        "",
-        "&7Fuel + liquid oxygen. What's",
-        "&7the worst that can happen?"
-    );
     public static final SlimefunItemStack THIOACETONE = new SlimefunItemStack(
         "THIOACETONE",
         Material.BROWN_DYE,

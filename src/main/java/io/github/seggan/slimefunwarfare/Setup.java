@@ -5,9 +5,7 @@ import io.github.seggan.slimefunwarfare.georesources.Monazite;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.items.Dummy;
 import io.github.seggan.slimefunwarfare.items.EnergyBlade;
-import io.github.seggan.slimefunwarfare.items.FLOX;
 import io.github.seggan.slimefunwarfare.items.Grenade;
-import io.github.seggan.slimefunwarfare.items.LiquidOxygen;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.Radio;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
@@ -254,10 +252,6 @@ public final class Setup {
                 Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN, Items.LIQUID_NITROGEN
             }, new SlimefunItemStack(Items.PURIFIED_LIQUID_NITROGEN, 4)).register(addon);
 
-        new LiquidOxygen().register(addon);
-
-        new FLOX().register(addon);
-
         new SlimefunItem(
             Categories.EXPLOSIVES, Items.NITROGEN_TRIIODIDE, RecipeTypes.EXPLOSIVE_SYNTHESIZER,
             new ItemStack[]{
@@ -416,6 +410,7 @@ public final class Setup {
             Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY
         }, ArmorPiece.FEET).register(addon);
 
+        new ModuleManipulator().register(addon);
         new ModuleManipulator().register(addon);
     }
 
