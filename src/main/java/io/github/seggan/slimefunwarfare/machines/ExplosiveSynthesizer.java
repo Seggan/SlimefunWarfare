@@ -38,11 +38,6 @@ public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayIte
             new ItemStack[]{SlimefunItems.SULFATE, SlimefunItems.OIL_BUCKET},
             new ItemStack[]{new SlimefunItemStack(Items.THIOACETONE, 2)}
         );
-
-        registerRecipe(5,
-            new ItemStack[]{SlimefunItems.FUEL_BUCKET, Items.LIQUID_OXYGEN},
-            new ItemStack[]{Items.FLOX, new ItemStack(Material.BUCKET)}
-        );
     }
 
     @Override
