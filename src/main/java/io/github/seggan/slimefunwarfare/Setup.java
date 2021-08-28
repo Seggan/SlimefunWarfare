@@ -8,6 +8,7 @@ import io.github.seggan.slimefunwarfare.items.EnergyBlade;
 import io.github.seggan.slimefunwarfare.items.Grenade;
 import io.github.seggan.slimefunwarfare.items.NuclearBomb;
 import io.github.seggan.slimefunwarfare.items.Radio;
+import io.github.seggan.slimefunwarfare.items.RadioactiveItem;
 import io.github.seggan.slimefunwarfare.items.blocks.Meteor;
 import io.github.seggan.slimefunwarfare.items.guns.EnergyRifle;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
@@ -27,6 +28,7 @@ import io.github.seggan.slimefunwarfare.machines.ElementalReactor;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.seggan.slimefunwarfare.machines.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.machines.MeteorAttractor;
+import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.core.researching.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
@@ -292,8 +294,8 @@ public final class Setup {
         new SlimefunItem(Categories.EXPLOSIVES, Items.PYRO_POWDER, RecipeType.GRIND_STONE,
             fillNulls(new ItemStack(Material.TNT)), new SlimefunItemStack(Items.PYRO_POWDER, 4)).register(addon);
 
-        new SlimefunItem(Categories.EXPLOSIVES, Items.ENRICHED_URANIUM, RecipeTypes.BOOMINATOR,
-            fillNulls(SlimefunItems.BOOSTED_URANIUM)).register(addon);
+        new RadioactiveItem(Categories.EXPLOSIVES, Items.ENRICHED_URANIUM, RecipeTypes.BOOMINATOR,
+            fillNulls(SlimefunItems.BOOSTED_URANIUM), Radioactivity.VERY_DEADLY).register(addon);
 
         new SlimefunItem(
             Categories.EXPLOSIVES, Items.EMPTY_GRENADE, RecipeType.ENHANCED_CRAFTING_TABLE,

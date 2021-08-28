@@ -82,7 +82,9 @@ public final class Items {
     public static final SlimefunItemStack ENRICHED_URANIUM = new SlimefunItemStack(
         "ENRICHED_URANIUM",
         HeadTexture.BOOSTED_URANIUM,
-        "&aEnriched Uranium"
+        "&aEnriched Uranium",
+        "",
+        LoreBuilder.radioactive(Radioactivity.VERY_DEADLY)
     );
     public static final SlimefunItemStack EMPTY_GRENADE = new SlimefunItemStack(
         "GRENADE",
