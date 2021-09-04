@@ -15,7 +15,7 @@
 
     <build>
         <finalName>${project.name} v${project.version}</finalName>
-        <defaultGoal>clean package -T 2</defaultGoal>
+        <defaultGoal>clean package -T 2.0C</defaultGoal>
 
         <resources>
             <resource>
@@ -98,14 +98,14 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-26</version>
+            <version>RC-27</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.github.Mooy1</groupId>
+            <groupId>io.github.Mooy1</groupId>
             <artifactId>InfinityLib</artifactId>
-            <version>c1fe1d8ca9</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 

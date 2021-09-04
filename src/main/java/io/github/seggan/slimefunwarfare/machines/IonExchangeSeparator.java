@@ -1,27 +1,17 @@
 package io.github.seggan.slimefunwarfare.machines;
 
-import io.github.mooy1.infinitylib.items.StackUtils;
-import io.github.mooy1.infinitylib.presets.MenuPreset;
-import io.github.mooy1.infinitylib.slimefun.AbstractTickingContainer;
+import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineProcessHolder;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.machines.MachineOperation;
 import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
-import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
-import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
-import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -30,19 +20,13 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class IonExchangeSeparator extends AbstractTickingContainer implements EnergyNetComponent, MachineProcessHolder<IonExchangeSeparator.Operation> {
+public class IonExchangeSeparator extends AbstractMachineBlock implements EnergyNetComponent, MachineProcessHolder<IonExchangeSeparator.Operation> {
 
-    private static final int[] BACKGROUND = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44};
-    private static final int[] INPUT_BORDER = new int[]{9, 10, 11, 12, 18, 21, 27, 28, 29, 30};
-    private static final int[] OUTPUT_BORDER = new int[]{14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
-    private static final int[] INPUT = new int[]{19, 20};
-    private static final int[] OUTPUT = new int[]{24, 25};
-
-    private static final ItemStack NONE = new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " ");
+    private static final ItemStack NONE = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
 
     private final MachineProcessor<Operation> processor = new MachineProcessor<>(this);
     private final List<ItemStack> results = new ArrayList<>();
@@ -65,68 +49,9 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
         results.add(Items.ERBIUM_INGOT);
         results.add(Items.YTTERBIUM_INGOT);
 
-        SlimefunItem cerium = SlimefunItem.getByID("MATERIAL_BASTNAESITE_INGOT");
+        SlimefunItem cerium = SlimefunItem.getById("MATERIAL_BASTNAESITE_INGOT");
         if (cerium != null) {
             results.add(cerium.getItem());
-        }
-
-        addItemHandler(onBreak());
-    }
-
-    @Override
-    protected void tick(@Nonnull BlockMenu menu, @Nonnull Block b) {
-        Operation operation = processor.getOperation(b);
-
-        if (operation != null) {
-            int charge = getCharge(b.getLocation());
-            if (charge > 128) {
-                removeCharge(b.getLocation(), 128);
-                if (operation.isFinished()) {
-                    menu.replaceExistingItem(22, NONE);
-                    menu.pushItem(operation.getResult(), OUTPUT);
-                    processor.endOperation(b);
-                } else {
-                    processor.updateProgressBar(menu, 22, operation);
-                    operation.addProgress(1);
-                }
-            }
-        } else {
-            for (int i : INPUT) {
-                ItemStack item = menu.getItemInSlot(i);
-                if (item == null) continue;
-                if (Objects.equals(StackUtils.getID(item), Items.MONAZITE.getItemId())) {
-                    menu.consumeItem(i);
-                    processor.startOperation(b, new Operation(
-                        results.get(ThreadLocalRandom.current().nextInt(results.size())).clone()
-                    ));
-                    break;
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void setupMenu(@Nonnull BlockMenuPreset preset) {
-        preset.drawBackground(BACKGROUND);
-
-        for (int i : INPUT_BORDER) {
-            preset.addItem(i, MenuPreset.INPUT_ITEM, ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : OUTPUT_BORDER) {
-            preset.addItem(i, MenuPreset.OUTPUT_ITEM, ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        preset.addItem(22, NONE, ChestMenuUtils.getEmptyClickHandler());
-    }
-
-    @Nonnull
-    @Override
-    protected int[] getTransportSlots(@Nonnull DirtyChestMenu menu, @Nonnull ItemTransportFlow flow, ItemStack item) {
-        if (flow == ItemTransportFlow.INSERT) {
-            return INPUT;
-        } else {
-            return OUTPUT;
         }
     }
 
@@ -136,31 +61,35 @@ public class IonExchangeSeparator extends AbstractTickingContainer implements En
         return processor;
     }
 
-    @Nonnull
-    protected BlockBreakHandler onBreak() {
-        return new SimpleBlockBreakHandler() {
-            @Override
-            public void onBlockBreak(@Nonnull Block b) {
-                BlockMenu inv = BlockStorage.getInventory(b);
-                if (inv != null) {
-                    inv.dropItems(b.getLocation(), INPUT);
-                    inv.dropItems(b.getLocation(), OUTPUT);
-                }
+    @Override
+    @ParametersAreNonnullByDefault
+    protected boolean process(Block b, BlockMenu menu) {
+        Operation operation = processor.getOperation(b);
+
+        if (operation != null) {
+            if (operation.isFinished()) {
+                updateStatus(menu, NONE);
+                menu.pushItem(operation.getResult(), layout.outputSlots());
                 processor.endOperation(b);
+            } else {
+                processor.updateProgressBar(menu, layout.statusSlot(), operation);
+                operation.addProgress(100);
             }
+        } else {
+            for (int i : layout.inputSlots()) {
+                ItemStack item = menu.getItemInSlot(i);
+                SlimefunItem sfi = SlimefunItem.getByItem(item);
+                if (sfi != null && sfi.getId().equals(Items.MONAZITE.getItemId())) {
+                    menu.consumeItem(i);
+                    processor.startOperation(b, new Operation(
+                        results.get(ThreadLocalRandom.current().nextInt(results.size())).clone()
+                    ));
+                    break;
+                }
+            }
+        }
 
-        };
-    }
-
-    @Nonnull
-    @Override
-    public EnergyNetComponentType getEnergyComponentType() {
-        return EnergyNetComponentType.CONSUMER;
-    }
-
-    @Override
-    public int getCapacity() {
-        return 512;
+        return true;
     }
 
     protected static final class Operation implements MachineOperation {

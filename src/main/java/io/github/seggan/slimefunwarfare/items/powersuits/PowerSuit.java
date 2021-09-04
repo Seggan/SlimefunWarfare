@@ -1,14 +1,13 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectionType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectiveArmor;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
-import lombok.Getter;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemFlag;
@@ -16,13 +15,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 
+import lombok.Getter;
+
+import java.util.Arrays;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
 
 public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Rechargeable {
 
-    private static final NamespacedKey MODULES = SlimefunWarfare.inst().getKey("modules");
+    private static final NamespacedKey MODULES = AbstractAddon.createKey("modules");
     @Getter
     private final ArmorPiece type;
 
@@ -85,7 +86,7 @@ public class PowerSuit extends SlimefunItem implements ProtectiveArmor, Recharge
     @Nonnull
     @Override
     public NamespacedKey getArmorSetId() {
-        return SlimefunWarfare.inst().getKey("power_suit");
+        return AbstractAddon.createKey("power_suit");
     }
 
     @Override

@@ -1,20 +1,21 @@
 package io.github.seggan.slimefunwarfare.items.powersuits;
 
-import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
 
-public class ModuleManipulator extends AbstractContainer {
+public class ModuleManipulator extends SlimefunItem {
 
     private static final int[] BACKGROUND = new int[]{0, 2, 4, 5, 6, 7, 8, 9, 11, 12, 13, 18, 19, 20, 21, 22, 27, 29, 31, 36, 38, 39, 40, 41, 42, 43, 44};
     private static final int[] BORDER = new int[]{14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
@@ -43,38 +44,62 @@ public class ModuleManipulator extends AbstractContainer {
             Items.SEGGANESSON, new ItemStack(Material.CRAFTING_TABLE), Items.SEGGANESSON,
             Items.LASER_DIODE, Items.OSMIUM_INGOT, Items.LASER_DIODE
         });
+
+        new BlockMenuPreset(this.getId(), this.getItemName()) {
+            @Override
+            public void init() {
+                ModuleManipulator.this.setup(this);
+            }
+
+            @Override
+            public boolean canOpen(@Nonnull Block b, @Nonnull Player p) {
+                return Slimefun.getProtectionManager().hasPermission(p, b.getLocation(), Interaction.INTERACT_BLOCK);
+            }
+
+            @Override
+            public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
+                if (flow == ItemTransportFlow.WITHDRAW) {
+                    return OUTPUT_SLOTS;
+                }
+
+                return new int[0];
+            }
+
+            @Override
+            public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
+                ModuleManipulator.this.onNewInstance(menu, b);
+            }
+        };
     }
 
-    @Override
-    protected void setupMenu(@Nonnull BlockMenuPreset preset) {
+    private void setup(@Nonnull BlockMenuPreset preset) {
         preset.drawBackground(BACKGROUND);
 
         for (int i : BORDER) {
             preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
 
-        preset.addItem(INSTALL, new CustomItem(
+        preset.addItem(INSTALL, new CustomItemStack(
             Material.REDSTONE,
             "&fInstall/Uninstall Module"
         ));
 
-        preset.addItem(INSTALLED, new CustomItem(
+        preset.addItem(INSTALLED, new CustomItemStack(
             Material.BOOK,
             "&fInstalled Modules (Click to Refresh)"
         ));
 
-        preset.addItem(SUIT_MARKER, new CustomItem(
-            SkullItem.fromBase64(Heads.SUIT_HELMET),
+        preset.addItem(SUIT_MARKER, new CustomItemStack(
+            PlayerHead.getItemStack(Heads.SUIT_HELMET),
             "&4Place Suit Piece Here"
         ), ChestMenuUtils.getEmptyClickHandler());
 
-        preset.addItem(MODULE_MARKER, new CustomItem(
-            SkullItem.fromBase64(Heads.MODULE),
+        preset.addItem(MODULE_MARKER, new CustomItemStack(
+            PlayerHead.getItemStack(Heads.MODULE),
             "&6Place Module Here"
         ), ChestMenuUtils.getEmptyClickHandler());
     }
 
-    @Override
     protected void onNewInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
         menu.addMenuClickHandler(INSTALLED, (p, slot, item, action) -> {
             refresh(menu);
@@ -133,15 +158,5 @@ public class ModuleManipulator extends AbstractContainer {
 
         meta.setLore(lore);
         book.setItemMeta(meta);
-    }
-
-    @Nonnull
-    @Override
-    protected int[] getTransportSlots(@Nonnull DirtyChestMenu menu, @Nonnull ItemTransportFlow flow, ItemStack item) {
-        if (flow == ItemTransportFlow.WITHDRAW) {
-            return OUTPUT_SLOTS;
-        }
-
-        return new int[0];
     }
 }

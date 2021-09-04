@@ -1,17 +1,18 @@
 package io.github.seggan.slimefunwarfare.machines;
 
-import io.github.mooy1.infinitylib.configuration.AddonConfig;
-import io.github.mooy1.infinitylib.players.CoolDownMap;
+import io.github.mooy1.infinitylib.common.CoolDowns;
+import io.github.mooy1.infinitylib.common.Scheduler;
+import io.github.mooy1.infinitylib.core.AddonConfig;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -25,7 +26,7 @@ import javax.annotation.Nonnull;
 
 public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
-    private static final CoolDownMap cooldowns = new CoolDownMap(1000L * 60L *
+    private static final CoolDowns cooldowns = new CoolDowns(1000L * 60L *
         SlimefunWarfare.inst().getConfig().getInt("space.attractor-cooldown", 1)
     );
 
@@ -39,7 +40,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
     private void drop(Location l, Player p) {
         Block b = l.getBlock();
-        if (!SlimefunPlugin.getProtectionManager().hasPermission(p, b, ProtectableAction.BREAK_BLOCK)) return;
+        if (!Slimefun.getProtectionManager().hasPermission(p, b, Interaction.BREAK_BLOCK)) return;
 
         AddonConfig config = SlimefunWarfare.inst().getConfig();
 
@@ -51,7 +52,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
         world.createExplosion(x, world.getHighestBlockYAt(x, z), z, 4);
 
-        SlimefunWarfare.inst().runSync(() -> {
+        Scheduler.run(2, () -> {
             SlimefunItemStack stack = Items.OSMIUM_METEOR;
             if (ThreadLocalRandom.current().nextInt(100) < config.getInt("space.segganesson-chance", 0, 100)) {
                 stack = Items.SEGGANESSON_METEOR;
@@ -63,7 +64,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
             }
             landing.setType(stack.getType());
             BlockStorage.addBlockInfo(landing, "id", stack.getItemId());
-        }, 2);
+        });
     }
 
     @Nonnull
@@ -71,9 +72,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
     public BlockUseHandler getItemHandler() {
         return (b) -> {
             AddonConfig config = SlimefunWarfare.inst().getConfig();
-            if (cooldowns.check(b.getPlayer().getUniqueId())) {
-                cooldowns.reset(b.getPlayer().getUniqueId());
-
+            if (cooldowns.checkAndReset(b.getPlayer().getUniqueId())) {
                 int mins = ThreadLocalRandom.current().nextInt(
                     config.getInt("space.meteor-min-time", 10),
                     config.getInt("space.meteor-max-time", 30) + 1
@@ -81,7 +80,7 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
                 Location l = b.getClickedBlock().get().getLocation();
                 b.getPlayer().sendMessage("Sending meteor in " + mins + " minutes");
-                SlimefunWarfare.inst().runSync(() -> drop(l, b.getPlayer()), mins * 60 * 20L);
+                Scheduler.run(mins * 60 * 20, () -> drop(l, b.getPlayer()));
             } else {
                 b.getPlayer().sendMessage(ChatColor.RED + "The Meteor Attractor has a "
                     + config.getInt("space.space.attractor-cooldown", 1) +

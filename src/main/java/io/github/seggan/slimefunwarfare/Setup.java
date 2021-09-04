@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare;
 
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.seggan.slimefunwarfare.georesources.Arsenic;
 import io.github.seggan.slimefunwarfare.georesources.Monazite;
 import io.github.seggan.slimefunwarfare.items.Bullet;
@@ -28,15 +29,15 @@ import io.github.seggan.slimefunwarfare.machines.ElementalReactor;
 import io.github.seggan.slimefunwarfare.machines.ExplosiveSynthesizer;
 import io.github.seggan.slimefunwarfare.machines.IonExchangeSeparator;
 import io.github.seggan.slimefunwarfare.machines.MeteorAttractor;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
-import io.github.thebusybiscuit.slimefun4.core.researching.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -52,7 +53,7 @@ public final class Setup {
 
     static void setupItems(SlimefunWarfare addon) {
         new SlimefunItem(Categories.RESOURCES, Items.BORAX, RecipeType.NULL, fillNulls(
-            new CustomItem(
+            new CustomItemStack(
                 Material.STONE,
                 "&fStone drop",
                 "",
@@ -328,7 +329,7 @@ public final class Setup {
         new SlimefunItem(Categories.RESOURCES, Items.OSMIUM_INGOT, RecipeType.SMELTERY, fillNulls(Items.OSMIUM_DUST)).register(addon);
         new SlimefunItem(Categories.RESOURCES, Items.SEGGANESSON, RecipeType.ORE_CRUSHER, fillNulls(Items.SEGGANESSON_METEOR)).register(addon);
 
-        new IonExchangeSeparator().register(addon);
+        new IonExchangeSeparator().energyPerTick(128).register(addon);
 
         new Monazite(Items.MONAZITE).register();
         new SlimefunItem(Categories.RESOURCES, Items.MONAZITE, RecipeType.GEO_MINER, new ItemStack[9]).register(addon);
@@ -426,7 +427,7 @@ public final class Setup {
 
     private static void addResearch(String name, int xp, SlimefunItemStack... items) {
         Research research = new Research(
-            SlimefunWarfare.inst().getKey(name.toLowerCase(Locale.ROOT).replace(' ', '_')),
+            AbstractAddon.createKey(name.toLowerCase(Locale.ROOT).replace(' ', '_')),
             researchId++,
             name,
             xp

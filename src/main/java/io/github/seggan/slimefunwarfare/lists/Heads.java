@@ -1,11 +1,13 @@
 package io.github.seggan.slimefunwarfare.lists;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
+
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Heads {
 
-    public static final String SUIT_HELMET = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0=";
-    public static final String MODULE = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZlYjM5ZDcxZWY4ZTZhNDI2NDY1OTMzOTNhNTc1M2NlMjZhMWJlZTI3YTBjYThhMzJjYjYzN2IxZmZhZSJ9fX0=";
-    public static final String LASER = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWMzNDE1MTdmNGQxODY1YmViY2UzM2Y0YTFhZmI1MmYxM2FhYjhkMjZlZDY0ZTdlMjI5YThiNThiMWY1YjNkIn19fQ==";
+    public static final PlayerSkin SUIT_HELMET = PlayerSkin.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0=");
+    public static final PlayerSkin MODULE = PlayerSkin.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZlYjM5ZDcxZWY4ZTZhNDI2NDY1OTMzOTNhNTc1M2NlMjZhMWJlZTI3YTBjYThhMzJjYjYzN2IxZmZhZSJ9fX0=");
+    public static final PlayerSkin LASER = PlayerSkin.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWMzNDE1MTdmNGQxODY1YmViY2UzM2Y0YTFhZmI1MmYxM2FhYjhkMjZlZDY0ZTdlMjI5YThiNThiMWY1YjNkIn19fQ==");
 }

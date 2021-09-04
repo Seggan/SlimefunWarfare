@@ -4,26 +4,28 @@ import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Heads;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import lombok.Getter;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public enum Module {
     NANOFIBER_CUSHION(0, "Nanofober Cushion", ArmorPiece.FEET, new ItemStack[]{
@@ -127,7 +129,7 @@ public enum Module {
 
         this.item = new SlimefunItemStack(
             this.name(),
-            Heads.MODULE,
+            PlayerHead.getItemStack(Heads.MODULE),
             "&6" + name,
             loreList.toArray(new String[0])
         );
@@ -154,7 +156,7 @@ public enum Module {
         @Getter
         private final Module module;
 
-        public ModuleItem(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Module module) {
+        public ModuleItem(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, Module module) {
             super(category, item, recipeType, recipe);
 
             this.module = module;

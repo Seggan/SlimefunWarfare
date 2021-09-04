@@ -1,7 +1,7 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
 import io.github.seggan.slimefunwarfare.lists.Items;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;

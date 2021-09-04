@@ -2,7 +2,7 @@ package io.github.seggan.slimefunwarfare.listeners;
 
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
-import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -26,7 +26,7 @@ public class BulletListener implements Listener {
         Entity shot = e.getEntity();
         if (bullet.hasMetadata("isGunBullet")) {
             Location shooterLoc = Util.deserializeLocation(bullet.getMetadata("locInfo").get(0).asString());
-            String[] split = PatternUtils.COLON.split(bullet.getMetadata("rangeInfo").get(0).asString());
+            String[] split = CommonPatterns.COLON.split(bullet.getMetadata("rangeInfo").get(0).asString());
             double distance = shooterLoc.distance(e.getEntity().getLocation());
             if (distance <= Integer.parseInt(split[0]) && distance >= Integer.parseInt(split[1])) {
                 e.setDamage(bullet.getMetadata("damage").get(0).asInt());

@@ -1,7 +1,7 @@
 package io.github.seggan.slimefunwarfare;
 
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

@@ -1,18 +1,18 @@
 package io.github.seggan.slimefunwarfare.items.guns;
 
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.seggan.slimefunwarfare.SlimefunWarfare;
 import io.github.seggan.slimefunwarfare.Util;
 import io.github.seggan.slimefunwarfare.items.Bullet;
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
-import lombok.Getter;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LlamaSpit;
@@ -26,14 +26,16 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
+import lombok.Getter;
+
+import java.util.concurrent.atomic.AtomicReference;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 public class Gun extends SlimefunItem implements DamageableItem {
 
-    public static final NamespacedKey LAST_USE = SlimefunWarfare.inst().getKey("last_use");
+    public static final NamespacedKey LAST_USE = AbstractAddon.createKey("last_use");
 
     private final int range;
     private final int minRange;

@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.georesources;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World.Environment;
@@ -14,7 +14,7 @@ public class Arsenic implements GEOResource {
     private final ItemStack item;
 
     public Arsenic(ItemStack stack) {
-        key = SlimefunWarfare.inst().getKey("arsenic");
+        key = AbstractAddon.createKey("arsenic");
         item = stack;
     }
 

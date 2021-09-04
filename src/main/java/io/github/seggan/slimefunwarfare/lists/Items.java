@@ -1,11 +1,12 @@
 package io.github.seggan.slimefunwarfare.lists;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -346,7 +347,7 @@ public final class Items {
 
     public static final SlimefunItemStack LASER_DIODE = new SlimefunItemStack(
         "LASER_DIODE",
-        Heads.LASER,
+        PlayerHead.getItemStack(Heads.LASER),
         "&4Laser Diode"
     );
 
@@ -507,7 +508,7 @@ public final class Items {
 
     public static final SlimefunItemStack POWER_SUIT_HELMET = new SlimefunItemStack(
         "POWER_SUIT_HELMET",
-        Heads.SUIT_HELMET,
+        PlayerHead.getItemStack(Heads.SUIT_HELMET),
         "&4Power Suit Helmet",
         "",
         "&7A powerful piece of armor",
@@ -557,7 +558,7 @@ public final class Items {
 
     public static final SlimefunItemStack MODULE_CASE = new SlimefunItemStack(
         "MODULE_CASE",
-        Heads.MODULE,
+        PlayerHead.getItemStack(Heads.MODULE),
         "&6Module Case"
     );
     // endregion

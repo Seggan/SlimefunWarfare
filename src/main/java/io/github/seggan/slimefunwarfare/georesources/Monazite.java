@@ -1,6 +1,6 @@
 package io.github.seggan.slimefunwarfare.georesources;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -15,7 +15,7 @@ public class Monazite implements GEOResource {
     private final ItemStack item;
 
     public Monazite(ItemStack stack) {
-        key = SlimefunWarfare.inst().getKey("mozanite");
+        key = AbstractAddon.createKey("mozanite");
         item = stack;
     }
 

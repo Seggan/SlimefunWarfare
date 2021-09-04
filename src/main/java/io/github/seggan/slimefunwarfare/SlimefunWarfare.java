@@ -1,8 +1,10 @@
 package io.github.seggan.slimefunwarfare;
 
 import com.google.common.collect.Sets;
-import io.github.mooy1.infinitylib.AbstractAddon;
-import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
+import io.github.mooy1.infinitylib.common.Events;
+import io.github.mooy1.infinitylib.common.Scheduler;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
+import io.github.mooy1.infinitylib.metrics.bukkit.Metrics;
 import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
@@ -17,7 +19,7 @@ import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
 import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,7 +38,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class SlimefunWarfare extends AbstractAddon implements Listener {
 
@@ -44,13 +45,25 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
     private static final Set<UUID> flying = new HashSet<>();
 
+    public SlimefunWarfare() {
+        super("Seggan", "SlimefunWarfare", "master", "auto-update");
+    }
+
     @Override
     public void enable() {
         instance = this;
 
-        registerListener(new BulletListener(), new PyroListener(),
-            new GrenadeListener(), new ConcreteListener(), new NukeListener(),
-            new HitListener(), new ModuleListener(), new BreakListener(), new ChatListener(), this);
+        new Metrics(this, 9227);
+
+        Events.registerListener(new BulletListener());
+        Events.registerListener(new PyroListener());
+        Events.registerListener(new GrenadeListener());
+        Events.registerListener(new ConcreteListener());
+        Events.registerListener(new NukeListener());
+        Events.registerListener(new HitListener());
+        Events.registerListener(new ModuleListener());
+        Events.registerListener(new BreakListener());
+        Events.registerListener(new ChatListener());
 
         Categories.setup(this);
 
@@ -71,7 +84,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
 
         if (getConfig().getBoolean("guns.autoshoot", true)) {
             // Gun autoshoot task
-            scheduleRepeatingSync(() -> {
+            Scheduler.repeat(1, () -> {
                 for (Player p : getServer().getOnlinePlayers()) {
                     if (p.isSneaking() && !p.isFlying()) {
                         ItemStack stack = p.getInventory().getItemInMainHand();
@@ -92,10 +105,10 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
                         gun.shoot(p, stack);
                     }
                 }
-            }, 1);
+            });
         }
 
-        scheduleRepeatingSync(() -> {
+        Scheduler.repeat(20, () -> {
             for (Player p : getServer().getOnlinePlayers()) {
                 PlayerInventory inv = p.getInventory();
 
@@ -117,10 +130,10 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
                     }
                 });
             }
-        }, 20);
+        });
 
         if (getConfig().getBoolean("suits.flight-particles", true)) {
-            scheduleRepeatingSync(() -> {
+            Scheduler.repeat(4, () -> {
                 for (UUID uuid : flying) {
                     Player p = getServer().getPlayer(uuid);
                     if (p == null) {
@@ -131,31 +144,13 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
                         p.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, p.getLocation().subtract(0, 1, 0), 20, 0.5, 0.5, 0.5);
                     }
                 }
-            }, 4);
+            });
         }
     }
 
     @Override
     protected void disable() {
         instance = null;
-    }
-
-    @Nullable
-    @Override
-    protected Metrics setupMetrics() {
-        return new Metrics(this, 9227);
-    }
-
-    @Nullable
-    @Override
-    public String getAutoUpdatePath() {
-        return "auto-update";
-    }
-
-    @Nonnull
-    @Override
-    protected String getGithubPath() {
-        return "Seggan/SlimefunWarfare/master";
     }
 
     @EventHandler

@@ -1,14 +1,14 @@
 package io.github.seggan.slimefunwarfare.items;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.cscorelib2.data.PersistentDataAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 public class Radio extends SimpleSlimefunItem<ItemUseHandler> {
 
-    public static final NamespacedKey ENCRYPTION_KEY = SlimefunWarfare.inst().getKey("radio_encryption_key");
+    public static final NamespacedKey ENCRYPTION_KEY = AbstractAddon.createKey("radio_encryption_key");
 
     public Radio() {
         super(Categories.GENERAL, Items.RADIO, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{

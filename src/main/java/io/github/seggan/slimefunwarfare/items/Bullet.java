@@ -2,10 +2,11 @@ package io.github.seggan.slimefunwarfare.items;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.RecipeTypes;
-import lombok.Getter;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.inventory.ItemStack;
+
+import lombok.Getter;
 
 @Getter
 public class Bullet extends SlimefunItem {

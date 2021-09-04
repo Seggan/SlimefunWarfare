@@ -1,8 +1,8 @@
 package io.github.seggan.slimefunwarfare.listeners;
 
-import io.github.seggan.slimefunwarfare.SlimefunWarfare;
+import io.github.mooy1.infinitylib.common.Scheduler;
 import io.github.seggan.slimefunwarfare.items.Radio;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -22,7 +22,7 @@ public class ChatListener implements Listener {
         ItemStack held = e.getPlayer().getInventory().getItemInMainHand();
         if (SlimefunItem.getByItem(held) instanceof Radio) {
             e.setCancelled(true);
-            SlimefunWarfare.inst().runSync(() -> sync(e, Radio.getKey(held)));
+            Scheduler.run(() -> sync(e, Radio.getKey(held)));
         }
     }
 
