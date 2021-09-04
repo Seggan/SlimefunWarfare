@@ -1,5 +1,6 @@
 package io.github.seggan.slimefunwarfare.machines;
 
+import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
@@ -20,6 +21,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -78,8 +80,7 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
         } else {
             for (int i : layout.inputSlots()) {
                 ItemStack item = menu.getItemInSlot(i);
-                SlimefunItem sfi = SlimefunItem.getByItem(item);
-                if (sfi != null && sfi.getId().equals(Items.MONAZITE.getItemId())) {
+                if (Objects.equals(StackUtils.getId(item), Items.MONAZITE.getItemId())) {
                     menu.consumeItem(i);
                     processor.startOperation(b, new Operation(
                         results.get(ThreadLocalRandom.current().nextInt(results.size())).clone()
