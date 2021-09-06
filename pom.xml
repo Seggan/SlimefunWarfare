@@ -96,16 +96,16 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.TheBusyBiscuit</groupId>
+            <groupId>io.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-27</version>
+            <version>RC-28</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.github.Mooy1</groupId>
             <artifactId>InfinityLib</artifactId>
-            <version>1.1.0</version>
+            <version>1.3.2</version>
             <scope>compile</scope>
         </dependency>
 
