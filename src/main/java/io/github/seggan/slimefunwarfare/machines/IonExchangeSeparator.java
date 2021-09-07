@@ -2,6 +2,7 @@ package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -12,7 +13,9 @@ import io.github.thebusybiscuit.slimefun4.core.machines.MachineOperation;
 import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -29,7 +32,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class IonExchangeSeparator extends AbstractMachineBlock implements EnergyNetComponent, MachineProcessHolder<IonExchangeSeparator.Operation> {
 
     private static final ItemStack NONE = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
-
+    private static final int[] BACKGROUND = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44};
+    private static final int[] INPUT = new int[]{9, 10, 11, 12, 18, 21, 27, 28, 29, 30};
+    private static final int[] OUTPUT = new int[]{14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
     private final MachineProcessor<Operation> processor = new MachineProcessor<>(this);
     private final List<ItemStack> results = new ArrayList<>();
 
@@ -55,6 +60,8 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
         if (cerium != null) {
             results.add(cerium.getItem());
         }
+
+        processor.setProgressBar(new ItemStack(Material.PRISMARINE_CRYSTALS));
     }
 
     @Nonnull
@@ -70,15 +77,15 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
 
         if (operation != null) {
             if (operation.isFinished()) {
-                updateStatus(menu, NONE);
-                menu.pushItem(operation.getResult(), layout.outputSlots());
+                processor.updateProgressBar(menu, 22, operation);
+                menu.pushItem(operation.getResult(), getInputSlots());
                 processor.endOperation(b);
             } else {
-                processor.updateProgressBar(menu, layout.statusSlot(), operation);
+                processor.updateProgressBar(menu, 22, operation);
                 operation.addProgress(100);
             }
         } else {
-            for (int i : layout.inputSlots()) {
+            for (int i : getInputSlots()) {
                 ItemStack item = menu.getItemInSlot(i);
                 if (Objects.equals(StackUtils.getId(item), Items.MONAZITE.getItemId())) {
                     menu.consumeItem(i);
@@ -91,6 +98,32 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
         }
 
         return true;
+    }
+
+    @Override
+    protected int getStatusSlot() {
+        return 22;
+    }
+
+    @Override
+    protected void setup(@Nonnull BlockMenuPreset preset) {
+        preset.drawBackground(BACKGROUND);
+        for (int i : INPUT) {
+            preset.addItem(i, MenuBlock.INPUT_BORDER, ChestMenuUtils.getEmptyClickHandler());
+        }
+        for (int i : OUTPUT) {
+            preset.addItem(i, MenuBlock.OUTPUT_BORDER, ChestMenuUtils.getEmptyClickHandler());
+        }
+    }
+
+    @Override
+    public int[] getInputSlots() {
+        return new int[]{19, 20};
+    }
+
+    @Override
+    public int[] getOutputSlots() {
+        return new int[]{24, 25};
     }
 
     protected static final class Operation implements MachineOperation {
