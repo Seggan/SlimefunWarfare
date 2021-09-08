@@ -414,7 +414,6 @@ public final class Setup {
         }, ArmorPiece.FEET).register(addon);
 
         new ModuleManipulator().register(addon);
-        new ModuleManipulator().register(addon);
     }
 
     static void setupResearches() {
