@@ -87,7 +87,7 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
         } else {
             for (int i : getInputSlots()) {
                 ItemStack item = menu.getItemInSlot(i);
-                if (Objects.equals(StackUtils.getId(item), Items.MONAZITE.getItemId())) {
+                if (item != null && Objects.equals(StackUtils.getId(item), Items.MONAZITE.getItemId())) {
                     menu.consumeItem(i);
                     processor.startOperation(b, new Operation(
                         results.get(ThreadLocalRandom.current().nextInt(results.size())).clone()
