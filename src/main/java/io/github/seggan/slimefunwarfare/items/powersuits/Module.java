@@ -78,7 +78,7 @@ public enum Module {
         Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
         Items.REINFORCED_SLIMESTEEL, SlimefunItems.BASIC_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL
     }, 3),
-    MINI_PISTONS(9, "Mini Pistons", PotionEffectType.FAST_DIGGING, 1, ArmorPiece.CHEST, new ItemStack[]{
+    MINI_PISTONS(10, "Mini Pistons", PotionEffectType.FAST_DIGGING, 1, ArmorPiece.CHEST, new ItemStack[]{
         Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL,
         Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
         Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL
