@@ -19,7 +19,13 @@ import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
 import io.github.seggan.slimefunwarfare.listeners.NukeListener;
 import io.github.seggan.slimefunwarfare.listeners.PyroListener;
 import io.github.seggan.slimefunwarfare.lists.Categories;
+import io.github.seggan.slimefunwarfare.lists.Items;
+import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,6 +39,8 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -145,6 +153,17 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
                     }
                 }
             });
+        }
+
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
+            try {
+                Class<?> orechid = Class.forName("me.profelements.dynatech.items.tools.Orechid");
+                Method method = orechid.getDeclaredMethod("registerOre", Material.class, SlimefunItemStack.class, float.class);
+                method.setAccessible(true);
+                method.invoke(null, Material.WEATHERED_CUT_COPPER_STAIRS, Items.OSMIUM_METEOR, 100 - getConfig().getInt("space.segganesson-chance", 0, 100));
+                method.invoke(null, Material.WEATHERED_CUT_COPPER_STAIRS, Items.SEGGANESSON_METEOR, getConfig().getInt("space.segganesson-chance", 0, 100));
+            } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException ignored) {
+            }
         }
     }
 

@@ -7,4 +7,5 @@ depend:
 softdepend:
   - SimpleStorage
   - InfinityExpansion
+  - DynaTech
 api-version: 1.15
