@@ -160,8 +160,8 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
                 Class<?> orechid = Class.forName("me.profelements.dynatech.items.tools.Orechid");
                 Method method = orechid.getDeclaredMethod("registerOre", Material.class, SlimefunItemStack.class, float.class);
                 method.setAccessible(true);
-                method.invoke(null, Material.WEATHERED_CUT_COPPER_STAIRS, Items.OSMIUM_METEOR, 100 - getConfig().getInt("space.segganesson-chance", 0, 100));
-                method.invoke(null, Material.WEATHERED_CUT_COPPER_STAIRS, Items.SEGGANESSON_METEOR, getConfig().getInt("space.segganesson-chance", 0, 100));
+                method.invoke(null, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, Items.OSMIUM_METEOR, 100 - getConfig().getInt("space.segganesson-chance", 0, 100));
+                method.invoke(null, Material.WAXED_WEATHERED_CUT_COPPER_STAIRS, Items.SEGGANESSON_METEOR, getConfig().getInt("space.segganesson-chance", 0, 100));
             } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException ignored) {
             }
         }
