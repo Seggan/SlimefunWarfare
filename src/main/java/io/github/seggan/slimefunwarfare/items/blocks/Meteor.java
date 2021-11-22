@@ -21,7 +21,7 @@ public class Meteor extends SlimefunItem {
     public Meteor(SlimefunItemStack item) {
         super(Categories.RESOURCES, item, RecipeTypes.METEOR_ATTRACTOR, new ItemStack[9]);
 
-        addItemHandler(new BlockBreakHandler(false, false) {
+        addItemHandler(new BlockBreakHandler(true, false) {
             @Override
             public void onPlayerBreak(@Nonnull BlockBreakEvent e, @Nonnull ItemStack itemStack, @Nonnull List<ItemStack> drops) {
                 if (itemStack.containsEnchantment(Enchantment.SILK_TOUCH)) {
