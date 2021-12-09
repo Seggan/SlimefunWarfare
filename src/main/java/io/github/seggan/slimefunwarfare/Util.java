@@ -14,6 +14,8 @@ import javax.annotation.Nullable;
 
 public final class Util {
 
+    public static final String whatIsThis = "QRYGNF";
+
     public static final BlockFace[] SURROUNDING_FACES = new BlockFace[] {
         BlockFace.NORTH,
         BlockFace.NORTH_EAST,
