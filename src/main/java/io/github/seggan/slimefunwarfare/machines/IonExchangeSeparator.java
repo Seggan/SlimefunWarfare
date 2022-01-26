@@ -77,12 +77,11 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
 
         if (operation != null) {
             if (operation.isFinished()) {
-                processor.updateProgressBar(menu, 22, operation);
-                menu.pushItem(operation.getResult(), getInputSlots());
+                menu.pushItem(operation.getResult(), getOutputSlots());
                 processor.endOperation(b);
             } else {
                 processor.updateProgressBar(menu, 22, operation);
-                operation.addProgress(100);
+                operation.addProgress(1);
             }
         } else {
             for (int i : getInputSlots()) {
@@ -133,7 +132,7 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
 
         private int ticks = 0;
 
-        protected Operation(ItemStack result) {
+        private Operation(ItemStack result) {
             this.result = result;
         }
 

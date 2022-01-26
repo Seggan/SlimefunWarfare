@@ -30,7 +30,7 @@ public class BulletListener implements Listener {
         if (bullet.hasMetadata("isGunBullet")) {
             if (bullet.getShooter() instanceof Player) {
                 Player shooter = (Player) bullet.getShooter();
-                if (!Slimefun.getProtectionManager().hasPermission(shooter, shot.getLocation(), Interaction.ATTACK_ENTITY)) {
+                if (!Slimefun.getProtectionManager().hasPermission(shooter, shot.getLocation(), Interaction.ATTACK_PLAYER)) {
                     return;
                 }
             }

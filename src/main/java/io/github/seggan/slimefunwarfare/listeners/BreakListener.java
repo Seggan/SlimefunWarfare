@@ -14,7 +14,7 @@ public class BreakListener implements Listener {
 
     private final double boraxChance = SlimefunWarfare.inst().getConfig().getDouble("guns.borax-drop-chance", 0, 100);
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onStoneBreak(BlockBreakEvent e) {
         if (e.getBlock().getType() != Material.STONE) return;
         if (ThreadLocalRandom.current().nextDouble(100) < boraxChance) {
