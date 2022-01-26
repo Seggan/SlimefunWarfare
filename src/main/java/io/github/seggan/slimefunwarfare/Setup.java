@@ -378,8 +378,8 @@ public final class Setup {
         }).register(addon);
 
         new SlimefunItem(Categories.POWER_SUITS, Items.POWER_SUIT_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.UNPATENTABLIUM, Items.UNPATENTABLIUM, Items.UNPATENTABLIUM,
-            Items.UNPATENTABLIUM, SlimefunItems.NETHER_STAR_REACTOR, Items.UNPATENTABLIUM,
+            Items.UNPATENTABLIUM, Items.SEGGANESSON, Items.UNPATENTABLIUM,
+            Items.SEGGANESSON, SlimefunItems.NETHER_STAR_REACTOR, Items.SEGGANESSON,
             Items.UNPATENTABLIUM, Items.LASER_DIODE, Items.UNPATENTABLIUM
         }).register(addon);
 
