@@ -113,6 +113,7 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
         for (int i : OUTPUT) {
             preset.addItem(i, MenuBlock.OUTPUT_BORDER, ChestMenuUtils.getEmptyClickHandler());
         }
+        preset.addMenuClickHandler(getStatusSlot(), ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override
