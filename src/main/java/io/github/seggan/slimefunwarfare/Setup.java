@@ -107,7 +107,7 @@ public final class Setup {
             SlimefunItems.SILVER_INGOT, SlimefunItems.SILVER_INGOT, SlimefunItems.SILVER_INGOT,
             Items.FIBER_OPTIC_GLASS, Items.FIBER_OPTIC_GLASS, Items.FIBER_OPTIC_GLASS,
             SlimefunItems.SILVER_INGOT, SlimefunItems.SILVER_INGOT, SlimefunItems.SILVER_INGOT
-        }).register(addon);
+        }, new SlimefunItemStack(Items.FIBER_OPTIC_CABLE, 3)).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.LASER_DIODE, RecipeType.SMELTERY, fillNulls(
             SlimefunItems.SYNTHETIC_SAPPHIRE, new ItemStack(Material.GLOWSTONE),
@@ -135,11 +135,10 @@ public final class Setup {
         }).register(addon);
 
         // Energy
-        new SlimefunItem(Categories.GENERAL, Items.OSMIUM_SUPERALLOY, RecipeType.SMELTERY, new ItemStack[]{
+        new SlimefunItem(Categories.GENERAL, Items.OSMIUM_SUPERALLOY, RecipeType.SMELTERY, fillNulls(
             Items.OSMIUM_INGOT, Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_ALLOY_INGOT,
-            Items.OSMIUM_DUST, Items.GADOLINIUM_INGOT, Items.TERBIUM_INGOT,
-            null, null, null
-        }).register(addon);
+            Items.OSMIUM_DUST, Items.GADOLINIUM_INGOT, Items.TERBIUM_INGOT
+        )).register(addon);
 
         new SlimefunItem(Categories.GENERAL, Items.ENERGY_RECTIFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.OSMIUM_SUPERALLOY, SlimefunItems.CARBONADO_EDGED_CAPACITOR, Items.OSMIUM_SUPERALLOY,
@@ -373,7 +372,7 @@ public final class Setup {
     static void setupSuits(SlimefunWarfare addon) {
         new SlimefunItem(Categories.RESOURCES, Items.UNPATENTABLIUM, RecipeTypes.ELEMENT_FORGE, new ItemStack[]{
             Items.SEGGANESSON, Items.ARSENIC, Items.SEGGANESSON,
-            Items.SEGGANESSON, Items.OSMIUM_INGOT, Items.SEGGANESSON,
+            Items.OSMIUM_DUST, Items.OSMIUM_INGOT, Items.OSMIUM_DUST,
             Items.SEGGANESSON, Items.ARSENIC, Items.SEGGANESSON
         }).register(addon);
 
