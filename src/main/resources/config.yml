@@ -17,7 +17,7 @@ guns:
 
 space:
   # The percent chance that a Segganesson meteor will be dropped instead of an Osmium meteor
-  segganesson-chance: 15
+  segganesson-chance: 25
   # The minimum delay between a meteor attractor activation and the drop (in minutes)
   meteor-min-time: 10
   # The maximum delay between a meteor attractor activation and the drop (in minutes)
