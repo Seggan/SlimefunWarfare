@@ -70,8 +70,8 @@ public enum Module {
     }, 2),
     AUXILIARY_GENERATOR(8, "Auxiliary Generator", null, new ItemStack[]{
         Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
-        Items.POWER_SUIT_GENERATOR, Items.MODULE_CASE, Items.POWER_SUIT_GENERATOR,
-        Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY
+        Items.SEGGANESSON, Items.MODULE_CASE, Items.SEGGANESSON,
+        Items.OSMIUM_SUPERALLOY, Items.SEGGANESSON, Items.OSMIUM_SUPERALLOY
     }, 5, "&7Boosts the suit's energy production"),
     ELECTRONIC_SPRINGS(9, "Electronic Springs", PotionEffectType.JUMP, 1, ArmorPiece.LEGS, new ItemStack[]{
         Items.REINFORCED_SLIMESTEEL, SlimefunItems.ADVANCED_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL,
