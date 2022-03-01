@@ -1,16 +1,13 @@
 package io.github.seggan.slimefunwarfare.machines;
 
-import io.github.mooy1.infinitylib.common.Scheduler;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AGenerator;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 
 public class ElementalReactor extends AGenerator {
@@ -23,14 +20,6 @@ public class ElementalReactor extends AGenerator {
         });
         setCapacity(32_768);
         setEnergyProduction(16_384);
-        Scheduler.run(() -> {
-            if (Bukkit.getPluginManager().isPluginEnabled("LiteXpansion")) {
-                Scheduler.repeat(ThreadLocalRandom.current().nextInt(10, 5 * 20), () -> {
-                    setCapacity(32_768);
-                    setEnergyProduction(16_384);
-                });
-            }
-        });
     }
 
     @Nonnull
