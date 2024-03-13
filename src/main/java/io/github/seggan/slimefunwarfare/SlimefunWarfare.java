@@ -24,6 +24,7 @@ import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
@@ -65,6 +66,10 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
     @Override
     public void enable() {
         instance = this;
+
+        if (getConfig().getBoolean("auto-update", true)) {
+            new BlobBuildUpdater(this, getFile(), "SlimefunWarfare").start();
+        }
 
         new Metrics(this, 9227);
 
