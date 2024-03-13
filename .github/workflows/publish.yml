@@ -25,7 +25,7 @@ jobs:
       - name: Upload to Blob Builds
         uses: WalshyDev/blob-builds/gh-action@main
         with:
-          project: SFCalc
+          project: SlimefunWarfare
           apiToken: ${{ secrets.BLOB_BUILDS_API_TOKEN }}
           file: ./target/SlimefunWarfare.jar
           releaseNotes: ${{ github.event.head_commit.message }}
