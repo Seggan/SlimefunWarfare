@@ -11,77 +11,72 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import lombok.Getter;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.*;
 
 public enum Module {
     NANOFIBER_CUSHION(0, "Nanofober Cushion", ArmorPiece.FEET, new ItemStack[]{
-        new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
-        Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
-        new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.FEATHER),
+        new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL.item(), new ItemStack(Material.FEATHER),
+        Items.REINFORCED_SLIMESTEEL.item(), Items.MODULE_CASE.item(), Items.REINFORCED_SLIMESTEEL.item(),
+        new ItemStack(Material.FEATHER), Items.REINFORCED_SLIMESTEEL.item(), new ItemStack(Material.FEATHER),
     }, 5, "&7This module keeps you from", "&7taking fall damage"),
     MINI_JETS(1, "Mini Jets", ArmorPiece.FEET, new ItemStack[]{
-        Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY,
-        SlimefunItems.STEEL_THRUSTER, Items.MODULE_CASE, SlimefunItems.STEEL_THRUSTER,
-        Items.OSMIUM_SUPERALLOY, Items.REINFORCED_SLIMESTEEL, Items.OSMIUM_SUPERALLOY
+        Items.OSMIUM_SUPERALLOY.item(), Items.REINFORCED_SLIMESTEEL.item(), Items.OSMIUM_SUPERALLOY.item(),
+        SlimefunItems.STEEL_THRUSTER.item(), Items.MODULE_CASE.item(), SlimefunItems.STEEL_THRUSTER.item(),
+        Items.OSMIUM_SUPERALLOY.item(), Items.REINFORCED_SLIMESTEEL.item(), Items.OSMIUM_SUPERALLOY.item()
     }, 8, "&7Gives you creative flight"),
     LIFE_SUPPORT(2, "Life Support Systems", PotionEffectType.REGENERATION, 2, ArmorPiece.CHEST, new ItemStack[]{
-        SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE,
-        Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
-        SlimefunItems.ESSENCE_OF_AFTERLIFE, Items.SLIMESTEEL, SlimefunItems.ESSENCE_OF_AFTERLIFE
+        SlimefunItems.ESSENCE_OF_AFTERLIFE.item(), Items.SLIMESTEEL.item(), SlimefunItems.ESSENCE_OF_AFTERLIFE.item(),
+        Items.SLIMESTEEL.item(), Items.MODULE_CASE.item(), Items.SLIMESTEEL.item(),
+        SlimefunItems.ESSENCE_OF_AFTERLIFE.item(), Items.SLIMESTEEL.item(), SlimefunItems.ESSENCE_OF_AFTERLIFE.item()
     }, 5),
     HEAT_SINKS(3, "Heat Sinks", PotionEffectType.FIRE_RESISTANCE, 0, ArmorPiece.CHEST, new ItemStack[]{
-        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM),
-        Items.OSMIUM_INGOT, Items.MODULE_CASE, Items.OSMIUM_INGOT,
-        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT, new ItemStack(Material.MAGMA_CREAM)
+        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT.item(), new ItemStack(Material.MAGMA_CREAM),
+        Items.OSMIUM_INGOT.item(), Items.MODULE_CASE.item(), Items.OSMIUM_INGOT.item(),
+        new ItemStack(Material.MAGMA_CREAM), Items.OSMIUM_INGOT.item(), new ItemStack(Material.MAGMA_CREAM)
     }, 1),
     HYDRAULICS(4, "Integrated Hydraulics", PotionEffectType.INCREASE_DAMAGE, 1, ArmorPiece.CHEST, new ItemStack[]{
-        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE,
-        SlimefunItems.FUEL_BUCKET, Items.MODULE_CASE, SlimefunItems.FUEL_BUCKET,
-        SlimefunItems.REINFORCED_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.REINFORCED_PLATE
+        SlimefunItems.REINFORCED_PLATE.item(), Items.OSMIUM_SUPERALLOY.item(), SlimefunItems.REINFORCED_PLATE.item(),
+        SlimefunItems.FUEL_BUCKET.item(), Items.MODULE_CASE.item(), SlimefunItems.FUEL_BUCKET.item(),
+        SlimefunItems.REINFORCED_PLATE.item(), Items.OSMIUM_SUPERALLOY.item(), SlimefunItems.REINFORCED_PLATE.item()
     }, 3),
     REACTION_WHEELS(5, "Reaction Wheels", ArmorPiece.LEGS, new ItemStack[]{
-        SlimefunItems.STEEL_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.STEEL_PLATE,
-        SlimefunItems.STEEL_INGOT, Items.MODULE_CASE, SlimefunItems.STEEL_INGOT,
-        SlimefunItems.STEEL_PLATE, Items.OSMIUM_SUPERALLOY, SlimefunItems.STEEL_PLATE
+        SlimefunItems.STEEL_PLATE.item(), Items.OSMIUM_SUPERALLOY.item(), SlimefunItems.STEEL_PLATE.item(),
+        SlimefunItems.STEEL_INGOT.item(), Items.MODULE_CASE.item(), SlimefunItems.STEEL_INGOT.item(),
+        SlimefunItems.STEEL_PLATE.item(), Items.OSMIUM_SUPERALLOY.item(), SlimefunItems.STEEL_PLATE.item()
     }, 5, "&7This module makes you", "&7sprint faster"),
     ENERGY_SHIELD(6, "Personal Energy Shield", PotionEffectType.DAMAGE_RESISTANCE, 2, ArmorPiece.CHEST, new ItemStack[]{
-        Items.UNPATENTABLIUM, Items.OSMIUM_SUPERALLOY, Items.UNPATENTABLIUM,
-        Items.POWER_SUIT_GENERATOR, Items.MODULE_CASE, Items.POWER_SUIT_GENERATOR,
-        Items.ENERGY_RECTIFIER, Items.SEGGANESSON, Items.ENERGY_RECTIFIER
+        Items.UNPATENTABLIUM.item(), Items.OSMIUM_SUPERALLOY.item(), Items.UNPATENTABLIUM.item(),
+        Items.POWER_SUIT_GENERATOR.item(), Items.MODULE_CASE.item(), Items.POWER_SUIT_GENERATOR.item(),
+        Items.ENERGY_RECTIFIER.item(), Items.SEGGANESSON.item(), Items.ENERGY_RECTIFIER.item()
     }, 3),
     AQUAMASK(7, "AquaMask™", PotionEffectType.CONDUIT_POWER, 0, ArmorPiece.HEAD, new ItemStack[]{
-        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH),
-        Items.SLIMESTEEL, Items.MODULE_CASE, Items.SLIMESTEEL,
-        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH, new ItemStack(Material.PUFFERFISH)
+        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH.item(), new ItemStack(Material.PUFFERFISH),
+        Items.SLIMESTEEL.item(), Items.MODULE_CASE.item(), Items.SLIMESTEEL.item(),
+        new ItemStack(Material.PUFFERFISH), SlimefunItems.CLOTH.item(), new ItemStack(Material.PUFFERFISH)
     }, 2),
     AUXILIARY_GENERATOR(8, "Auxiliary Generator", null, new ItemStack[]{
-        Items.OSMIUM_SUPERALLOY, Items.POWER_SUIT_GENERATOR, Items.OSMIUM_SUPERALLOY,
-        Items.SEGGANESSON, Items.MODULE_CASE, Items.SEGGANESSON,
-        Items.OSMIUM_SUPERALLOY, Items.SEGGANESSON, Items.OSMIUM_SUPERALLOY
+        Items.OSMIUM_SUPERALLOY.item(), Items.POWER_SUIT_GENERATOR.item(), Items.OSMIUM_SUPERALLOY.item(),
+        Items.SEGGANESSON.item(), Items.MODULE_CASE.item(), Items.SEGGANESSON.item(),
+        Items.OSMIUM_SUPERALLOY.item(), Items.SEGGANESSON.item(), Items.OSMIUM_SUPERALLOY.item()
     }, 5, "&7Boosts the suit's energy production"),
     ELECTRONIC_SPRINGS(9, "Electronic Springs", PotionEffectType.JUMP, 1, ArmorPiece.LEGS, new ItemStack[]{
-        Items.REINFORCED_SLIMESTEEL, SlimefunItems.ADVANCED_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL,
-        Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
-        Items.REINFORCED_SLIMESTEEL, SlimefunItems.BASIC_CIRCUIT_BOARD, Items.REINFORCED_SLIMESTEEL
+        Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), Items.REINFORCED_SLIMESTEEL.item(),
+        Items.REINFORCED_SLIMESTEEL.item(), Items.MODULE_CASE.item(), Items.REINFORCED_SLIMESTEEL.item(),
+        Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.BASIC_CIRCUIT_BOARD.item(), Items.REINFORCED_SLIMESTEEL.item()
     }, 3),
     MINI_PISTONS(10, "Mini Pistons", PotionEffectType.FAST_DIGGING, 3, ArmorPiece.CHEST, new ItemStack[]{
-        Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL,
-        Items.REINFORCED_SLIMESTEEL, Items.MODULE_CASE, Items.REINFORCED_SLIMESTEEL,
-        Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL
+        Items.REINFORCED_SLIMESTEEL.item(), new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL.item(),
+        Items.REINFORCED_SLIMESTEEL.item(), Items.MODULE_CASE.item(), Items.REINFORCED_SLIMESTEEL.item(),
+        Items.REINFORCED_SLIMESTEEL.item(), new ItemStack(Material.PISTON), Items.REINFORCED_SLIMESTEEL.item()
     }, 3),
     ;
     @Getter

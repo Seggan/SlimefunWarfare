@@ -10,11 +10,11 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.annotation.Nonnull;
 
 public class Meteor extends SlimefunItem {
 
@@ -27,15 +27,15 @@ public class Meteor extends SlimefunItem {
                 if (itemStack.containsEnchantment(Enchantment.SILK_TOUCH)) {
                     drops.add(getItem().clone());
                 } else {
-                    SlimefunItemStack stack = getItem().equals(Items.OSMIUM_METEOR) ? Items.OSMIUM_DUST : Items.SEGGANESSON;
+                    SlimefunItemStack stack = getItem().equals(Items.OSMIUM_METEOR.item()) ? Items.OSMIUM_DUST : Items.SEGGANESSON;
 
-                    drops.add(stack.clone());
+                    drops.add(stack.item().clone());
                     int fortune = itemStack.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
                     if (fortune == 0) return;
 
                     for (int i = 0; i < fortune; i++) {
                         if (ThreadLocalRandom.current().nextBoolean()) {
-                            drops.add(stack.clone());
+                            drops.add(stack.item().clone());
                         }
                     }
                 }

@@ -60,7 +60,7 @@ public class HitListener implements Listener {
             Entity entity = e.getRightClicked();
             if (PersistentDataAPI.getString(entity, Dummy.KEY) != null) {
                 entity.remove();
-                ItemStack stack = Items.DUMMY.clone();
+                ItemStack stack = Items.DUMMY.item().clone();
                 stack.setAmount(1);
                 entity.getWorld().dropItemNaturally(entity.getLocation(), stack);
             }

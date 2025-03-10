@@ -14,9 +14,9 @@ public class Boominator9000 extends AContainer {
 
     public Boominator9000() {
         super(Categories.MACHINES, Items.BOOMINATOR_9000, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_CLOTH, SlimefunItems.REINFORCED_PLATE,
-            new ItemStack(Material.BOWL), Items.REINFORCED_SLIMESTEEL, new ItemStack(Material.BOWL),
-            SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_CLOTH, SlimefunItems.REINFORCED_PLATE
+            SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.REINFORCED_CLOTH.item(), SlimefunItems.REINFORCED_PLATE.item(),
+            new ItemStack(Material.BOWL), Items.REINFORCED_SLIMESTEEL.item(), new ItemStack(Material.BOWL),
+            SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.REINFORCED_CLOTH.item(), SlimefunItems.REINFORCED_PLATE.item()
         });
     }
 

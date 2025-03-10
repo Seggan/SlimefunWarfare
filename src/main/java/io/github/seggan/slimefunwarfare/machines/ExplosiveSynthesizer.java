@@ -2,10 +2,10 @@ package io.github.seggan.slimefunwarfare.machines;
 
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -16,27 +16,27 @@ public class ExplosiveSynthesizer extends AContainer implements RecipeDisplayIte
 
     public ExplosiveSynthesizer() {
         super(Categories.MACHINES, Items.EXPLOSIVE_SYNTHESIZER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_PLATE, Items.REINFORCED_SLIMESTEEL,
-            SlimefunItems.REINFORCED_PLATE, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.REINFORCED_PLATE,
-            Items.REINFORCED_SLIMESTEEL, SlimefunItems.REINFORCED_PLATE, Items.REINFORCED_SLIMESTEEL
+            Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.REINFORCED_PLATE.item(), Items.REINFORCED_SLIMESTEEL.item(),
+            SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.BLISTERING_INGOT_3.item(), SlimefunItems.REINFORCED_PLATE.item(),
+            Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.REINFORCED_PLATE.item(), Items.REINFORCED_SLIMESTEEL.item()
         });
     }
 
     @Override
     protected void registerDefaultRecipes() {
         registerRecipe(5,
-            new ItemStack[]{Items.PURIFIED_LIQUID_NITROGEN, new ItemStack(Material.COAL)},
-            new ItemStack[]{new SlimefunItemStack(Items.AZIDOAZIDE_AZIDE, 2)}
+            new ItemStack[]{Items.PURIFIED_LIQUID_NITROGEN.item(), new ItemStack(Material.COAL)},
+            new ItemStack[]{CustomItemStack.create(Items.AZIDOAZIDE_AZIDE.item(), 2)}
         );
 
         registerRecipe(5,
-            new ItemStack[]{Items.LIQUID_NITROGEN, new ItemStack(Material.DRIED_KELP)},
-            new ItemStack[]{new SlimefunItemStack(Items.NITROGEN_TRIIODIDE, 2)}
+            new ItemStack[]{Items.LIQUID_NITROGEN.item(), new ItemStack(Material.DRIED_KELP)},
+            new ItemStack[]{CustomItemStack.create(Items.NITROGEN_TRIIODIDE.item(), 2)}
         );
 
         registerRecipe(5,
-            new ItemStack[]{SlimefunItems.SULFATE, SlimefunItems.OIL_BUCKET},
-            new ItemStack[]{new SlimefunItemStack(Items.THIOACETONE, 2)}
+            new ItemStack[]{SlimefunItems.SULFATE.item(), SlimefunItems.OIL_BUCKET.item()},
+            new ItemStack[]{CustomItemStack.create(Items.THIOACETONE.item(), 2)}
         );
     }
 

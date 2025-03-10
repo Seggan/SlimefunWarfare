@@ -15,9 +15,9 @@ public class AirLiquefier extends AContainer implements RecipeDisplayItem {
 
     public AirLiquefier() {
         super(Categories.MACHINES, Items.AIR_LIQUEFIER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT, new ItemStack(Material.PACKED_ICE),
-            SlimefunItems.COOLING_UNIT, SlimefunItems.FREEZER, SlimefunItems.COOLING_UNIT,
-            new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT, new ItemStack(Material.PACKED_ICE)
+            new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT.item(), new ItemStack(Material.PACKED_ICE),
+            SlimefunItems.COOLING_UNIT.item(), SlimefunItems.FREEZER.item(), SlimefunItems.COOLING_UNIT.item(),
+            new ItemStack(Material.PACKED_ICE), SlimefunItems.COOLING_UNIT.item(), new ItemStack(Material.PACKED_ICE)
         });
     }
 

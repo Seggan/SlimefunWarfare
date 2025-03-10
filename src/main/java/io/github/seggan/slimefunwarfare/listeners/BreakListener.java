@@ -18,7 +18,7 @@ public class BreakListener implements Listener {
     public void onStoneBreak(BlockBreakEvent e) {
         if (e.getBlock().getType() != Material.STONE || Items.BORAX.getItem().isDisabled()) return;
         if (ThreadLocalRandom.current().nextDouble(100) < boraxChance) {
-            e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), Items.BORAX.clone());
+            e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), Items.BORAX.item().clone());
         }
     }
 }

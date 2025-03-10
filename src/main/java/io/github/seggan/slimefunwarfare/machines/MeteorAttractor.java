@@ -21,8 +21,8 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
@@ -32,9 +32,9 @@ public class MeteorAttractor extends SimpleSlimefunItem<BlockUseHandler> {
 
     public MeteorAttractor() {
         super(Categories.MACHINES, Items.METEOR_ATTRACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.NDFEB_ALLOY_BLOCK, null, Items.NDFEB_ALLOY_BLOCK,
-            Items.NDFEB_ALLOY_BLOCK, null, Items.NDFEB_ALLOY_BLOCK,
-            Items.TERFENOL_D_BLOCK, Items.NDFEB_ALLOY_BLOCK, Items.TERFENOL_D_BLOCK
+            Items.NDFEB_ALLOY_BLOCK.item(), null, Items.NDFEB_ALLOY_BLOCK.item(),
+            Items.NDFEB_ALLOY_BLOCK.item(), null, Items.NDFEB_ALLOY_BLOCK.item(),
+            Items.TERFENOL_D_BLOCK.item(), Items.NDFEB_ALLOY_BLOCK.item(), Items.TERFENOL_D_BLOCK.item()
         });
     }
 

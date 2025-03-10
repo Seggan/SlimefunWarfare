@@ -27,7 +27,7 @@ public class Grenade extends SlimefunItem {
             "",
             "&7Contents: " + ChatUtils.removeColorCodes(chemical.getDisplayName())
         ), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.EMPTY_GRENADE, chemical, null,
+            Items.EMPTY_GRENADE.item(), chemical.item(), null,
             null, null, null,
             null, null, null
         });

@@ -19,9 +19,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nonnull;
 
 public class ModuleManipulator extends SlimefunItem {
 
@@ -40,9 +40,9 @@ public class ModuleManipulator extends SlimefunItem {
 
     public ModuleManipulator() {
         super(Categories.POWER_SUITS, Items.MODULE_MANIPULATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.FIBER_OPTIC_CABLE, Items.MODULE_CASE, Items.FIBER_OPTIC_CABLE,
-            Items.SEGGANESSON, new ItemStack(Material.CRAFTING_TABLE), Items.SEGGANESSON,
-            Items.LASER_DIODE, Items.OSMIUM_INGOT, Items.LASER_DIODE
+            Items.FIBER_OPTIC_CABLE.item(), Items.MODULE_CASE.item(), Items.FIBER_OPTIC_CABLE.item(),
+            Items.SEGGANESSON.item(), new ItemStack(Material.CRAFTING_TABLE), Items.SEGGANESSON.item(),
+            Items.LASER_DIODE.item(), Items.OSMIUM_INGOT.item(), Items.LASER_DIODE.item()
         });
 
         new BlockMenuPreset(this.getId(), this.getItemName()) {
@@ -79,22 +79,22 @@ public class ModuleManipulator extends SlimefunItem {
             preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
 
-        preset.addItem(INSTALL, new CustomItemStack(
+        preset.addItem(INSTALL, CustomItemStack.create(
             Material.REDSTONE,
             "&fInstall/Uninstall Module"
         ));
 
-        preset.addItem(INSTALLED, new CustomItemStack(
+        preset.addItem(INSTALLED, CustomItemStack.create(
             Material.BOOK,
             "&fInstalled Modules (Click to Refresh)"
         ));
 
-        preset.addItem(SUIT_MARKER, new CustomItemStack(
+        preset.addItem(SUIT_MARKER, CustomItemStack.create(
             PlayerHead.getItemStack(Heads.SUIT_HELMET),
             "&4Place Suit Piece Here"
         ), ChestMenuUtils.getEmptyClickHandler());
 
-        preset.addItem(MODULE_MARKER, new CustomItemStack(
+        preset.addItem(MODULE_MARKER, CustomItemStack.create(
             PlayerHead.getItemStack(Heads.MODULE),
             "&6Place Module Here"
         ), ChestMenuUtils.getEmptyClickHandler());
@@ -114,12 +114,10 @@ public class ModuleManipulator extends SlimefunItem {
     private void install(@Nonnull BlockMenu menu) {
         ItemStack stack = menu.getItemInSlot(SUIT);
         SlimefunItem slimefunItem = SlimefunItem.getByItem(stack);
-        if (!(slimefunItem instanceof PowerSuit)) return;
-        PowerSuit powerSuit = (PowerSuit) slimefunItem;
+        if (!(slimefunItem instanceof PowerSuit powerSuit)) return;
 
         slimefunItem = SlimefunItem.getByItem(menu.getItemInSlot(MODULE));
-        if (slimefunItem instanceof Module.ModuleItem) {
-            Module.ModuleItem module = (Module.ModuleItem) slimefunItem;
+        if (slimefunItem instanceof Module.ModuleItem module) {
 
             if (module.getModule().getAllowed() == null || module.getModule().getAllowed() == powerSuit.getType()) {
                 PowerSuit.addModule(stack, module.getModule());
@@ -135,7 +133,7 @@ public class ModuleManipulator extends SlimefunItem {
             menu.consumeItem(SUIT);
 
             if (module != null) {
-                menu.pushItem(module.getItem().clone(), OUTPUT_SLOTS);
+                menu.pushItem(module.getItem().item().clone(), OUTPUT_SLOTS);
             }
         }
     }

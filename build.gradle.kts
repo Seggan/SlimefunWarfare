@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
-    compileOnly("com.github.Slimefun:Slimefun4:RC-37")
+    compileOnly("com.github.Slimefun:Slimefun4:experimental-SNAPSHOT")
 
     implementation("io.github.Mooy1:InfinityLib:1.3.2")
     implementation("com.google.code.findbugs:jsr305:3.0.2")

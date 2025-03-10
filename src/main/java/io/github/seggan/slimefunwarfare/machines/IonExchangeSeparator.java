@@ -14,24 +14,23 @@ import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
-import lombok.Getter;
-
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 public class IonExchangeSeparator extends AbstractMachineBlock implements EnergyNetComponent, MachineProcessHolder<IonExchangeSeparator.Operation> {
 
-    private static final ItemStack NONE = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
+    private static final ItemStack NONE = CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, " ");
     private static final int[] BACKGROUND = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44};
     private static final int[] INPUT = new int[]{9, 10, 11, 12, 18, 21, 27, 28, 29, 30};
     private static final int[] OUTPUT = new int[]{14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
@@ -40,21 +39,21 @@ public class IonExchangeSeparator extends AbstractMachineBlock implements Energy
 
     public IonExchangeSeparator() {
         super(Categories.MACHINES, Items.ION_EXCHANGE_SEPARATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Items.REINFORCED_SLIMESTEEL, SlimefunItems.ELECTRO_MAGNET, Items.REINFORCED_SLIMESTEEL,
-            SlimefunItems.SULFATE, null, SlimefunItems.SULFATE,
-            Items.REINFORCED_SLIMESTEEL, SlimefunItems.ELECTRO_MAGNET, Items.REINFORCED_SLIMESTEEL
+            Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.ELECTRO_MAGNET.item(), Items.REINFORCED_SLIMESTEEL.item(),
+            SlimefunItems.SULFATE.item(), null, SlimefunItems.SULFATE.item(),
+            Items.REINFORCED_SLIMESTEEL.item(), SlimefunItems.ELECTRO_MAGNET.item(), Items.REINFORCED_SLIMESTEEL.item()
         });
 
         processor.setProgressBar(new ItemStack(Material.IRON_PICKAXE));
 
-        results.add(Items.LANTHANUM_INGOT);
-        results.add(Items.NEODYMIUM_INGOT);
-        results.add(Items.GADOLINIUM_INGOT);
-        results.add(Items.TERBIUM_INGOT);
-        results.add(Items.DYSPROSIUM_INGOT);
-        results.add(Items.HOLMIUM_INGOT);
-        results.add(Items.ERBIUM_INGOT);
-        results.add(Items.YTTERBIUM_INGOT);
+        results.add(Items.LANTHANUM_INGOT.item());
+        results.add(Items.NEODYMIUM_INGOT.item());
+        results.add(Items.GADOLINIUM_INGOT.item());
+        results.add(Items.TERBIUM_INGOT.item());
+        results.add(Items.DYSPROSIUM_INGOT.item());
+        results.add(Items.HOLMIUM_INGOT.item());
+        results.add(Items.ERBIUM_INGOT.item());
+        results.add(Items.YTTERBIUM_INGOT.item());
 
         SlimefunItem cerium = SlimefunItem.getById("MATERIAL_BASTNAESITE_INGOT");
         if (cerium != null) {
