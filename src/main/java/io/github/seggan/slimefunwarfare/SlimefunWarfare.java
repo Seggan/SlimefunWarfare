@@ -9,15 +9,7 @@ import io.github.seggan.slimefunwarfare.items.guns.Gun;
 import io.github.seggan.slimefunwarfare.items.powersuits.ArmorPiece;
 import io.github.seggan.slimefunwarfare.items.powersuits.Module;
 import io.github.seggan.slimefunwarfare.items.powersuits.PowerSuit;
-import io.github.seggan.slimefunwarfare.listeners.BreakListener;
-import io.github.seggan.slimefunwarfare.listeners.BulletListener;
-import io.github.seggan.slimefunwarfare.listeners.ChatListener;
-import io.github.seggan.slimefunwarfare.listeners.ConcreteListener;
-import io.github.seggan.slimefunwarfare.listeners.GrenadeListener;
-import io.github.seggan.slimefunwarfare.listeners.HitListener;
-import io.github.seggan.slimefunwarfare.listeners.ModuleListener;
-import io.github.seggan.slimefunwarfare.listeners.NukeListener;
-import io.github.seggan.slimefunwarfare.listeners.PyroListener;
+import io.github.seggan.slimefunwarfare.listeners.*;
 import io.github.seggan.slimefunwarfare.lists.Categories;
 import io.github.seggan.slimefunwarfare.lists.Items;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
@@ -39,16 +31,15 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 
+import javax.annotation.Nonnull;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
-import javax.annotation.Nonnull;
 
 public class SlimefunWarfare extends AbstractAddon implements Listener {
 
@@ -68,7 +59,7 @@ public class SlimefunWarfare extends AbstractAddon implements Listener {
         instance = this;
 
         if (getConfig().getBoolean("auto-update", true)) {
-            new BlobBuildUpdater(this, getFile(), "SlimefunWarfare").start();
+            new BlobBuildUpdater(this, getFile(), "SlimefunWarfare", "Experimental").start();
         }
 
         new Metrics(this, 9227);
