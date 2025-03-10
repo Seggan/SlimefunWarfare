@@ -3,5 +3,7 @@ target
 test
 cache
 .idea
+.gradle
+build
 SlimefunWarfare.iml
 dependency-reduced-pom.xml
